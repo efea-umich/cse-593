@@ -167,4 +167,6 @@ We now see a narrower focus forming around features that support short, context-
 
 In conclusion, while users appreciate the convenience of viewing messages on a smartwatch, they seldom compose anything more than quick confirmations due to the watch's cramped interface, limited error correction, and uneasy voice controls in public. Building on the new Contextual Inquiry data, we will develop low-fidelity prototypes aimed at facilitating short text replies and minimal error rates. Our next steps involve testing these prototypes in scenarios similar to those described by our participants, measuring improvements in typing speed, error frequency, and user confidence. This direction should ultimately help smartwatch owners feel more at ease sending messages from their wrists instead of reaching for a phone whenever they need to reply.
 
+Example commit
+
 #bibliography("test.bib", style: "acmcitation.csl")
