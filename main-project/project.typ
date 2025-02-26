@@ -155,18 +155,22 @@ We employed Contextual Inquiry interviews to observe participants' natural behav
 Each researcher interviewed one participant in the context-of-use where the participant typically uses their smartwatch for text entry tasks. The interview asked the participant to describe their typical workflow when performing text-entry tasks and used this information to ask more pointed questions.
 
 We conducted a semi-structured interview where each interviewer was free to decide what follow-up questions to ask about the participants smartwatch usage. As the interview progressed, each interviewer noted down their interpretations. Each interviewer also recorded any confusion or inefficiencies that occurred when participants tried to compose text, whether by tapping, swiping, or using voice commands.
+
 == Tasks and Procedures
 // How was consent for participation sought and administered? What did the task entail? Were participants given any prior instructions? What were they? How long did the task take on an average? How did you go about ensuring quality control of tasks?
-Like the pilot survey, participants were explained the purpose of the study and were told that participation was entirely voluntary and could be stopped at any time. Each interview started with the participant being asked to describe their smartwatch usage in the context of text-entry tasks. No tasks were assigned to any participant beyond attempting to use their smartwatch as they naturally would. We encouraged them to think aloud about any difficulties with typing or voice input. Interviews lasted about 20 minutes on average.
+Like the pilot survey, participants were told the purpose of the study and that participation was entirely voluntary and could be stopped at any time. Each interview started with the participant being asked to describe their smartwatch usage in the context of text-entry tasks. No tasks were assigned to any participant beyond attempting to use their smartwatch as they naturally would. We encouraged them to think aloud about any difficulties with typing or voice input. Interviews lasted about 20 minutes on average.
 
 == Participants
 // Please provide demographic information of participants: number of participants, by age, by gender, by disability if relevant for the study, by experience with task, location, any other criteria for recruitment, how they were recruited, were they given any incentives, mode of study conducted (virtual or in-person). How did you decide on the number of participants for your study?
-// TODO: List demographic info of your participant here
 // format: gender, age-range, virtual/in-person, experience using smartwatch, how recruited
-- Male, 18-26, in,person, 2 years, friend (Ryan)
-- Female, 18-26 (Efe)
-- Male, 27-35, in-person, 1 year, friend (Hyungchan)
-- Female, 18-26, in-person, 1 year, friend
+Six one-on-one in-person contextual interviews took place. One interview per researcher allowed us to get a wide range of perspectives without spending too much time on interviews. Each participant was a direct connection (friend) of the interviewer. Most participants were between the ages of 18-26, with two being between 27 and 35. The majority of our participants were female - 4 female and 2 male, unlike our survey results. Everyone had at least one year of experience using their smartwatch.
+
+- Male, 18-26, in-person, 2 years, friend (U01)
+- Female, 18-26 (U02)
+- Female, 18-26, in-person, 1 year, friend (U03)
+- Female, 18-26, in-person, 1 year, friend (U04)
+- Male, 27-35, in-person, 1 year, friend (U05)
+- Female, 27-35, in-person, 4 years, friend (U06)
 
 == Results
 // Please provide detailed summary of findings. Consult your consolidated affinity diagram to help craft the story.
@@ -177,22 +181,13 @@ The affinity diagram categorized comments into several groups. One group reflect
 = User Requirements and Functional Constraints
 // Provide a comprehensive list of objective, testable requirements that are not implying solutions. Make sure you ground your user requirements in the context of use.
 
-// below is a draft
-Based on these themes, we identified objective, testable requirements that focus on text-entry without implying specific implementation solutions:
+Drawing on participants' real-world usage and common frustrations with smartwatch text-entry, we identified the following requirements that specify what the user must be able to do:
 
-1. The watch must allow a user to preview and confirm any short auto-replies before sending, so accidental taps can be avoided.
-2. The watch must provide a simple means for correcting mistakes that does not involve multiple steps or hidden menus, aiming to reduce frustration with typos.
-3. The watch's text-entry interface must allow rapid one- or two-word messages to be composed without extensive scrolling or swiping, reflecting participants' focus on brevity.
-4. The watch must offer a discreet input method for environments where speaking aloud is awkward, addressing participants' hesitance to rely on voice.
-5. The watch must include improved feedback—such as haptic signals or slight zoom on letters—to help users detect and fix errors quickly on a small screen.
-6. The watch must retain commonly typed phrases or words in its predictive dictionary, reflecting participants' desire for more relevant suggestions during short replies.
-These requirements emerge directly from user comments about having no confirmation step on auto-replies, encountering excessive menu layers when fixing errors, or feeling uneasy with voice commands in professional settings.
+1. Error prevention: Users must be able to avoid unintended actions before a message is sent. Multiple participants described tapping the wrong quick reply or introducing input errors they could not intercept in time.
+2. Minimal steps for correction: Users must be able to fix mistakes quickly without retyping an entire message or pivoting to an external device. Long correction workflows on a small screen discouraged participants from continuing to type on the watch.
+3. Brief text support: Users must be able to enter short responses (such as numeric codes or a few words) with minimal disruption. Participants reported only needing concise messages most of the time and wanted to complete them reliably on the watch.
+4. Low error incidence for quick replies: Users must be able to send short messages or confirmations without repeated typing errors. Persistent mistakes caused participants to abandon the watch and switch to their phone.
 
-Our aggregated findings deepen the perspective gained from our previous survey by illustrating the granular breakdowns people face when typing on a tiny watch interface. Participants across different ages and backgrounds echoed the view that the watch is best suited for quick glances or short messages, with complex text tasks delegated to a phone. This pattern matches our earlier hypothesis that small screens alone do not explain why text-entry is so marginal; rather, usability gaps—like a lack of quick edit options or a reliable predictive engine—exacerbate the difficulty.
-
-We now see a narrower focus forming around features that support short, context-specific messages in a more controlled manner. The emphasis on confirmations, immediate error correction, and discreet input suggests an urgent need to refine the watch's interplay between auto-suggestions and manual editing. We plan to concentrate on prototyping a streamlined text-entry interface that meets these requirements, potentially reducing the friction that drives participants to switch devices for minor replies.
-
-In conclusion, while users appreciate the convenience of viewing messages on a smartwatch, they seldom compose anything more than quick confirmations due to the watch's cramped interface, limited error correction, and uneasy voice controls in public. Building on the new Contextual Inquiry data, we will develop low-fidelity prototypes aimed at facilitating short text replies and minimal error rates. Our next steps involve testing these prototypes in scenarios similar to those described by our participants, measuring improvements in typing speed, error frequency, and user confidence. This direction should ultimately help smartwatch owners feel more at ease sending messages from their wrists instead of reaching for a phone whenever they need to reply.
 
 = Initial Design and Low Fidelity Prototypes
 
@@ -267,16 +262,19 @@ The survey results show that text entry is not a priority for smartwatch users. 
 The most frequent requests to improve text entry involved minimizing the number of keystrokes required to type a message. Predictive text and autocorrect could significantly speed up typing speeds by allowing less precise inputs to still be interpreted correctly.
 Due to the small screen users, the survey also indicates that users might want to see a reduction in the number of interaction required to complete the same tasks on a smartwatch. This highlights an usability challenge: while smartwatches offer convenience and accessibility, their small screen size and limited input methods often lead to cumbersome navigation and excessive touch interactions. 
 
+Our aggregated findings from Contextual Inquiry deepen the perspective gained from our previous survey by illustrating the granular breakdowns people face when typing on a tiny watch interface. Participants across different ages and backgrounds echoed the view that the watch is best suited for quick glances or short messages, with complex text tasks delegated to a phone. This pattern matches our earlier hypothesis that small screens alone do not explain why text-entry is so marginal; rather, usability gaps—like a lack of quick edit options or a reliable predictive engine—exacerbate the difficulty.
+
+We now see a narrower focus forming around features that support short, context-specific messages in a more controlled manner. The emphasis on confirmations, immediate error correction, and discreet input suggests an urgent need to refine the watch's interplay between auto-suggestions and manual editing. We plan to concentrate on prototyping a streamlined text-entry interface that meets these requirements, potentially reducing the friction that drives participants to switch devices for minor replies.
 
 = Conclusion and Future Work
 // What is the takeaway of this project? Were there any parts of the project that you did not include in the scope of this project? Here is where you will discuss how the current assignment will inform the rest of your project. For example, in Assignment 1, how will the results of your survey influence the future steps in understanding context of use? Feel free to use your creativity to suggest new research directions, designs---but these suggestions must be supported by the findings of your study
 This study set out to clarify how people enter text on smartwatches and to identify factors that discourage more frequent or extensive usage. Through iterative survey design, we found that participants generally turn to smartwatches for quick interactions—such as reading notifications or monitoring fitness activity—while relying on smartphones for most typing. Although some participants appreciate the convenience of entering short messages on a watch, most remain dissatisfied with current text-input accuracy, speed, and clarity.  
 
-We have demonstrated that more work needs to be done to make text-entry viable on a smartwatch. In particular, the interface we design needs to have sufficiently large interactive objects to reduce input error and have predictive features to speed up entry. Our next steps are to explore how predictive typing features can be better integrated into smartwatches. For example, a tap-based version of the related work by the WrisText \cite{wristext} team could allow users to type characters without needing pinpoint precision. For future work, we plan to develop and test interactive text-entry designs that may ease the barrier of entry for user-smartwatch interactions. Thus, encouraging more frequent use and increased reliance on smartwatches.
+We have demonstrated that more work needs to be done to make text-entry viable on a smartwatch. In particular, the interface we design needs to have sufficiently large interactive objects to reduce input error and have predictive features to speed up entry. Our next steps are to explore how predictive typing features can be better integrated into smartwatches. Building on the new Contextual Inquiry data, we will develop low-fidelity prototypes aimed at facilitating short text replies and minimal error rates. For example, a tap-based version of the related work by the WrisText @wristext team could allow users to type characters without needing pinpoint precision. We plan to develop and test interactive text-entry designs that may ease the barrier of entry for user-smartwatch interactions. This direction should ultimately help smartwatch owners feel more at ease sending messages from their wrists instead of reaching for a phone whenever they need to reply.
+
 
 = Acknowledgements
 #text(fill: red, [Here, you will acknowledge any individuals or organizations that are not part of your group, but that have contributed to your work.])
-
 
 #bibliography("test.bib", style: "../acmcitation.csl")
 
@@ -419,112 +417,82 @@ We have demonstrated that more work needs to be done to make text-entry viable o
   - U06-17: The missed reminder caused some stress and last-minute scrambling, as she had to rely on her phone instead. She seemed annoyed that the haptic feedback wasn't strong enough to alert her in a busy environment.
 
   == Individual Sequence Diagrams
-  - Oskar
+
+  - U01
+  #include "assets/diagrams/ryan_sequence.typ"
+
+  - U02
+  #include "assets/diagrams/efe_sequence.typ"
+
+  - U03
+  #image("assets/diagrams/kevin_sequence.png")
+  
+  - U04
   #image("assets/diagrams/oskar_sequence_diagram.jpg")
   
-  - Hyungchan
-  #let color_step = blue.desaturate(75%)
-  #let color_intent = orange.desaturate(75%)
-  #let color_breakdown = red.desaturate(75%)
-  
-  #diagram(
-      node((0, 0), [Step], fill:color_step),
-      node((1, 0), [Intent], fill:color_intent),
-      node((2, 0), [Breakdown], fill:color_breakdown)
-    )
+  - U05
+  #include "assets/diagrams/hc_sequence.typ"
 
-  #diagram( 
-    node-stroke: 2pt, 
-    edge-stroke: 1pt, 
-    node-outset: 4pt, 
-    spacing: 30pt,
-    node((1,0), [Receive message (in Chinese)], name: <ReceiveMsg>, fill: color_step, width: 10em),
-    node((0,1), [Read message on watch], name: <WatchRead>, fill: color_step, width: 10em),
-    node((2,1), [Check phone for full text], name: <PhoneRead>, fill: color_step, width: 10em),
-    node((0.8,1), [Response is long], name: <BDownPrivate>, fill: color_breakdown, width: 8em),
-    node((1,1.4), [Only in private space], name: <BDownPrivate>, fill: color_breakdown, width: 10em),
-    node((1,2), [Press Voice Input button], name: <VoiceInput>, fill: color_step, width: 10em),
-    node((2,2), [Type response on phone], name: <PhoneType>, fill: color_step, width: 10em),
-    node((0.42,3.43), [Attempt short reply], name: <WatchShortReply>, fill: color_intent, width: 10em),
-    node((0,3), [Find suggested words written (in English)], name: <WatchSugged>, fill: color_step, width: 10em),
-    node((1,3), [Speak to watch], name: <WatchTalk>, fill: color_step, width: 10em),
-    node((1.7,3), [Speak to phone], name: <PhoneTalk>, fill: color_step, width: 8em),
-    node((1.6,2.5), [Attempt fast and detailed reply (either in Chinese or English)], name: <WatchShortReply>, fill: color_intent, width: 27em),
-    node((0,4), [Send message on watch], name: <WatchSend>, fill: color_step, width: 10em),
-    node((1.35,3.5), [Check transcribed text], name: <WatchTrans>, fill: color_breakdown, width: 13em),
-    node((2.7,4), [Send longer reply], name: <IntentDetailed>, fill: color_intent, width: 6em),
-    node((2,4), [Send message on phone], name: <PhoneSend>, fill: color_step, width: 10em),
-
-    edge(<ReceiveMsg.south>, <WatchRead.north>, "->"),
-    edge(<ReceiveMsg.south>, <PhoneRead.north>, "->"),
-    edge(<WatchRead.south>, <WatchSugged.north>, "->"),
-    edge(<WatchRead.east>, <VoiceInput.north>, "->", corner: right),
-    edge(<WatchRead.east>, <PhoneRead.west>, "->"),
-    edge(<PhoneRead.west>, <VoiceInput.north>, "->"),
-    edge(<VoiceInput.east>, <PhoneTalk.north>, "->"),
-    edge(<PhoneTalk.south>, <PhoneSend.west>, "->"),
-    edge(<VoiceInput.south>, <WatchTalk.north>, "->"),
-    edge(<WatchTalk.south>, <WatchSend.east>, "->", corner: right),
-    edge(<WatchSugged.south>, <WatchSend.north>, "->"),
-    edge(<PhoneRead.south>, <PhoneType.north>, "->"),
-    edge(<PhoneType.south>, <PhoneSend.north>, "->"),
-  )
-
-
+  - U06
+  #image("assets/diagrams/nivedhitha_sequence.png")
   
   == Individual Flow Diagrams
 
-  - Oskar 
-#image("assets/diagrams/oskar_flow_diagram.jpg")
+  - U01
+  #include "assets/diagrams/ryan_flow.typ"
 
-  - Hyungchan
-  #diagram(
-    node-stroke: 2pt,
-    edge-stroke: 1pt,
-    node-outset: 4pt,
-    node((0, 2), [Participant], name: <Participant>),
-    node((1.5, 1), [Text entry interface], name: <TextEntry>, width: 6em),
-    node((1.5, 3), [Voice input interface], name: <VoiceEntry>, width: 6em),
-    node((4, 0), [Smartwatch], name: <Smartwatch>),
-    node((4, 4), [Phone], name: <Phone>),
-    node((6, 4), [Sender], name: <Sender>),
-    edge(<Sender>, <Phone>, [#text("Send text")], "->", label-side: left, shift: 10pt),
-    edge(<Phone>, <Smartwatch>, [Forward notification], "->", label-pos: 0.7, shift: -20pt),
-    edge(<Smartwatch>, <Phone>, [Forward reply], "->", label-pos: 0.4, label-side: right, shift: 10pt ),
-    edge(<Smartwatch>, <Participant>, [Receive notification], "->", bend: -35deg, label-size: 10pt),
-    edge(<Participant>, <Phone>, [Notify], "->", bend: -35deg, label-size: 10pt),
-    edge(<Phone>, <Participant>, [Type response], "->", bend: 35deg, label-size: 10pt, shift: 10pt, label-side:right),
-    edge(<Participant>, <TextEntry>, [Type / Use suggested reply], "->", label-side: right, shift: 10pt),
-    edge(<TextEntry>, <Smartwatch>, [Create response], "->"),
-    edge(<VoiceEntry>, <Phone>, [Create response], "->", label-pos: 0.1),
-    edge(<VoiceEntry>, <Smartwatch>, [Create response], "->", label-pos: 0.2, label-side: right),
-    edge(<Phone>, <Sender>, [#text("Deliver response")], "->"),
-    edge(<Participant>, <VoiceEntry>, [Speak], "->"),
-  )
-
-  - Kevin 
-  #image("assets/diagrams/kevin_flow.png") 
+  - U02
+  #include "assets/diagrams/efe_flow.typ"
   
-  == Consolidated Sequence Diagrams
+  - U03 
+  #image("assets/diagrams/kevin_flow.png")
+  
+  - U04 
+  #image("assets/diagrams/oskar_flow_diagram.jpg")
+
+  - U05
+  #include "assets/diagrams/hc_flow.typ"
+
+  - U06
+  #image("assets/diagrams/nivedhitha_flow.png")
+  
+  == Consolidated Sequence Diagram
+  #image("assets/diagrams/SEQUENCE_CONSOLIDATED.png")
+  
   == Consolidated Flow Diagrams
+  #image("assets/diagrams/Flow_Diagram_CONSOLIDATED.jpg")
+  
   == Affinity Diagram
   The affinity diagram was built externally as it wouldn't fit properly in this document.
   
   https://app.mural.co/t/efe0436/m/efe0436/1740421713527/892df92fd36881da9a1003f922eaf2746cd03970?sender=u50b4fa8f7b490ef0f8870762
   
   = Low Fidelity Prototypes
+  
   == Individual Personas
+  
   == Individual Sketches
+  
   == Individual Storyboards
+  
   == Final Personas
+  
   == Final Sketches
+  
   == Final Storyboards
+  
   == Final Paper Prototype
+  
   = Usability Evaluation
+  
   == Individual Heuristic Evaluation Notes
+  
   == Individual Simplified User Study Notes
+  
   = User Evaluation
+  
   == Apparatus Screenshots
+  
   == Anonymized and De-identified Participants Data
 
 ]
