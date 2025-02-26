@@ -419,7 +419,9 @@ We have demonstrated that more work needs to be done to make text-entry viable o
   - U06-17: The missed reminder caused some stress and last-minute scrambling, as she had to rely on her phone instead. She seemed annoyed that the haptic feedback wasn't strong enough to alert her in a busy environment.
 
   == Individual Sequence Diagrams
-
+  - Oskar
+  #image("assets/diagrams/oskar_sequence_diagram.jpg")
+  
   - Hyungchan
   #let color_step = blue.desaturate(75%)
   #let color_intent = orange.desaturate(75%)
@@ -501,7 +503,7 @@ We have demonstrated that more work needs to be done to make text-entry viable o
   )
 
   - Kevin 
-  #image() 
+  #image("assets/diagrams/kevin_flow.png") 
   
   == Consolidated Sequence Diagrams
   == Consolidated Flow Diagrams
