@@ -473,7 +473,8 @@ We have demonstrated that more work needs to be done to make text-entry viable o
   #image("assets/diagrams/Flow_Diagram_CONSOLIDATED.jpg")
   
   == Affinity Diagram
-  The affinity diagram was built externally as it wouldn't fit properly in this document.
+  #image("assets/diagrams/Affinity_Diagram.jpg")
+  Above is our external affinity diagram. Because of its size and level of detail, it cannot be displayed legibly within this document. For the complete version, please visit:
   
   https://app.mural.co/t/efe0436/m/efe0436/1740421713527/892df92fd36881da9a1003f922eaf2746cd03970?sender=u50b4fa8f7b490ef0f8870762
   
