@@ -2,9 +2,9 @@
 #import "../acmart.typ": *
 
 #let authors = (
+  "Efe Akinci",
   "Ryan Chua",
   "Hyungchan Cho",
-  "Efe Akinci",
   "Nivedhitha Dondati Purushotham",
   "Kevin Sun",
   "Oskar Shiomi Jensen"
@@ -113,7 +113,37 @@ To ensure the inclusion of more specific user groups, we encouraged participants
 In addition to general distribution, we sent personalized invitations to individuals who were likely to have experience with smartwatches, such as members of fitness-related groups or technology enthusiasts, ensuring the survey reached individuals with varying levels of familiarity and usage.
 
 == Results
-Most respondents were between 18 and 26 years of age, with one participant in the 27-35 range and another in the 54-62 range. Among those who actually use a smartwatch, nearly everyone reported wearing it on the left arm. For the rest of this discussion, we will focus on participants that did not select "I don't use a smartwatch" throughout the survey. 
+Most respondents were between 18 and 26 years of age, with one participant in the 27-35 range and another in the 54-62 range. Among those who actually use a smartwatch, nearly everyone reported wearing it on the left arm.
+
+For the rest of this discussion, we will focus on participants that did not select "I don't use a smartwatch" throughout the survey. Figure @fig:watch_usage shows that almost all participants were ``passive'' users of their smartwatch, with the most popular features used being the clock, fitness tracking (sleep, heart rate, etc.), and the hands-free notification viewing.
+
+#figure(
+  image("assets/charts/fig_4.png"),
+  caption: "Main Smartwatch Features Used by Participants"
+) <fig:watch_usage>
+
+The dominant text entry method with smartphones was tapping the on-screen keyboard, with a few using primarily swipe typing, as seen in Figure @fig:SP_text_entry. 
+
+#figure(
+  image("assets/charts/fig_5.png"),
+  caption: "Preferred Modes of Smartphone Text-Entry"
+) <fig:SP_text_entry>
+
+On smartwatches, the most prevalent method was also tapping each key, although by a small margin, as seen in Figure @fig:SW_text_entry. No typing method dominated on the smartwatch, but in almost all cases, respondents were uncomfortable with typing on it. This is reflected in the relative speed of text-entry question, where no participant said they could type faster on a smartwatch than a smartphone.
+
+#figure(
+  image("assets/charts/fig_6.png"),
+  caption: "Preferred Modes of Smartwatch Text-Entry"
+) <fig:SW_text_entry>
+
+When asked about what issues arise with typing on a smartwatch, nearly 75% of respondents said that the small screen made it hard to type accurately. Notably, even respondents that don't typically use a smartwatch said this, suggesting that this factor dissuaded respondents from getting a smartwatch. The rest of the issues we listed had an even spread of responses, showing us that these problems are still relevant with today's smartwatches. These characteristics are shown in Figure @fig:issues.
+
+#figure(
+  image("assets/charts/fig_4.png"),
+  caption: "Main Smartwatch Features Used by Participants"
+) <fig:issues>
+
+Overall, respondents wanted a better swipe or gesture based method of typing on a smartwatch and faster predictive features. The less taps required to convey a message, the better.
 
 = Understanding Context of Use: Contextual Inquiry
 
@@ -153,7 +183,7 @@ The affinity diagram categorized comments into several groups. One group reflect
 // below is a draft
 Based on these themes, we identified objective, testable requirements that focus on text-entry without implying specific implementation solutions:
 
-1. The watch must allow a user to preview and confirm a short auto-reply before sending, so accidental taps can be avoided.
+1. The watch must allow a user to preview and confirm any short auto-replies before sending, so accidental taps can be avoided.
 2. The watch must provide a simple means for correcting mistakes that does not involve multiple steps or hidden menus, aiming to reduce frustration with typos.
 3. The watch's text-entry interface must allow rapid one- or two-word messages to be composed without extensive scrolling or swiping, reflecting participants' focus on brevity.
 4. The watch must offer a discreet input method for environments where speaking aloud is awkward, addressing participants' hesitance to rely on voice.
@@ -167,4 +197,34 @@ We now see a narrower focus forming around features that support short, context-
 
 In conclusion, while users appreciate the convenience of viewing messages on a smartwatch, they seldom compose anything more than quick confirmations due to the watch's cramped interface, limited error correction, and uneasy voice controls in public. Building on the new Contextual Inquiry data, we will develop low-fidelity prototypes aimed at facilitating short text replies and minimal error rates. Our next steps involve testing these prototypes in scenarios similar to those described by our participants, measuring improvements in typing speed, error frequency, and user confidence. This direction should ultimately help smartwatch owners feel more at ease sending messages from their wrists instead of reaching for a phone whenever they need to reply.
 
-#bibliography("test.bib", style: "acmcitation.csl")
+#bibliography("test.bib", style: "../acmcitation.csl")
+
+
+#appendix[
+  = Responsible Research: Human Subjects Research Protections
+  To ensure our study conforms with safe human subjects research, all researchers earned the PEERRS Human Subjects Research Protections certificate.
+
+  #{
+    let certs = (
+      "ea": "Efe Akinci",
+      "hc": "Hyungchan Cho",
+      "ks": "Kevin Sun",
+      "osj": "Oskar Shiomi Jensen",
+      "ni": "Nivedhitha Purushotham"
+    )
+
+    grid(
+      columns: (1fr, 1fr),
+      column-gutter: 4em,
+      ..certs.pairs().map((p) => {
+        let id = p.at(0)
+        let name = p.at(1)
+        
+        figure(
+          image("assets/peers/PEERRS_" + id + ".png", width: 100%),
+          caption: [PEERRS Certificate of #name]
+        )
+      })
+    )
+  }
+]

@@ -55,6 +55,26 @@
   block(below: 22pt, contents)
 }
 
+#let ffigure(..args, l: none) = {
+  place(
+    auto,
+    scope: "parent",
+    float: true,
+    [
+      #figure(..args) #if l != none {label(l)}
+    ]
+  )
+}
+
+#let appendix(content) = {
+  counter(heading).update(it => 0)
+  set heading(numbering: "A.1   ")
+  
+  [
+    #content
+  ]
+}
+
 #let acmart(
   authors: (),
   title: "Title",
@@ -106,5 +126,13 @@
     title: [== References]
   )
   show bibliography: set text(size: 9pt)
+
+  set figure(placement: auto)
+  show figure: f => {
+    set image(width: 80%)
+    set align(center)
+    set block(above: 24pt, below: 24pt)
+    f
+  }
   body
 }
