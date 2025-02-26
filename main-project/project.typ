@@ -472,6 +472,9 @@ We have demonstrated that more work needs to be done to make text-entry viable o
   
   == Individual Flow Diagrams
 
+  - Oskar 
+#image("assets/diagrams/oskar_flow_diagram.jpg")
+
   - Hyungchan
   #diagram(
     node-stroke: 2pt,
@@ -496,10 +499,16 @@ We have demonstrated that more work needs to be done to make text-entry viable o
     edge(<Phone>, <Sender>, [#text("Deliver response")], "->"),
     edge(<Participant>, <VoiceEntry>, [Speak], "->"),
   )
+
+  - Kevin 
+  #image() 
   
   == Consolidated Sequence Diagrams
   == Consolidated Flow Diagrams
   == Affinity Diagram
+  The affinity diagram was built externally as it wouldn't fit properly in this document.
+  
+  https://app.mural.co/t/efe0436/m/efe0436/1740421713527/892df92fd36881da9a1003f922eaf2746cd03970?sender=u50b4fa8f7b490ef0f8870762
   
   = Low Fidelity Prototypes
   == Individual Personas
