@@ -174,9 +174,6 @@ We consolidated data by constructing sequence and flow diagrams that highlight e
 
 The affinity diagram categorized comments into several groups. One group reflected that participants had explored text-entry at first but soon found it unhelpful, especially for multi-sentence conversations. Another group underscored the discomfort of using voice input in public or around coworkers, which stifled spontaneous verbal replies. A third cluster documented complaints about the watch interface feeling unnatural or too small for meaningful text composition. Users typically typed short or quick messages to avoid errors, then switched to their phone for anything substantial. Overall, mistakes were frequent, and participants considered text-entry on the watch to be unreliable. Nonetheless, these same users found the watch useful for passive tasks like dismissing notifications or glancing at messages.
 
-
-
-
 = User Requirements and Functional Constraints
 // Provide a comprehensive list of objective, testable requirements that are not implying solutions. Make sure you ground your user requirements in the context of use.
 
@@ -197,8 +194,91 @@ We now see a narrower focus forming around features that support short, context-
 
 In conclusion, while users appreciate the convenience of viewing messages on a smartwatch, they seldom compose anything more than quick confirmations due to the watch's cramped interface, limited error correction, and uneasy voice controls in public. Building on the new Contextual Inquiry data, we will develop low-fidelity prototypes aimed at facilitating short text replies and minimal error rates. Our next steps involve testing these prototypes in scenarios similar to those described by our participants, measuring improvements in typing speed, error frequency, and user confidence. This direction should ultimately help smartwatch owners feel more at ease sending messages from their wrists instead of reaching for a phone whenever they need to reply.
 
-#bibliography("test.bib", style: "../acmcitation.csl")
+= Initial Design and Low Fidelity Prototypes
 
+== Personas
+
+== Sketches
+
+== Storyboards
+
+== Paper Prototype
+
+= Usability Evaluation
+
+== Heuristic Evaluation
+
+=== Method
+// What did the method entail?
+
+=== Tasks and Procedures
+// What did the task entail?
+// Were participants given any prior instructions?
+// What were they?
+// How long did the task take on average?
+// How did you go about ensuring quality control of tasks?
+
+=== Participants
+// Please provide demographic information of participants: number of participants, by age, by gender, by disability if relevant for the study, by experience with task, location, any other criteria for recruitment, how they were recruited, were they given any incentives, mode of study conducted (virtual or in-person)
+// How was consent for participation sought and administered?
+// How did you decide on the number of participants for your study?
+
+=== Results
+// Report the results of heuristic evaluation here.
+
+== Simplified User Testing
+
+=== Method
+// What did the method entail?
+
+=== Tasks and Procedures
+// What did the task entail?
+// Were participants given any prior instructions?
+// What were they?
+// How long did the task take on average?
+// How did you go about ensuring quality control of tasks?
+
+=== Participants
+// Please provide demographic information of participants: number of participants, by age, by gender, by disability if relevant for the study, by experience with task, location, any other criteria for recruitment, how they were recruited, were they given any incentives, mode of study conducted (virtual or in-person)
+// How was consent for participation sought and administered?
+// How did you decide on the number of participants for your study?
+
+=== Results
+// Report the results of simplified user testing here.
+
+= Final Design and Functional High-Fidelity Prototype
+
+= User Evaluation
+// Use the knowledge from the lectures and previous evaluations to populate this section and its subsections.
+
+== Method
+
+== Apparatus
+
+== Tasks and Procedures
+
+== Participants
+
+== Results
+
+= Discussion
+// You will keep updating this section after each assignment. After each assignment you will add discussion about what the results mean for your research.
+The survey results show that text entry is not a priority for smartwatch users. The small screen size is the limiting factor in making text entry viable. Even though users may be comfortable typing on a smartphone, that skill cannot directly translate to a screen many times smaller.
+The most frequent requests to improve text entry involved minimizing the number of keystrokes required to type a message. Predictive text and autocorrect could significantly speed up typing speeds by allowing less precise inputs to still be interpreted correctly.
+Due to the small screen users, the survey also indicates that users might want to see a reduction in the number of interaction required to complete the same tasks on a smartwatch. This highlights an usability challenge: while smartwatches offer convenience and accessibility, their small screen size and limited input methods often lead to cumbersome navigation and excessive touch interactions. 
+
+
+= Conclusion and Future Work
+// What is the takeaway of this project? Were there any parts of the project that you did not include in the scope of this project? Here is where you will discuss how the current assignment will inform the rest of your project. For example, in Assignment 1, how will the results of your survey influence the future steps in understanding context of use? Feel free to use your creativity to suggest new research directions, designs---but these suggestions must be supported by the findings of your study
+This study set out to clarify how people enter text on smartwatches and to identify factors that discourage more frequent or extensive usage. Through iterative survey design, we found that participants generally turn to smartwatches for quick interactions—such as reading notifications or monitoring fitness activity—while relying on smartphones for most typing. Although some participants appreciate the convenience of entering short messages on a watch, most remain dissatisfied with current text-input accuracy, speed, and clarity.  
+
+We have demonstrated that more work needs to be done to make text-entry viable on a smartwatch. In particular, the interface we design needs to have sufficiently large interactive objects to reduce input error and have predictive features to speed up entry. Our next steps are to explore how predictive typing features can be better integrated into smartwatches. For example, a tap-based version of the related work by the WrisText \cite{wristext} team could allow users to type characters without needing pinpoint precision. For future work, we plan to develop and test interactive text-entry designs that may ease the barrier of entry for user-smartwatch interactions. Thus, encouraging more frequent use and increased reliance on smartwatches.
+
+= Acknowledgements
+#text(fill: red, [Here, you will acknowledge any individuals or organizations that are not part of your group, but that have contributed to your work.])
+
+
+#bibliography("test.bib", style: "../acmcitation.csl")
 
 #appendix[
   #show grid: set block(below: 0.25in)
@@ -208,6 +288,7 @@ In conclusion, while users appreciate the convenience of viewing messages on a s
   #{
     let certs = (
       "ea": "Efe Akinci",
+      "rc": "Ryan Chua",
       "hc": "Hyungchan Cho",
       "ks": "Kevin Sun",
       "osj": "Oskar Shiomi Jensen",
@@ -262,4 +343,30 @@ In conclusion, while users appreciate the convenience of viewing messages on a s
       ]
     ]
   }
+
+  = Contextual Inquiry
+  // Assignment 2 stuff goes here
+
+  == Individual Interpretations
+  == Individual Sequence Diagrams
+  == Individual Flow Diagrams
+  == Consolidated Sequence Diagrams
+  == Consolidated Flow Diagrams
+
+
+  = Low Fidelity Prototypes
+  == Individual Personas
+  == Individual Sketches
+  == Individual Storyboards
+  == Final Personas
+  == Final Sketches
+  == Final Storyboards
+  == Final Paper Prototype
+  = Usability Evaluation
+  == Individual Heuristic Evaluation Notes
+  == Individual Simplified User Study Notes
+  = User Evaluation
+  == Apparatus Screenshots
+  == Anonymized and De-identified Participants Data
+
 ]

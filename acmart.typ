@@ -69,7 +69,7 @@
 }
 
 #let appendix(content) = {
-  counter(heading).update(it => 0)
+  counter(heading).update((..it) => 0)
   set heading(numbering: "A.1   ")
   
   [
@@ -118,6 +118,7 @@
 
   show heading.where(level: 3): el => {
     let heading_number = heading_numbering(..counter(heading).get())
+    set par(first-line-indent: 0pt)
     v(8pt)
     text(style: "italic", weight: "regular", heading_number + el.body + ": ")
   }
