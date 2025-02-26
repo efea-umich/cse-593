@@ -163,14 +163,24 @@ Like the pilot survey, participants were told the purpose of the study and that 
 == Participants
 // Please provide demographic information of participants: number of participants, by age, by gender, by disability if relevant for the study, by experience with task, location, any other criteria for recruitment, how they were recruited, were they given any incentives, mode of study conducted (virtual or in-person). How did you decide on the number of participants for your study?
 // format: gender, age-range, virtual/in-person, experience using smartwatch, how recruited
-Six one-on-one in-person contextual interviews took place. One interview per researcher allowed us to get a wide range of perspectives without spending too much time on interviews. Each participant was a direct connection (friend) of the interviewer. Most participants were between the ages of 18-26, with two being between 27 and 35. The majority of our participants were female - 4 female and 2 male, unlike our survey results. Everyone had at least one year of experience using their smartwatch.
+Six one-on-one in-person contextual interviews took place. One interview per researcher allowed us to get a wide range of perspectives without spending too much time on interviews. Each participant was a direct connection (friend) of the interviewer. Most participants were between the ages of 18-26, with two being between 27 and 35. The majority of our participants were female - 4 female and 2 male, unlike our survey results. Everyone had at least one year of experience using their smartwatch. The full characteristics of each participant is shown in @tab:participant-characteristics.
 
-- Male, 18-26, in-person, 2 years, friend (U01)
-- Female, 18-26 (U02)
-- Female, 18-26, in-person, 1 year, friend (U03)
-- Female, 18-26, in-person, 1 year, friend (U04)
-- Male, 27-35, in-person, 1 year, friend (U05)
-- Female, 27-35, in-person, 4 years, friend (U06)
+#figure(
+ table(
+    columns: 6,
+    align: center + horizon,
+    table.header([Gender], [Age], [Interview Format], [Years of Experience\ Using Smartwatch], [Relationship\ to Interviewer], [User Code]),
+    [Male], [18-26], [In-person], [2 years], [Friend], [U01],
+    [Female], [18-26], [In-person], [4 years], [Friend], [U02],
+    [Female], [18-26], [In-person], [1 year], [Friend], [U03],
+    [Female], [18-26], [In-person], [1 year], [Friend], [U04],
+    [Male], [27-35], [In-person], [1 year], [Friend], [U05],
+    [Female], [27-35], [In-person], [4 years], [Friend], [U06],
+    table.hline()
+  ),
+  placement: none,
+  caption: "Characteristics of Survey Participants"
+) <tab:participant-characteristics>
 
 == Results
 // Please provide detailed summary of findings. Consult your consolidated affinity diagram to help craft the story.
