@@ -201,6 +201,7 @@ In conclusion, while users appreciate the convenience of viewing messages on a s
 
 
 #appendix[
+  #show grid: set block(below: 0.25in)
   = Responsible Research: Human Subjects Research Protections
   To ensure our study conforms with safe human subjects research, all researchers earned the PEERRS Human Subjects Research Protections certificate.
 
@@ -213,9 +214,10 @@ In conclusion, while users appreciate the convenience of viewing messages on a s
       "ni": "Nivedhitha Purushotham"
     )
 
-    grid(
+    set figure(placement: none)
+    subpar.grid(
       columns: (1fr, 1fr),
-      column-gutter: 4em,
+      column-gutter: 0.25in,
       ..certs.pairs().map((p) => {
         let id = p.at(0)
         let name = p.at(1)
@@ -224,7 +226,40 @@ In conclusion, while users appreciate the convenience of viewing messages on a s
           image("assets/peers/PEERRS_" + id + ".png", width: 100%),
           caption: [PEERRS Certificate of #name]
         )
-      })
+      }),
+      caption: "PEERRS Certifications of All Team Members"
     )
+  }
+
+  = Survey and Questionnaire Instruments
+  == Initial Survey Design
+  #include "assets/survey/survey.typ"
+
+  == Final Survey Design
+
+  #include "assets/survey/survey-revised.typ"
+
+  == Anonymized and De-identified Questionnaire Data
+    
+  #grid(
+      columns: (1fr, 1fr),
+      column-gutter: 0.25in,
+      row-gutter: 0.25in,
+      ..range(0, 16).map(i => image("assets/charts/fig_" + str(i) + ".png"))
+  )
+
+  Additionally, anonymized individual responses are provided below.
+
+  #let output = csv("assets/survey/survey_responses.csv")
+  #for (i, row) in output.enumerate() {
+    set par(first-line-indent: 0pt)
+    block(above: 1em, breakable: false)[
+      *User #(i+1)*
+      
+      #for (ii, answer) in row.enumerate() [
+        (#(ii+1)) #answer
+        
+      ]
+    ]
   }
 ]

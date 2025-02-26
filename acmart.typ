@@ -1,3 +1,5 @@
+#import "@preview/subpar:0.2.1"
+
 #let authors_header(authors) = {
     set text(size: 8pt)
     align(right)[
