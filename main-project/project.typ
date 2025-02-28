@@ -136,8 +136,9 @@ We carefully structured Likert scales to capture various levels of user comfort,
 The finalized survey was distributed via Google Forms, with a consent clause at the start stating that participation was voluntary and that no compensation would be provided. The survey starts with demographic information, and then asks the respondent about how they typically use their smartphone and smartwatch. Respondents also compared how comfortable they felt with using their smartwatch and their smartphone for performing typical tasks (e.g. responding to messages) and entering text. Finally, respondents shared issues they had with entering text on their smartwatch, along with suggestions for what they think would improve the process.
 
 == Participants
+Six participants were chosen for the pilot survey. Most were 18-26, with one being 27-35 and one being 45-53. Four of the participants were male and two were female.
 
-We gathered 30 participants for the survey, aiming for a diverse group in terms of age, gender, and smartwatch usage experience. Participants were recruited through online platforms and word-of-mouth referrals to ensure a variety of perspectives. The sample size of 30 was chosen to provide meaningful insights while keeping the survey manageable and practical for analysis. We included both frequent and occasional smartwatch users to understand different experiences with text-entry on smartwatches.
+We gathered 30 participants for the main survey, aiming for a diverse group in terms of age, gender, and smartwatch usage experience. Participants were recruited through online platforms and word-of-mouth referrals to ensure a variety of perspectives. The sample size of 30 was chosen to provide meaningful insights while keeping the survey manageable and practical for analysis. We included both frequent and occasional smartwatch users to understand different experiences with text-entry on smartwatches. The below sections focus on the finalized survey.
 
 === Targeting Different Demographics
 In order to ensure diverse representation, we aimed to gather responses from individuals across various age groups, genders, and levels of smartwatch usage. The demographic questions were structured to collect key information that could provide insights into how different groups perceive and use text-entry on smartwatches:
@@ -166,28 +167,28 @@ In addition to general distribution, we sent personalized invitations to individ
 == Results
 Most respondents were between 18 and 26 years of age, with one participant in the 27-35 range and another in the 54-62 range. Among those who actually use a smartwatch, nearly everyone reported wearing it on the left arm. Since the survey was distributed to open platforms, we couldn't guarantee that all participants used a smartwatch. We hoped that insights can be gathered from those that do not use a smartwatch, such as why they did not get one, but only a few of of those respondents provided extra information.
 
-For the rest of this discussion, we will focus on participants that did not select "I don't use a smartwatch" throughout the survey. Figure @fig:watch_usage shows that almost all participants were ``passive'' users of their smartwatch, with the most popular features used being the clock, fitness tracking (sleep, heart rate, etc.), and the hands-free notification viewing.
+For the rest of this discussion, we will focus on participants that did not select "I don't use a smartwatch" throughout the survey. @fig:watch_usage shows that almost all participants were ``passive'' users of their smartwatch, with the most popular features used being the clock, fitness tracking (sleep, heart rate, etc.), and the hands-free notification viewing.
 
 #figure(
   image("assets/charts/fig_4.png"),
   caption: "Main Smartwatch Features Used by Participants"
 ) <fig:watch_usage>
 
-The dominant text entry method with smartphones was tapping the on-screen keyboard, with a few using primarily swipe typing, as seen in Figure @fig:SP_text_entry. 
+The dominant text entry method with smartphones was tapping the on-screen keyboard, with a few using primarily swipe typing, as seen in @fig:SP_text_entry. 
 
 #figure(
   image("assets/charts/fig_5.png"),
   caption: "Preferred Modes of Smartphone Text-Entry"
 ) <fig:SP_text_entry>
 
-On smartwatches, the most prevalent method was also tapping each key, although by a small margin, as seen in Figure @fig:SW_text_entry. No typing method dominated on the smartwatch, but in almost all cases, respondents were uncomfortable with typing on it. This is reflected in the relative speed of text-entry question, where no participant said they could type faster on a smartwatch than a smartphone.
+On smartwatches, the most prevalent method was also tapping each key, although by a small margin, as seen in @fig:SW_text_entry. No typing method dominated on the smartwatch, but in almost all cases, respondents were uncomfortable with typing on it. This is reflected in the relative speed of text-entry question, where no participant said they could type faster on a smartwatch than a smartphone.
 
 #figure(
   image("assets/charts/fig_6.png"),
   caption: "Preferred Modes of Smartwatch Text-Entry"
 ) <fig:SW_text_entry>
 
-When asked about what issues arise with typing on a smartwatch, nearly 75% of respondents said that the small screen made it hard to type accurately. Notably, even respondents that don't typically use a smartwatch said this, suggesting that this factor dissuaded respondents from getting a smartwatch. The rest of the issues we listed had an even spread of responses, showing us that these problems are still relevant with today's smartwatches. These characteristics are shown in Figure @fig:issues.
+When asked about what issues arise with typing on a smartwatch, nearly 75% of respondents said that the small screen made it hard to type accurately. Notably, even respondents that don't typically use a smartwatch said this, suggesting that this factor dissuaded respondents from getting a smartwatch. The rest of the issues we listed had an even spread of responses, showing us that these problems are still relevant with today's smartwatches. These characteristics are shown in @fig:issues.
 
 #figure(
   image("assets/charts/fig_4.png"),
@@ -238,9 +239,13 @@ Six one-on-one in-person contextual interviews took place. One interview per res
 
 == Results
 // Please provide detailed summary of findings. Consult your consolidated affinity diagram to help craft the story.
-As a result of our interviews, we learned
+As a result of our interviews, we gained further insight into participants' context of use. The most important insight we gained was that participants talked almost exclusively about messaging tasks when discussing text-entry tasks on their smartwatch. This is consistent with findings by others, where checking texts was the second most common use of smartwatches (following checking the time) @chun_dey_lee_kim_2018. This led us to focus most of our efforts on text-messaging tasks for smartwatches. 
 
-We consolidated data by constructing sequence and flow diagrams that highlight each participant's interactions with text-entry. We also built an affinity diagram that revealed recurring themes across interviews, such as initial curiosity in typing features followed by a steep drop-off in daily use. Many participants felt uneasy speaking into their watch in public, especially if they perceived voice commands to be slow or inaccurate. Those who tried manual entry often gave up due to cramped keyboards, repeated mistakes, or the watch's awkward layout. Most participants ended up sending only short messages—like "OK," "Yes," or a numeric code—through their watch and reserved longer replies for their phone. Some participants expressed that they viewed their smartwatch as unsuitable for "serious" text-entry tasks independently from its text-entry capabilities. Multiple participants saw the watch more as a passive display, suitable for reading but not writing.
+Additionally, many participants expressed frustration with the speed of text-entry tasks. There were two main subcategories of such frustrations. First, users were unhappy with the speed at which it was possible to enter text on a smartwatch, feeling that they were often limited by the size of the screen when inputting text using touch. They also expressed frustration at the costliness of fixing text-entry mistakes on a smartwatch.
+
+Although we found that touch-based text-input was the most common method, many participants had tried using other methods such as voice-based text entry. Specifically for voice-based text entry, two participants said that they felt uncomfortable with such methods in public. This supported other interpretations we collected, where many participants expressed that they liked the discrete nature of smartwatches.
+
+We consolidated data by constructing sequence and flow diagrams that highlight each participant's interactions with text-entry. We also built an affinity diagram that revealed recurring themes across interviews, such as initial curiosity in typing features followed by a steep drop-off in daily use. Many participants felt uneasy speaking into their watch in public, especially if they perceived voice commands to be slow or inaccurate. Those who tried manual entry often gave up due to cramped keyboards, repeated mistakes, or the watch's awkward layout. Most participants ended up sending only short messages — like "OK," "Yes," or a numeric code — through their watch and reserved longer replies for their phone. Some participants expressed that they viewed their smartwatch as unsuitable for "serious" text-entry tasks independently from its text-entry capabilities. Multiple participants saw the watch more as a passive display, suitable for reading but not writing.
 
 The affinity diagram categorized comments into several groups. One group reflected that participants had explored text-entry at first but soon found it unhelpful, especially for multi-sentence conversations. Another group underscored the discomfort of using voice input in public or around coworkers, which stifled spontaneous verbal replies. A third cluster documented complaints about the watch interface feeling unnatural or too small for meaningful text composition. Users typically typed short or quick messages to avoid errors, then switched to their phone for anything substantial. Overall, mistakes were frequent, and participants considered text-entry on the watch to be unreliable. Nonetheless, these same users found the watch useful for passive tasks like dismissing notifications or glancing at messages.
 
@@ -258,6 +263,8 @@ _Requirement 2:_ Users must be able to fix text-entry mistakes faster than it wo
 _Requirement 3:_ Users should be able to complete short text-entry tasks on the smartwatch faster and more reliably than on external devices, including any overhead to setting up the external device (_e.g._ taking a phone out of a pocket). Participants reported that they prefer to use their smartwatches for short text-entry tasks (_e.g._ replying to casual messages) because they would like to avoid the overhead of setting up some other external device for these tasks. As such, a design should fulfil users' desire for speed and convenience when considering short tasks. With a varied list of short text-entry tasks, we can directly time and compare the durations of completing tasks on the smartwatch versus an external device.
 
 _Requirement 4:_ Users should be able to complete text-entry tasks without direct hand contact with the smartwatch. Many users expressed frustration with their smartwatch's text-entry capabilities in situations when they were not able to touch the watch with their hands (_e.g._ the user is cooking; the user has long nails). As such, participants have expressed a desire to perform these tasks without directly touching the smartwatch. This is testable by observing whether users are able to complete text-entry tasks when they are not allowed to use their hands to interact with the watch.
+
+_Requirement 5:_ Users should feel comfortable using the text-entry method in public. Multiple users expressed that they were unhappy with voice input for text-entry as it made them feel uncomfortable to use in public. Additionally, many other participants expressed that they enjoyed that their smartwatch allowed them to do tasks discretely in public without feeling uncomfortable. As such, we want to fulfill users' desires to have a text-entry method they can comfortably use in public. This is testable by asking users to use the text-entry method in public and conducting a survey to measure how comfortable they felt.
 
 
 = Initial Design and Low Fidelity Prototypes
