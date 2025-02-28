@@ -128,9 +128,8 @@
   )
   show bibliography: set text(size: 9pt)
 
-  set figure(placement: auto)
   show figure: f => {
-    set image(width: 80%)
+    set image(width: 75%)
     set align(center)
     set block(above: 24pt, below: 24pt)
     f
