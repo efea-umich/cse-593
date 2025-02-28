@@ -238,7 +238,7 @@ Six one-on-one in-person contextual interviews took place. One interview per res
 
 == Results
 // Please provide detailed summary of findings. Consult your consolidated affinity diagram to help craft the story.
-As a result of our interviews, we learn
+As a result of our interviews, we learned
 
 We consolidated data by constructing sequence and flow diagrams that highlight each participant's interactions with text-entry. We also built an affinity diagram that revealed recurring themes across interviews, such as initial curiosity in typing features followed by a steep drop-off in daily use. Many participants felt uneasy speaking into their watch in public, especially if they perceived voice commands to be slow or inaccurate. Those who tried manual entry often gave up due to cramped keyboards, repeated mistakes, or the watch's awkward layout. Most participants ended up sending only short messages—like "OK," "Yes," or a numeric code—through their watch and reserved longer replies for their phone. Some participants expressed that they viewed their smartwatch as unsuitable for "serious" text-entry tasks independently from its text-entry capabilities. Multiple participants saw the watch more as a passive display, suitable for reading but not writing.
 
