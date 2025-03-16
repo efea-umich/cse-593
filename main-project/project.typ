@@ -50,6 +50,10 @@ Previous work has demonstrated creative solutions and exposed the many difficult
 == Evaluations of Existing Text-Input Techniques
 Many text-entry methods for smartwatches have been proposed, and researchers have conducted numerous comparative evaluations. These studies typically measure text entry speed (words per minute), accuracy (error rates), and user satisfaction or effort for different input techniques.
 
+We observe two important trends from the below works that will guide our design. First, "bulk" operations (e.g. swipe type) where one gesture or tap could convey a short message greatly improved speed. Unlike the traditional keyboard, only one or two fingers can interact with a smartwatch's keyboard at a time, greatly limiting throughput. Second, operations that utilize most, if not all, of the screen were preferred over tiny buttons. This allows for accurate typing within a certain margin of error. For instance, with swipe type, the user doesn't need to cover all the exact letters in order to get a desired word. Similarly, the DriftBoard @shibata2016driftboard, turned a majority of the smartwatch screen into an interactive trackpad.
+
+Overall, input methods that were more "forgiving" resulted in better typing performances. However, it was much harder to find research for one-tap auto-complete/suggested text features. While the systems described in Section 2.2 integrated predictive features, none have evaluated the usability of native suggested replies.
+
 === Tapping vs. Swiping vs. Handwriting @turner2021typing 
 A recent controlled experiment had users enter phrases on smartwatches with three input styles ---tapping on a tiny QWERTY keyboard, swiping (trace input) on the same keyboard, and handwriting characters--- under both standing and walking conditions. The swipe method was the fastest by a large margin: about 30 WPM (words per minute) on average, compared to 20 WPM for tapping and 18 WPM for handwriting. Swiping also led to higher text entry satisfaction and lower perceived workload, even while walking, making it the top performer overall. This suggests that allowing users to draw through letters (like shape-writing, e.g. Swype-style input) can significantly improve performance on small screens, likely because it reduces the precision required for each letter tap. The handwriting method was slowest and least liked in that study, indicating that drawing each letter one by one on a watch (with current recognition technology) may not be efficient.
 
@@ -62,14 +66,10 @@ A study examined text input performance on smartwatches using tap and trace (swi
 === User Feedback in Evaluations @turner2021typing
 Comparative studies provide insight into which method felt easier or more burdensome to participants by collecting subjective questionnaire feedback. Commonly, a method with the fastest speed isn’t always the most preferred if it is stressful to use. In this study, methods that align with familiar typing experiences (QWERTY layouts or using intuitive gestures) score better on user preference. For example, participants in one study strongly favored whichever method allowed larger "target" areas – swiping through large keys or using a larger touch surface – because it felt less frustrating than pecking tiny keys. Overall, this kind of evaluation shows that while numerous input techniques can work, their performance varies widely.
 
-We observe two important trends that will guide our design. First, "bulk" operations (e.g. swipe type) where one gesture or tap could convey a short message greatly improved speed. Unlike the traditional keyboard, only one or two fingers can interact with a smartwatch's keyboard at a time, greatly limiting throughput. Second, operations that utilize most, if not all, of the screen were preferred over tiny buttons. This allows for accurate typing within a certain margin of error. For instance, with swipe type, the user doesn't need to cover all the exact letters in order to get a desired word. Similarly, the DriftBoard @shibata2016driftboard, turned a majority of the smartwatch screen into an interactive trackpad.
-
-Overall, input methods that were more "forgiving" resulted in better typing performances. However, it was much harder to find research for one-tap auto-complete/suggested text features. While the systems described in Section 2.2 integrated predictive features, none have evaluated the usability of native suggested replies.
-
 == Alternative Input Methods for Text Entry
 Researchers have explored many non-traditional input techniques to overcome the limitations of tiny smartwatch screens. These include motion-based methods, sensor-based methods, and voice input. These systems prove that new methods for smartwatch text entry can be learned and mastered, but they have dependencies (e.g. quiet environment, high arm dexterity) that prevent them from being universally viable.
 
-These findings help us understand how alternative input methods used and the shortcomings of each with respect to usability. This helps us better understand the context of use for text entry methods when designing different artifacts for the problem at hand.
+These findings help us understand how alternative input methods are used and the shortcomings of each with respect to usability. This helps us better understand the context of use for text entry methods when designing different artifacts for the problem at hand.
 
 === Motion-Based Text Recognition @whiteboard
 Researchers at ETH Zurich investigated a method where motion data was used to infer letters written on a whiteboard. Their algorithm achieved 99 percent accuracy within three guesses, with the first guess being correct more than 90 percent of the time. Additional disambiguation could be achieved through an audio recording, though this method is performed optimally only in silent environments. The study also suggested that predictive modeling for the next letter could further improve accuracy by reducing false positives.
@@ -86,7 +86,7 @@ AirDraw utilizes smartwatch motion sensors to detect letters drawn in the air by
 == Usability Challenges on Small Screens
 Even though alternative input methods exist, text entry on a smartwatch is inherently difficult due to hardware constraints and human factors. 
 
-Studying related works on hardware constraints helps us understand the fundamental constraints of smartwatch interfaces and why traditional input methods struggle in this context. By identifying key pain points—such as the fat-finger problem and accuracy trade-offs—we can better evaluate existing solutions and their limitations. This awareness allows us to design an interface that mitigates known challenges rather than repeating past mistakes. The key usability challenges on small screens are identified in the prior work below.
+Studying related works on hardware constraints helps us understand the fundamental constraints of smartwatch interfaces and why traditional input methods struggle in this context. By identifying key pain points—such as the fat-finger problem and accuracy trade-offs—we can better evaluate existing solutions and their limitations. The key usability challenges on small screens are identified in the prior work below.
 
 === Fat-Finger Problem @siek2005fat
 The most cited issue is the "fat finger" problem – the watch's touchscreen is so small that finger touch points cover multiple UI targets, making precise selection of tiny keys very hard. Hitting the intended letter on a QWERTY layout becomes error-prone when buttons are only a few millimeters wide. The authors noted that this often forces designs to use multiple steps (zooming in, mode switches, etc.) to accommodate finger size, at the cost of speed.
@@ -202,7 +202,7 @@ When asked about what issues arise with typing on a smartwatch, nearly 75% of re
   caption: "Main Smartwatch Features Used by Participants"
 ) <fig:issues>
 
-Overall, respondents wanted a better swipe or gesture based method of typing on a smartwatch and faster predictive features. The less taps required to convey a message, the better.
+Overall, respondents wanted a better swipe or gesture based method of typing on a smartwatch and faster predictive features. The fewer taps required to convey a message, the better.
 
 = Understanding Context of Use: Contextual Inquiry
 
@@ -210,7 +210,7 @@ Our main objective was to understand the wide range of real-world scenarios in w
 
 == Method
 // What did the method entail?
-We employed Contextual Inquiry interviews to observe participants' natural behaviors around smartwatch text-entry. Our purpose was to obtain a specific information about each participant's smartwatch usage. 
+We employed Contextual Inquiry interviews to observe participants' natural behaviors around smartwatch text-entry. Our purpose was to obtain specific information about each participant's smartwatch usage. 
 
 Specifically, we aimed to understand how each participant uses their smartwatch in the main context they typically interact with it. In such contexts, we attempted to obtain information about what obstacles they face while interacting with their smartwatch when performing different tasks and which properties of the smartwatch make their interactions easier. Finally, to contextualize the data that we acquired, we sought out how these factors differ from other contexts in which they might interact with their smartwatch.
 
@@ -568,10 +568,43 @@ Additionally, our Contextual Inquiry data provided us specific frustrations user
   = Low Fidelity Prototypes
   
   == Individual Personas
+
+  - Mitchell Hoffman
+    - Male
+    - 20 years old
+    - Comfortable with technology
+
+  Mitchell Hoffman is a student attending the University of Arkansas and works in a materials lab. In his spare time, he goes out for runs across campus. He uses his smartwatch to automatically keep track of his runs and skip through music while he's running. The runs serve as a way to temporarily disconnect from the world, but sometimes the lab needs him for more urgent matters. At the end of the day, he'll put work first most of the time.
   
   == Individual Sketches
+
+  *Ryan's Sketch*
+  #image("assets/sketches/ryan_sketch.JPEG")
+
+  *Hyungchan's Sketch*
+  #image("assets/sketches/hc_sketch.jpg")
+
+  *Kevin's Sketch*
+  #image("assets/sketches/kevin_hover.jpeg")
+  #image("assets/sketches/kevin_pinch.jpeg")
+
+  *Oskar's Sketch*
+  #image("assets/sketches/Oskar_Sketch.png")
   
   == Individual Storyboards
+
+  *Ryan's Storyboard*
+  #image("assets/storyboards/ryan_storyboard1.jpg")
+  #image("assets/storyboards/ryan_storyboard2.jpg")
+
+  *Hyungchan's Storyboard*
+  #image("assets/storyboards/hc_storyboard.jpg")
+
+  *Kevin's Storyboard*
+  #image("assets/storyboards/kevin_storyboard.jpeg")
+
+  *Oskar's Storyboard*
+  #image("assets/storyboards/Oskar_Storyboard.png")
   
   == Final Personas
   
