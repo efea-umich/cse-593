@@ -1,4 +1,4 @@
-#import "@preview/fletcher:0.5.4" as fletcher: diagram, node, edge
+#import "@preview/fletcher:0.5.6" as fletcher: diagram, node, edge
 #import "../acmart.typ": *
 
 #let authors = (
@@ -41,7 +41,11 @@ Our promise is to identify practical ways of enabling quick, less error-prone te
 
 We refined our approach by combining a revised survey with real-time interviews. Our survey focused on gathering smartwatch usage data to understand in which contexts users prefer to use their smartwatches in different ways. We explored how participants managed or avoided the constraints mentioned above, observing the decisions they made about when to use the smartwatch's keyboard or voice input, as well as their reasons for switching to a phone. The interviews revealed that participants treat their smartwatches as passive devices for viewing notifications, occasionally dabbling in short replies or predictive suggestions. Their frequent mistakes and discomfort, however, illustrate why text-entry features often go unused. Our findings converge on several themes, captured in an affinity diagram that highlights awkwardness with voice commands, the unnatural feel of small keyboards, and the participants' preference for brevity when typing on a watch. 
 
-By consolidating these data, we uncovered opportunities to create straightforward, testable requirements for future smartwatch text-entry improvements. We identified key themes of awkwardness in text entry, users' reluctance to experiment with new input modes, and an urgent need for simpler designs that better match their on-the-go contexts. In synthesizing results from our thirty-person survey, six contextual inquiries, consolidated diagrams, and the affinity diagram, we reveal how smartwatch text entry can be reimagined around users' desire for quick, low-effort actions. Our next step is to build and test prototype interfaces aligned with these requirements. By bridging these insights with the growing body of smartwatch text-entry research, we aim to inform design directions that reduce friction and help users feel confident composing messages--even on the smallest of screens.
+By consolidating these data, we uncovered opportunities to create straightforward, testable requirements for future smartwatch text-entry improvements. We identified key themes of awkwardness in text entry, users' reluctance to experiment with new input modes, and an urgent need for simpler designs that better match their on-the-go contexts. In synthesizing results from our thirty-person survey, six contextual inquiries, consolidated diagrams, and the affinity diagram, we reveal how smartwatch text entry can be reimagined around users' desire for quick, low-effort actions.
+
+We have designed several low-fidelity prototypes to find the best way to satisfy our user requirements. #text(fill: red)[TODO: Summarize the designs, critiques, and ultimately what the final design is] 
+
+Our next step is evaluate our final prototype and provide a rough implementation in a high-fidelity prototype...
 
 = Related Work
 
@@ -284,12 +288,32 @@ _*Requirement 6:* Users should feel comfortable using the text-entry method in p
 = Initial Design and Low Fidelity Prototypes
 
 == Personas
+// Does the Initial Design and Low Fidelity Prototypes section contain a quality description of a final primary persona? Note that having secondary and anti-personas will aid you in the design, but we will not grade them.
 
 == Sketches
+// Does the Initial Design and Low Fidelity Prototypes section contain brief description of the results from a design critique for each individual design?
+We initially created six separate designs to address our user requirements. The full sketches for each design are shown in Appendix D.2. Below we address each design's strengths and weaknesses in appendix order.
+
+=== Context-Dependent Tap Map
+
+=== Compose-Edit Dual Mode
+
+=== Quick Correct Swipe Type
+
+=== AR Cursor Type
+
+=== LLM-Assist
+
+=== All Encompassing Text App
+
+// Does the Initial Design and Low Fidelity Prototypes section contain a description of the "final" group design? Does the description contain justification for changes based on the design critiques? Does the section contain quality sketches and storyboards for the final design? Do the sketches and storyboards depict the personas?
+
+Several prototypes were designed at a high level. Our designs focused on ease of input and mistake prevention.
 
 == Storyboards
 
 == Paper Prototype
+// Does the Initial Design and Low Fidelity Prototypes section contain a description and figures depicting the the "final" group design paper prototype? Does the description contain justification for changes based on the design critiques? Does the section contain a brief description of how an investigator could Wizard of Oz the prototype?
 
 = Usability Evaluation
 
@@ -568,44 +592,158 @@ Additionally, our Contextual Inquiry data provided us specific frustrations user
   = Low Fidelity Prototypes
   
   == Individual Personas
-
-  - Mitchell Hoffman
+  #[
+    #let new_persona(content) = {
+      set text(weight: "bold")
+      
+      block()
+      block(sticky: true, content)
+    }
+    
+    #new_persona[Ryan's Persona]
+    _Mitchell Hoffman_
     - Male
     - 20 years old
     - Comfortable with technology
-
-  Mitchell Hoffman is a student attending the University of Arkansas and works in a materials lab. In his spare time, he goes out for runs across campus. He uses his smartwatch to automatically keep track of his runs and skip through music while he's running. The runs serve as a way to temporarily disconnect from the world, but sometimes the lab needs him for more urgent matters. At the end of the day, he'll put work first most of the time.
+      
+    Mitchell Hoffman is a student attending the University of Arkansas and works in a materials lab. In his spare time, he goes out for runs across campus. He uses his smartwatch to automatically keep track of his runs and skip through music while he's running. The runs serve as a way to temporarily disconnect from the world, but sometimes the lab needs him for more urgent matters. At the end of the day, he'll put work first most of the time.
+    
+    #new_persona[Kevin's Persona]
+    _Benjamin Andrews_
+    - Age: 24
+    - Occupation: Software Engineer at a Tech Startup
+    - Technology Proficiency: High 
+    - Years Owning Smartwatch: 3
+    - Devices Used: Apple Watch 7, iPhone 15, Macbook Pro 2022
   
+    Benjamin is a software engineer at Shade Inc., a tech startup based in New York City. Benjamin is doesn't have many meetings throughout the day but always has to keep up to date with Slack messages and texts between his team, product designers, and product managers. 
+    
+    Benjamin does not always keep his phone on him since he feels that notifications from his other apps, such as Instagram and LinkedIn are a distraction. Therefore, he uses his smartwatch a lot to catch up on his work messages when not at his desk. Most of the times, he does not need to respond instantly and can wait until he gets to his laptop. Sometimes, there is an urgent message that requires an immediate response. 
+    
+    Benjamin struggles to respond to messages on his smartwatch due to its small keyboard and inaccurate touch-based typing input. He likes to use the voice-to-text feature since that has been sufficiently accurate for him. However sometimes, he cannot use this feature because he is in a situation where he would prefer not to speak aloud. For example, in the crowded subway on the way to work or when he is in a quiet area at work where people are focused. 
+  
+    #new_persona[Oskar's Persona]
+    
+    _Emily Carter_
+    - Gender: Female
+    - Age: 22
+    - Occupation: Registered Nurse
+    - Tech Proficiency: Intermediate
+    - Device: Apple Watch Gen 7
+    - Years with smartwatch: 4
+    Emily is a nurse at a prominent hospital in New York City. She works 12-13 hour shifts during the day and typically has 4 to 6 patients under at all times. The hospital is a fast paced environment where she does not know when her next break is. She often has to run around the hospital to manage multiple patients and support doctors. 
+    
+    She primarily uses her smartwatch for viewing patient alerts, shift schedules, and responding to quick messages. In noisy hospital settings, voice input is not ideal, so she prefers tapping pre-set responses or using swipe gestures for efficiency. The smartwatch's ability to provide discreet, instant access to information helps her stay focused while minimizing distractions.
+    
+    Emily typically carries her phone with her at all times since the hospital needs constant communication with her. However, due to her demanding schedule, she finds it more convenient to look at notifications through her smartwatch, especially when she is running between destinations or in the middle of patient care.
+  
+    #new_persona[Nivedhitha's Persona]
+    #image("assets/diagrams/nividp_persona.png")
+  
+    #new_persona[Hyungchan's Persona]
+    _Kyle Thompson_
+    1. Gender: male
+    2. Occupation: College student (liberal arts)
+    3. Context (with lifestyle)
+      - Years Owning Smartwatch: 2
+      - Devices Used: Apple Watch Ultra, iPhone 16, iPad Pro, Macbook Pro 2022
+      - Frequently on the go (commutes by public transportation and walks between classrooms and school buildings in an urban environment)
+      - Often receives time-sensitive notifications (slack, email, text) and needs to respond quickly but discretely
+      - Values efficiency and hates interrupting his focus during the class by fishing his phone out of his bag
+      - Enjoys wearing a smartwatch for health tracking and quick glances, but finds text entry frustrating due to small screens and error-prone typing
+    4. Goal
+      - Respond promptly to short messages without having to switch to his phone
+      - Correct mistakes easily (he thinks typos undermine his cool image)
+      - Rely on a consistent, predictable text-entry interface that provides confidence in short, on-the-go interactions
+  
+    #block()
+    #new_persona[Efe's Personas]
+    _Henry Baker_
+    
+    Henry Baker is a 28 year-old neighborhood bakery owner in Ann Arbor, Michigan. He uses his smartwatch in both professional and personal contexts, since, similarly to many of our participants, he finds it convenient to be able to immediately read and respond to messages, especially when he is working.
+    
+    He sometimes uses suggested replies to answer questions that can be answered with using common phrases, but also likes being able to type out short but more open-ended messages. However, because of his work, he often has gloves on, which makes it difficult to accurately tap the screen. Additionally, the texts he sends often contain abbreviations as a result of him using business and bakery-related jargon.
+  
+    He values being able to quickly reply to messages without errors so that he can focus on his work.
+    
+    - *Demographics*
+      - 28 years old
+      - Male
+      - Neighborhood bakery owner
+      - Lives in Ann Arbor, Michigan
+  
+    _Jessica Smart_
+    
+    Jessica Smart is a 19 year-old college student at New York University. She uses her smartwatch to stay connected with her friends, and to coordinate group activities. She lives with a roommate Kate, who is also a college student. They like keeping each other updated on their day to learn new places to go and things to do.
+    
+    City life is hectic, and she often has to send messages on the go (as do many of our participants). She often uses her smartwatch on the bus during the day. The rough suspension of the bus makes typing difficult, and she often makes typos. Further exacerbating this issue is the fact that she has long nails, making it even more difficult to accurately tap the screen.
+    
+    She's young and savvy with technology. She likes using abbreviations and unconventional shortenings of words when texting her friends.
+    
+    - *Demographics*
+      - 19 years old
+      - Female
+      - College student
+      - Lives in New York City, New York
+
+  ]    
   == Individual Sketches
 
-  *Ryan's Sketch*
+  #block(sticky: true)[*Efe's Sketches*]
+  #grid(
+    columns: (1fr, 1fr, 1fr),
+    column-gutter: 0.25in,
+    image("assets/sketches/ea_sketch1.png"),
+    image("assets/sketches/ea_sketch2.png"),
+    image("assets/sketches/ea_sketch3.png"),
+  )
+
+
+  #block(sticky: true)[*Ryan's Sketch*]
   #image("assets/sketches/ryan_sketch.JPEG")
 
-  *Hyungchan's Sketch*
+  #block(sticky: true)[*Hyungchan's Sketch*]
   #image("assets/sketches/hc_sketch.jpg")
 
-  *Kevin's Sketch*
+  #block(sticky: true)[*Kevin's Sketch*]
   #image("assets/sketches/kevin_hover.jpeg")
   #image("assets/sketches/kevin_pinch.jpeg")
 
-  *Oskar's Sketch*
+  #block(sticky: true)[*Oskar's Sketch*]
   #image("assets/sketches/Oskar_Sketch.png")
-  
+
+  #block(sticky: true)[*Nivedhitha's Sketch*]
+  #image("assets/sketches/nividp_sketch1.png")
+  #image("assets/sketches/nividp_Sketch0.png")
+  #image("assets/sketches/nividp_sketch2.png")
+  #image("assets/sketches/nividp_sketch3.png")
+
   == Individual Storyboards
 
-  *Ryan's Storyboard*
+  #block(sticky: true)[*Efe's Storyboards*]
+  #image("assets/storyboards/ea_storyboard1.png")
+  #image("assets/storyboards/ea_storyboard2.png")
+  #image("assets/storyboards/ea_storyboard3.png")
+  
+
+  #block(sticky: true)[*Ryan's Storyboard*]
   #image("assets/storyboards/ryan_storyboard1.jpg")
   #image("assets/storyboards/ryan_storyboard2.jpg")
 
-  *Hyungchan's Storyboard*
+  #block(sticky: true)[*Hyungchan's Storyboard*]
   #image("assets/storyboards/hc_storyboard.jpg")
 
-  *Kevin's Storyboard*
+  #block(sticky: true)[*Kevin's Storyboard*]
   #image("assets/storyboards/kevin_storyboard.jpeg")
 
-  *Oskar's Storyboard*
+  #block(sticky: true)[*Oskar's Storyboard*]
   #image("assets/storyboards/Oskar_Storyboard.png")
-  
+
+  #block(sticky: true)[*Nivedhitha's Storyboard*]
+  #image("assets/storyboards/nividp_story1.png")
+  #image("assets/storyboards/nividp_story2.png")
+  #image("assets/storyboards/nividp_story3.png")
+
   == Final Personas
   
   == Final Sketches
