@@ -1,5 +1,7 @@
 #import "@preview/subpar:0.2.1"
 
+#let draft_state = state("draft", false)
+
 #let authors_header(authors) = {
     set text(size: 8pt)
     align(right)[
@@ -77,11 +79,28 @@
   ]
 }
 
+#let hide_if_draft(content) = context {
+  let is_draft = draft_state.get()
+  if not is_draft {
+    content
+  }
+}
+
 #let acmart(
   authors: (),
   title: "Title",
+  draft: false,
   body
 ) = {
+  draft_state.update(_ => draft)
+  let page_header = {
+      set text(font: "Linux Biolinum", size: 10pt)
+      context if calc.rem(here().page(), 2) == 0 {
+        authors_header(authors)
+      } else if here().page() > 1 {
+        title
+      }
+  }
   set page(
     paper: "us-letter",
     margin: (top: 84pt, bottom: 114pt, inside: 81pt, outside: 81pt),
@@ -90,11 +109,10 @@
       text(size: 9pt, [#args.pos().at(0)])
     },
     header: {
-      set text(font: "Linux Biolinum", size: 10pt)
-      context if calc.rem(here().page(), 2) == 0 {
-        authors_header(authors)
-      } else if here().page() > 1 {
-        title
+      if not draft {
+        page_header
+      } else {
+        text(size: 24pt, fill: red, "DRAFT")
       }
     }
   )

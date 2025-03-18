@@ -22,7 +22,8 @@
 
 #show: acmart.with(
   title: "Clockworks",
-  authors: authors
+  authors: authors,
+  draft: true // hides "unnecessary" content during editing
 )
 
 #make_title("Clockworks", authors, "University of Michigan, USA", concepts, keywords)[
@@ -289,26 +290,87 @@ _*Requirement 6:* Users should feel comfortable using the text-entry method in p
 
 == Personas
 // Does the Initial Design and Low Fidelity Prototypes section contain a quality description of a final primary persona? Note that having secondary and anti-personas will aid you in the design, but we will not grade them.
+The personas each of us designed ended up being fairly similar. Personas overall were young, proficient with technology,
+
+    _Emily Carter_
+    - Gender: Female
+    - Age: 22
+    - Occupation: Registered Nurse
+    - Tech Proficiency: Intermediate
+    - Device: Apple Watch Gen 7
+    - Years with smartwatch: 4
+    Emily is a nurse at a prominent hospital in New York City. She works 12-13 hour shifts during the day and typically has 4 to 6 patients under at all times. The hospital is a fast paced environment where she does not know when her next break is. She often has to run around the hospital to manage multiple patients and support doctors. 
+    
+    She primarily uses her smartwatch for viewing patient alerts, shift schedules, and responding to quick messages. In noisy hospital settings, voice input is not ideal, so she prefers typing, tapping pre-set responses or using swipe gestures for efficiency. The smartwatch's ability to provide discreet, instant access to information helps her stay focused while minimizing distractions.
+    
+    Emily typically carries her phone with her at all times since the hospital needs constant communication with her. However, due to her demanding schedule, she finds it more convenient to look at notifications through her smartwatch, especially when she is running between destinations or in the middle of patient care.
 
 == Sketches
 // Does the Initial Design and Low Fidelity Prototypes section contain brief description of the results from a design critique for each individual design?
-We initially created six separate designs to address our user requirements. The full sketches for each design are shown in Appendix D.2. Below we address each design's strengths and weaknesses in appendix order.
+We initially created six separate designs to address our user requirements. Each researcher then gave feedback on each design. The full sketches for each design are shown in Appendix D.2. Below we summarize, then address each design's strengths and weaknesses in appendix order.
 
-=== Context-Dependent Tap Map
+=== Dynamic Key Hitboxes
+The design tackles issues mentioned by users from contextual interviews by dynamically adjusting the "hitbox" of each key based on predictive likelihood. When typing, the hitbox of the more likely next letter expands into the space of less likely letters, allowing users to make successful selections even with imprecise touches. The design maintains the familiar QWERTY layout while adapting behind the scenes to reduce errors. It incorporates features like automatically disabling the expansion system when using caps lock (for acronyms or technical jargon) and reverting to equal-sized hitboxes after deletion to make error correction straightforward.
 
-=== Compose-Edit Dual Mode
+Feedback on the Dynamic Hitbox QWERTY design was generally positive, with reviewers appreciating the maintenance of the familiar QWERTY layout while providing typing assistance without requiring interaction from the user. Users can continue using their smartwatches without learning a new system, as the expanded hitbox feature works invisibly in the background.
 
-=== Quick Correct Swipe Type
+Reviewers questioned how the system handles competing expanded hitboxes when a user intends to select a key surrounded by expansions from neighboring keys, potentially making the intended key impossible to hit. Some reviewers expressed concerns about users who might want to frequently avoid using expanded hitboxes (e.g. those with unconventional typing styles). The current design would require these users to make a mistake for each such word, which should be improved upon.
 
-=== AR Cursor Type
+The placement of the `delete` and `enter`/`send` buttons was noted as problematic as they were positioned too close together despite their importance. One reviewer questioned how the design would be adapted to different watch shapes (particularly circular ones) and how users would access to special characters/emojis. Some reviewers questioned whether users should be able to visualize the expanded hitboxes and how the algorithm resolves overlapping hitboxes when multiple predictions are equally probable.
 
-=== LLM-Assist
+=== Compose-Edit Dual Modes // Ryan
+This design addresses efficient input and error correction with a dual-mode design. Compose mode features a nearly full-screen ortholinear swipe-enabled keyboard with a preview window at the top of the screen where users can verify each word typed in real time. Edit mode allows coarse edits with a cursor that moves word-by-word and a delete button. Shared between both modes is a send bar that must be swiped from left to right.
 
-=== All Encompassing Text App
+The swipe to send bar was positively received as it prevents the user from accidentally sending a message during composition. Separating writing and editing into two modes also maximized their utility since each mode had a dedicated purpose.
+
+Notably, an external side button is required to toggle between each mode. This large assumption makes this design potentially incompatible with other smartwatches. Many pointed out that there's no way to type numbers or special symbols. Fitting another row would make each key too small, but there should be another way to type other common characters. Being forced to delete only whole words was also a debated topic. While bulk deletions are fast, they are excessive for small typos that only require a single character operation. Finally, it is ambiguous where the cursor is when toggling from Edit to Compose mode. If, for instance, a word in the middle of a message was just deleted, there's no way to tell if the cursor's position was preserved or if it went back to the end of the message.
+
+=== Quick Correct Swipe Type // Hyungchan
+This prototype design aims to streamline messaging by offering two initial response modes - "Suggestions" and "Keyboard" - and then guiding the user through a step-by-step correction process. Upon tapping "Reply" to an incoming message, users can choose "Suggestions" for quick replies drawn from frequent phrases or "Keyboard" for a standard QWERTY swipe layout. After drafting a message in either mode, the interface automatically highlights potential typos. Tapping each highlighted word reveals suggested corrections, and once every suspect word is addressed, the user sees a final preview before pressing "Send." This ensures short messages can be entered and refined more efficiently than on a small traditional keyboard, giving users control to fix mistakes without reverting to their phones.
+
+The design features that received positive comments are the concept of offering both predictive suggestions and a keyboard option upfront. Commenters felt that quick, canned replies for minimal effort or a more full-featured keyboard with swipe-based input would accommodate different user needs. They also liked the two-step sending process that highlights potential typos before finalizing a message, emphasizing how it reduces the likelihood of sending awkward or erroneous texts. Most found this correction flow intuitive—users can tap on suspect words, see suggested fixes, and make changes without rewriting an entire message. The design effectively addresses frequent complaints about error-prone smartwatch text input and helps streamline minor edits, giving users confidence in sending messages from the watch rather than switching to their phone.
+
+Some critiques pointed out the added step of choosing between "Suggestions" and "Keyboard" every time a new message appears, suggesting a default or remembered preference might reduce friction. Others questioned how users could correct words that are spelled correctly but used incorrectly, since the automated highlighting wouldn't catch those errors. A more flexible path to manual editing-even after the system's automated check—would help. Finally, while commenters appreciated swipe-typing on a compact screen, one still worried about "fat-finger" issues and recommended exploring alternate navigation options, such as side-button toggles, to alleviate cramped tapping for people with larger hands.
+
+=== AR Cursor Type // Kevin
+This prototype introduces a novel text-entry method for smartwatches by utilizing a built-in or external camera to track a user's finger movements in mid-air. Instead of relying on small touchscreen buttons, users navigate the keyboard by hovering their finger in the air, selecting characters with a pinch gesture. This approach enhances accuracy by allowing users to adjust sensitivity, providing finer control over text input, and reducing the risk of accidental taps. By expanding the input space beyond the watch face, users gain a more flexible and intuitive way to type, making smartwatch text entry more practical and efficient. Users can also customize sensitivity settings to match their hand stability, ensuring better control while typing. Additionally, this method offers a discreet alternative to voice-to-text, allowing users to enter text silently without disturbing others or requiring a quiet environment. 
+
+This design was regarded positively for how it offered a hands-free alternative to text-entry that enhances accessibility and accuracy. The group liked that the design accommodated users who struggle with traditional touch input, such as those with long nails, dirty hands, or larger fingers. The ability to see a highlighted curser before selection provides clear feedback before users confirm their keyboard entry choice too. 
+
+The critiques this design received were centered on practicality and implementation. One critique was concerned about the comfort and social acceptability of performing mid-air gestures in public. Another questioned whether small variations in finger movement might introduce errors. Finally, the critiques pointed out that environmental factors such as lighting conditions and obstructions like accessories could interfere with the hand motion detection accuracy.
+
+=== LLM-Assist // Oskar
+This design leverages an LLM to streamline smartwatch text entry by asking clarifying questions based on incoming messages. When a user receives a text, the LLM analyzes it and prompts the user with simple questions to build and refine their response. For example, if asked about availability, the LLM may offer "Yes" or "No" buttons and follow up with a time request if needed. Once enough information is gathered, the LLM generates a suggested reply for approval, allowing the user to accept, edit, or discard it. Over time, the system personalizes responses based on the user’s past language patterns for greater accuracy and convenience.
+
+Having a LLM craft a possibly extensive reply with only a small number of user inputs is something that was positively received. 
+
+Some of the critiques this design faced is how the user would go from the LLM assist mode to a mode that uses the conventual text-entry method seen on smartwatches today. For example, what happens after you click "no" to the LLM proposed response? Do you have an opportunity to retry at the LLM-assist? Another concern had to do with the limitations of the state of the art LLMs, how might we make the responses less verbose and more similar to text messages? And how might the LLM respond to multi-language texts? Although these are concerns, the state of the art LLMs developed by OpenAI and Claude have many features that can not only mimic writing styles but also languages. However, since LLMs are not deterministic, one critique points out what happens when the LLM does not ask the "right" questions, questions that the user thinks would be important to the scope of the message.  
+
+=== All Encompassing Text App // Nivedhitha
+
+*The Design:*
+This design focuses on enhancing smartwatch usability, addressing common challenges like food stains, long nails, broken screens, and time-sensitive tasks. It prioritizes accessibility, efficiency, and ease of interaction, aiming to improve the overall user experience.
+
+For the text entry system, I focused on improving the user experience by redesigning the smartwatch keyboard. I modified the traditional T9 layout, embedding only the alphabetic characters (rather than numbers), which helps expand the touch areas for the keys and ensures easier selection with fewer mistouches. This approach maintains the same time threshold required for key presses as existing methods. Additionally, I incorporated quick access to emojis, allowing users to express emotions efficiently. The design includes two modes: one for alpha typing and another for numeric-based text entry, offering flexibility in communication without restrictions on symbols. Special symbols are embedded as a single button, which enlarges upon clicking, ensuring that users can easily access them.
+
+Given the importance of the space bar in text entry, I’ve integrated this function into the side button of the smartwatch, providing a more ergonomic solution for repetitive use. To address the challenge of reading or typing longer messages, I included a left-to-right scroll bar, which can be operated using the side knob for better message verification and readability. Users also have the option to reply using voice control, allowing for quicker responses without the need for text input. To minimize mistouches and ensure intentional actions, I linked a long-press gesture to the send buttons, offering confirmation before sending a message.
+
+To improve readability in bright environments, I designed the UI with dark-colored elements on a light background, enhancing contrast and making it easier to view the screen in sunlight. I also chose sans-serif fonts for better legibility, optimizing space while maintaining clear and readable text, ensuring a consistent user experience in various lighting conditions.
+
+*The Design Critique Summary*
+
+Following the design critique, several key insights emerged, helping refine the smartwatch interface.
+
+1. Text Input & Voice Messaging – While the T9-style keyboard minimizes mistouches, some reviewers found the multiple taps required for text entry potentially tedious. Additionally, the absence of an option to edit recorded voice messages was noted as a usability concern.
+
+2. Navigation & Interaction – The integration of a scrolling knob and haptic feedback was well received, improving intuitive navigation. However, long-pressing to end a call seemed unintuitive at first, and clearer differentiation between swipe and tap gestures was suggested to enhance consistency. It's also noted that incorporating signifiers and considering the affordances of the watch design could help improve the discoverability and overall usability of these features, as users might need more time to get accustomed to all the functionalities.
+
+3. Scope & Focus – While the design effectively improves overall smartwatch usability, some reviewers felt it extended beyond text-entry tasks, resembling an OS-level redesign rather than focusing strictly on input methods. More direct solutions for minimizing text-entry errors were recommended.
+
+4. Adaptability & Form Factor – The design was praised for its intuitive interface, but considerations for adaptability to rectangular smartwatch screens were suggested to ensure broader applicability. Some reviewers wondered how this system could be translated into a rectangular smartwatch, with ideas like integrating presses of different amounts of time and haptic feedback to improve text-entry, which is often an overlooked part of technology.
+
 
 // Does the Initial Design and Low Fidelity Prototypes section contain a description of the "final" group design? Does the description contain justification for changes based on the design critiques? Does the section contain quality sketches and storyboards for the final design? Do the sketches and storyboards depict the personas?
-
-Several prototypes were designed at a high level. Our designs focused on ease of input and mistake prevention.
 
 == Storyboards
 
@@ -430,109 +492,115 @@ Additionally, our Contextual Inquiry data provided us specific frustrations user
 
   = Survey and Questionnaire Instruments
   == Initial Survey Design
-  #include "assets/survey/survey.typ"
+  #hide_if_draft[
+    #include "assets/survey/survey.typ"
+  ]
 
   == Final Survey Design
-
-  #include "assets/survey/survey-revised.typ"
+  #hide_if_draft[
+    #include "assets/survey/survey-revised.typ"
+  ]
 
   == Anonymized and De-identified Questionnaire Data
-    
-  #grid(
-      columns: (1fr, 1fr),
-      column-gutter: 0.25in,
-      row-gutter: 0.25in,
-      ..range(0, 16).map(i => image("assets/charts/fig_" + str(i) + ".png"))
-  )
-
-  Additionally, anonymized individual responses are provided below.
-
-  #let output = csv("assets/survey/survey_responses.csv")
-  #for (i, row) in output.enumerate() {
-    set par(first-line-indent: 0pt)
-    block(above: 1em, breakable: false)[
-      *User #(i+1)*
-      
-      #for (ii, answer) in row.enumerate() [
-        (#(ii+1)) #answer
+  #hide_if_draft[  
+    #grid(
+        columns: (1fr, 1fr),
+        column-gutter: 0.25in,
+        row-gutter: 0.25in,
+        ..range(0, 16).map(i => image("assets/charts/fig_" + str(i) + ".png"))
+    )
+  
+    Additionally, anonymized individual responses are provided below.
+  
+    #let output = csv("assets/survey/survey_responses.csv")
+    #for (i, row) in output.enumerate() {
+      set par(first-line-indent: 0pt)
+      block(above: 1em, breakable: false)[
+        *User #(i+1)*
         
+        #for (ii, answer) in row.enumerate() [
+          (#(ii+1)) #answer
+          
+        ]
       ]
-    ]
-  }
+    }
+  ]
 
   = Contextual Inquiry
   // Assignment 2 stuff goes here
 
   == Individual Interpretations
-  - U01-01: Their parents were texting them questions about graduation plans.
-  - U01-02: Since their phone was locked, they read the notification from their watch.
-  - U01-03: They used the smartwatch's suggested replies to answer "yes" or "no" questions.
-  - U01-04: Once they pressed the wrong suggested reply on their smartwatch during the conversation, so they would need to get their phone and correct their message, which added stress due to both the frustration of selecting the wrong reply and the need to quickly that mistake.
-  - U01-05: They wished they could confirm their selected suggested reply, even if it would mean an extra tap.
-  - U01-06: They would use their phone to type and send more complex responses but would put it down shortly and continue their work.
-  - U01-07: It was easier to switch to reading longer messages on their phone than scrolling on their watch.
-  - U01-08: Short multi-factor codes were easily typed with the watch's numeric keypad.
-  - U02-01: She uses her smartwatch mostly for passive tasks like notifications, but occasionally for interactive tasks like setting timers.
-  - U02-02: She likes to use the smartwatch to keep track of things, since she can't always look at her phone.
-  - U02-03: She likes to use her watch interactively when exercising.
-  - U02-04: She liked using her watch more when she first got it, but now feels that it is more of a novelty.
-  - U02-05: She has tried to use her watch for text entry, but she doesn't find it particularly useful.
-  - U02-06: Her watch screen is broken, which makes text entry more frustrating due to an occasionally unresponsive screen.
-  - U02-07: She finds many functions on the watch unnecessary, such as the flashlight feature.
-  - U02-08: She finds the small screen makes it difficult to read entire messages and proofread effectively.
-  - U02-09: She prefers not to write anything important or serious on the watch.
-  - U02-10: She finds handwriting recognition on the watch to be poor, and entering one letter at a time is too slow.
-  - U02-11: She mainly uses handwriting for text entry but finds it inefficient.
-  - U02-12: She would use text entry more if the watch were faster.
-  - U03-01: The participant frequently uses their smartwatch for fitness tracking and receiving notifications, rather than entering text.
-  - U03-02: The participant doesn't feel like text-entry is an important feature for the smartwatch. They see smartwatch as a tool for consuming information rather than interaction.
-  - U03-03: The participant only sends messages for quick replies and waits to use their phone for more intensive replies.
-  - U03-03: The participant avoids replying to messages on the smartwatch and waits to use their phone instead.
-  - U03-04: The smartwatch text-entry experience is too slow or inconvenient, making them prefer a larger device.
-  - U03-05: The participant says the screen is too small to type on.
-  - U03-06: The participant thinks the smartwatch screen is a physical limitation for text entry, possibly due to difficulty in precision, visibility, and comfort.
-  - U03-07: The participant sends messages using the voice-to-text method.
-  - U03-08: The participant feels that clicking to type is too inaccurate or slow and would rather trust the voice-to-text method even though they don't have complete control over how to type.
-  - U03-10: The participant does not trust any text-entry methods to accurately convey longer replies or they believe it is too inconvenient to read over longer responses to check if they are correct.
-  - U04-01: The participant primarily uses her smartwatch for passive functions like checking the time and counting calories.
-  - U04-02: Text-entry on the smartwatch is typically reserved for quick replies to received messages, with longer responses directed to her phone.
-  - U04-03: The small screen of the smartwatch makes typing lengthy messages cumbersome and prone to errors.
-  - U04-04: When alone or without her phone, the she prefers using voice typing for convenience.
-  - U04-05: In social settings, she opts for the handwriting feature to avoid speaking aloud, though it still presents challenges.
-  - U04-06: Reading messages on the smartwatch poses no length limitations, but composing replies feels inconvenient due to the interface.
-  - U04-07: Frequent typos during text-entry are a significant frustration, leading to a slower messaging process.
-  - U04-08: While she occasionally uses typing suggestions, they are infrequently relied upon and lack accuracy for her needs.
-  - U04-09: She finds erasing mistakes on the smartwatch more cumbersome than on her phone.
-  - U04-10: Long nails hinder her ability to type effectively on the small screen.
-  - U04-11: She uses the “react” feature for quick responses but finds it less convenient overall.
-  - U04-12: She believes that improvements in typo prediction and input efficiency would enhance the smartwatch text-entry experience.
-  - U05-01: The participant uses the watch mostly for passive tasks like checking notifications, finding it convenient when their phone is stored away.
-  - U05-02: The participant speaks Mandarin in daily life, but the watch only supports English input, so he avoids typing anything more than a few words.
-  - U05-03: The participant feels self-conscious using voice input in public, especially on a noisy bus, so he rarely speaks commands aloud.
-  - U05-04: The participant used to explore more of the watch's features when he first bought it, but now sees it mainly as a way to quickly view or dismiss messages.
-  - U05-05: The participant does not rely on the watch for important conversations, since the screen is too small for detailed typing and the English-only interface does not fit their language needs.
-  - U05-06: The participant has considered handwriting or gesture-based input on the watch, but finds it slow and imprecise.
-  - U05-07: The participant finds typing short numeric codes or tapping "Yes" and "No" easier than writing out longer replies, which often leads to errors.
-  - U05-08: The participant wishes the watch offered at least partial pinyin-based input, since switching to English feels unnatural for personal messages.
-  - U05-09: The participant dismisses non-urgent notifications on the watch to avoid repeatedly taking out their phone, appreciating the discreet vibration alerts.
-  - U05-10: The participant would use the watch for more text-based interactions if it allowed Mandarin entry or at least offered better predictive options for bilingual speakers.
-  - U06-01: While preparing cake batter, she received a notification from a customer asking for the delivery time.
-  - U06-02: With food stains on her hands, she found it nearly impossible to swipe or type on the smartwatch. This left her feeling frustrated, as she was unable to respond quickly and had to grab her phone.
-  - U06-03 As she was frosting a cake, she received a call from a customer and answered it on the smartwatch.
-  - U06-04: The convenience of the hands-free calling feature allowed her to continue frosting the cake without having to touch her phone. She seemed relieved, but there was a sense of unease about her smartwatch handling calls consistently.
-  - U06-05: Getting ready for a family function, she attempted to reply to an urgent message, but her artificial nails made it difficult.
-  - U06-06: The smartwatch's gesture controls were too sensitive and difficult to manage with long nails. After several failed attempts, she felt frustrated and chose to grab her phone to respond.
-  - U06-07: While outdoors, she tried to check a message, but the bright sunlight made the screen unreadable.
-  - U06-08: She squinted to read the text, but the low brightness of the screen made it nearly impossible to interact with. This led to irritation, as she had to wait until she was in the shade to check her messages.
-  - U06-09: She received multiple notifications from family and friends while cooking, but she didn't want to engage.
-  - U06-10: The constant interruptions from the smartwatch made her feel overwhelmed, and the lack of quick ways to dismiss or filter notifications left her frustrated. She wished the watch would allow easier management of personal vs. professional notifications.
-  - U06-11: Her kids played with her smartwatch while charging, which resulted in a cracked screen.
-  - U06-12: The cracked screen made it difficult to see and interact with the smartwatch. She was visibly annoyed, as it had impacted her daily use, and she struggled to find a repair option, which added stress to her routine.
-  - U06-13: She was attempting to reply to her husband saying “yes” to indicate she can pick up the kids, but the cracked screen and sweat made it difficult.
-  - U06-14: The cracked and unresponsive screen, combined with sweat on her hands, made it extremely difficult for her to tap the right reply. She felt frustration and a sense of helplessness as she couldn't use the smartwatch to quickly respond, forcing her to grab her phone.
-  - U06-15: While outside running errands, she tried to use the smartwatch, but the screen was hard to read under the sun.The difficulty in viewing the smartwatch screen outside, coupled with the sweat on her hands, made her feel frustrated. The limited visibility forced her to check her phone instead, leading to a sense of disappointment about the smartwatch's outdoor usability.
-  - U06-16: She set a reminder on the smartwatch for a customer delivery but missed the alert because the watch didn't vibrate strongly enough.
-  - U06-17: The missed reminder caused some stress and last-minute scrambling, as she had to rely on her phone instead. She seemed annoyed that the haptic feedback wasn't strong enough to alert her in a busy environment.
+  #hide_if_draft[
+    - U01-01: Their parents were texting them questions about graduation plans.
+    - U01-02: Since their phone was locked, they read the notification from their watch.
+    - U01-03: They used the smartwatch's suggested replies to answer "yes" or "no" questions.
+    - U01-04: Once they pressed the wrong suggested reply on their smartwatch during the conversation, so they would need to get their phone and correct their message, which added stress due to both the frustration of selecting the wrong reply and the need to quickly that mistake.
+    - U01-05: They wished they could confirm their selected suggested reply, even if it would mean an extra tap.
+    - U01-06: They would use their phone to type and send more complex responses but would put it down shortly and continue their work.
+    - U01-07: It was easier to switch to reading longer messages on their phone than scrolling on their watch.
+    - U01-08: Short multi-factor codes were easily typed with the watch's numeric keypad.
+    - U02-01: She uses her smartwatch mostly for passive tasks like notifications, but occasionally for interactive tasks like setting timers.
+    - U02-02: She likes to use the smartwatch to keep track of things, since she can't always look at her phone.
+    - U02-03: She likes to use her watch interactively when exercising.
+    - U02-04: She liked using her watch more when she first got it, but now feels that it is more of a novelty.
+    - U02-05: She has tried to use her watch for text entry, but she doesn't find it particularly useful.
+    - U02-06: Her watch screen is broken, which makes text entry more frustrating due to an occasionally unresponsive screen.
+    - U02-07: She finds many functions on the watch unnecessary, such as the flashlight feature.
+    - U02-08: She finds the small screen makes it difficult to read entire messages and proofread effectively.
+    - U02-09: She prefers not to write anything important or serious on the watch.
+    - U02-10: She finds handwriting recognition on the watch to be poor, and entering one letter at a time is too slow.
+    - U02-11: She mainly uses handwriting for text entry but finds it inefficient.
+    - U02-12: She would use text entry more if the watch were faster.
+    - U03-01: The participant frequently uses their smartwatch for fitness tracking and receiving notifications, rather than entering text.
+    - U03-02: The participant doesn't feel like text-entry is an important feature for the smartwatch. They see smartwatch as a tool for consuming information rather than interaction.
+    - U03-03: The participant only sends messages for quick replies and waits to use their phone for more intensive replies.
+    - U03-03: The participant avoids replying to messages on the smartwatch and waits to use their phone instead.
+    - U03-04: The smartwatch text-entry experience is too slow or inconvenient, making them prefer a larger device.
+    - U03-05: The participant says the screen is too small to type on.
+    - U03-06: The participant thinks the smartwatch screen is a physical limitation for text entry, possibly due to difficulty in precision, visibility, and comfort.
+    - U03-07: The participant sends messages using the voice-to-text method.
+    - U03-08: The participant feels that clicking to type is too inaccurate or slow and would rather trust the voice-to-text method even though they don't have complete control over how to type.
+    - U03-10: The participant does not trust any text-entry methods to accurately convey longer replies or they believe it is too inconvenient to read over longer responses to check if they are correct.
+    - U04-01: The participant primarily uses her smartwatch for passive functions like checking the time and counting calories.
+    - U04-02: Text-entry on the smartwatch is typically reserved for quick replies to received messages, with longer responses directed to her phone.
+    - U04-03: The small screen of the smartwatch makes typing lengthy messages cumbersome and prone to errors.
+    - U04-04: When alone or without her phone, the she prefers using voice typing for convenience.
+    - U04-05: In social settings, she opts for the handwriting feature to avoid speaking aloud, though it still presents challenges.
+    - U04-06: Reading messages on the smartwatch poses no length limitations, but composing replies feels inconvenient due to the interface.
+    - U04-07: Frequent typos during text-entry are a significant frustration, leading to a slower messaging process.
+    - U04-08: While she occasionally uses typing suggestions, they are infrequently relied upon and lack accuracy for her needs.
+    - U04-09: She finds erasing mistakes on the smartwatch more cumbersome than on her phone.
+    - U04-10: Long nails hinder her ability to type effectively on the small screen.
+    - U04-11: She uses the “react” feature for quick responses but finds it less convenient overall.
+    - U04-12: She believes that improvements in typo prediction and input efficiency would enhance the smartwatch text-entry experience.
+    - U05-01: The participant uses the watch mostly for passive tasks like checking notifications, finding it convenient when their phone is stored away.
+    - U05-02: The participant speaks Mandarin in daily life, but the watch only supports English input, so he avoids typing anything more than a few words.
+    - U05-03: The participant feels self-conscious using voice input in public, especially on a noisy bus, so he rarely speaks commands aloud.
+    - U05-04: The participant used to explore more of the watch's features when he first bought it, but now sees it mainly as a way to quickly view or dismiss messages.
+    - U05-05: The participant does not rely on the watch for important conversations, since the screen is too small for detailed typing and the English-only interface does not fit their language needs.
+    - U05-06: The participant has considered handwriting or gesture-based input on the watch, but finds it slow and imprecise.
+    - U05-07: The participant finds typing short numeric codes or tapping "Yes" and "No" easier than writing out longer replies, which often leads to errors.
+    - U05-08: The participant wishes the watch offered at least partial pinyin-based input, since switching to English feels unnatural for personal messages.
+    - U05-09: The participant dismisses non-urgent notifications on the watch to avoid repeatedly taking out their phone, appreciating the discreet vibration alerts.
+    - U05-10: The participant would use the watch for more text-based interactions if it allowed Mandarin entry or at least offered better predictive options for bilingual speakers.
+    - U06-01: While preparing cake batter, she received a notification from a customer asking for the delivery time.
+    - U06-02: With food stains on her hands, she found it nearly impossible to swipe or type on the smartwatch. This left her feeling frustrated, as she was unable to respond quickly and had to grab her phone.
+    - U06-03 As she was frosting a cake, she received a call from a customer and answered it on the smartwatch.
+    - U06-04: The convenience of the hands-free calling feature allowed her to continue frosting the cake without having to touch her phone. She seemed relieved, but there was a sense of unease about her smartwatch handling calls consistently.
+    - U06-05: Getting ready for a family function, she attempted to reply to an urgent message, but her artificial nails made it difficult.
+    - U06-06: The smartwatch's gesture controls were too sensitive and difficult to manage with long nails. After several failed attempts, she felt frustrated and chose to grab her phone to respond.
+    - U06-07: While outdoors, she tried to check a message, but the bright sunlight made the screen unreadable.
+    - U06-08: She squinted to read the text, but the low brightness of the screen made it nearly impossible to interact with. This led to irritation, as she had to wait until she was in the shade to check her messages.
+    - U06-09: She received multiple notifications from family and friends while cooking, but she didn't want to engage.
+    - U06-10: The constant interruptions from the smartwatch made her feel overwhelmed, and the lack of quick ways to dismiss or filter notifications left her frustrated. She wished the watch would allow easier management of personal vs. professional notifications.
+    - U06-11: Her kids played with her smartwatch while charging, which resulted in a cracked screen.
+    - U06-12: The cracked screen made it difficult to see and interact with the smartwatch. She was visibly annoyed, as it had impacted her daily use, and she struggled to find a repair option, which added stress to her routine.
+    - U06-13: She was attempting to reply to her husband saying “yes” to indicate she can pick up the kids, but the cracked screen and sweat made it difficult.
+    - U06-14: The cracked and unresponsive screen, combined with sweat on her hands, made it extremely difficult for her to tap the right reply. She felt frustration and a sense of helplessness as she couldn't use the smartwatch to quickly respond, forcing her to grab her phone.
+    - U06-15: While outside running errands, she tried to use the smartwatch, but the screen was hard to read under the sun.The difficulty in viewing the smartwatch screen outside, coupled with the sweat on her hands, made her feel frustrated. The limited visibility forced her to check her phone instead, leading to a sense of disappointment about the smartwatch's outdoor usability.
+    - U06-16: She set a reminder on the smartwatch for a customer delivery but missed the alert because the watch didn't vibrate strongly enough.
+    - U06-17: The missed reminder caused some stress and last-minute scrambling, as she had to rely on her phone instead. She seemed annoyed that the haptic feedback wasn't strong enough to alert her in a busy environment.
+  ]
 
   == Individual Sequence Diagrams
 
@@ -689,7 +757,7 @@ Additionally, our Contextual Inquiry data provided us specific frustrations user
   ]    
   == Individual Sketches
 
-  #block(sticky: true)[*Efe's Sketches*]
+  #block(sticky: true)[*Efe's Sketch*]
   #grid(
     columns: (1fr, 1fr, 1fr),
     column-gutter: 0.25in,
