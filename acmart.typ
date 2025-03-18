@@ -79,9 +79,9 @@
   ]
 }
 
-#let hide_if_draft(content) = context {
+#let hide_if_draft(enabled: true, content) = context {
   let is_draft = draft_state.get()
-  if not is_draft {
+  if not is_draft or not enabled {
     content
   }
 }
@@ -140,7 +140,7 @@
   }
 
   set text(size: 10pt, font: "Libertinus Serif", tracking: -0.01pt)
-  set par(justify: true, first-line-indent: 10pt, spacing: 0.5em, leading: 5pt)
+  set par(justify: true, first-line-indent: 10pt, spacing: 5pt, leading: 5pt)
   set bibliography(
     title: [== References]
   )

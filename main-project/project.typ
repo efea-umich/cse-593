@@ -290,20 +290,23 @@ _*Requirement 6:* Users should feel comfortable using the text-entry method in p
 
 == Personas
 // Does the Initial Design and Low Fidelity Prototypes section contain a quality description of a final primary persona? Note that having secondary and anti-personas will aid you in the design, but we will not grade them.
-The personas each of us designed ended up being fairly similar. Personas overall were young, proficient with technology,
+The personas each member designed ended up being fairly similar. Overall, personas were young, proficient with technology, and have owned smartwatches for at least a few years. They reflected many of the common interpretations from our combined contextual interviews.
 
-    _Emily Carter_
-    - Gender: Female
-    - Age: 22
-    - Occupation: Registered Nurse
-    - Tech Proficiency: Intermediate
-    - Device: Apple Watch Gen 7
-    - Years with smartwatch: 4
-    Emily is a nurse at a prominent hospital in New York City. She works 12-13 hour shifts during the day and typically has 4 to 6 patients under at all times. The hospital is a fast paced environment where she does not know when her next break is. She often has to run around the hospital to manage multiple patients and support doctors. 
-    
-    She primarily uses her smartwatch for viewing patient alerts, shift schedules, and responding to quick messages. In noisy hospital settings, voice input is not ideal, so she prefers typing, tapping pre-set responses or using swipe gestures for efficiency. The smartwatch's ability to provide discreet, instant access to information helps her stay focused while minimizing distractions.
-    
-    Emily typically carries her phone with her at all times since the hospital needs constant communication with her. However, due to her demanding schedule, she finds it more convenient to look at notifications through her smartwatch, especially when she is running between destinations or in the middle of patient care.
+Below we describe our final persona, Emily Carter, who will be the model user for our final design.
+
+- *_Emily Carter_*
+  - Gender: Female
+  - Age: 22
+  - Occupation: Registered Nurse
+  - Tech Proficiency: Intermediate
+  - Device: Apple Watch Gen 7
+  - Years with smartwatch: 4
+
+Emily is a nurse at a prominent hospital in New York City. She works 12-13 hour shifts during the day and typically has 4 to 6 patients under at all times. The hospital is a fast paced environment where she does not know when her next break is. She often has to run around the hospital to manage multiple patients and support doctors. 
+
+She primarily uses her smartwatch for viewing patient alerts, shift schedules, and responding to quick messages. In noisy hospital settings, voice input is not ideal, so she prefers typing, tapping pre-set responses, or using swipe gestures for efficiency. She often has trouble typing on her watch due to her long nails, which often are an annoyance when trying to tap small keys on her watch. The smartwatch's ability to provide discreet, instant access to information helps her stay focused while minimizing distractions.
+
+Emily typically carries her phone with her at all times since the hospital needs constant communication with her. However, due to her demanding schedule, she finds it more convenient to look at notifications through her smartwatch, especially when she is running between destinations or in the middle of patient care.
 
 == Sketches
 // Does the Initial Design and Low Fidelity Prototypes section contain brief description of the results from a design critique for each individual design?
@@ -312,7 +315,7 @@ We initially created six separate designs to address our user requirements. Each
 === Dynamic Key Hitboxes
 The design tackles issues mentioned by users from contextual interviews by dynamically adjusting the "hitbox" of each key based on predictive likelihood. When typing, the hitbox of the more likely next letter expands into the space of less likely letters, allowing users to make successful selections even with imprecise touches. The design maintains the familiar QWERTY layout while adapting behind the scenes to reduce errors. It incorporates features like automatically disabling the expansion system when using caps lock (for acronyms or technical jargon) and reverting to equal-sized hitboxes after deletion to make error correction straightforward.
 
-Feedback on the Dynamic Hitbox QWERTY design was generally positive, with reviewers appreciating the maintenance of the familiar QWERTY layout while providing typing assistance without requiring interaction from the user. Users can continue using their smartwatches without learning a new system, as the expanded hitbox feature works invisibly in the background.
+Feedback on the Dynamic Key Hitbox design was generally positive, with reviewers appreciating the maintenance of the familiar QWERTY layout while providing typing assistance without requiring interaction from the user. Users can continue using their smartwatches without learning a new system, as the expanded hitbox feature works invisibly in the background.
 
 Reviewers questioned how the system handles competing expanded hitboxes when a user intends to select a key surrounded by expansions from neighboring keys, potentially making the intended key impossible to hit. Some reviewers expressed concerns about users who might want to frequently avoid using expanded hitboxes (e.g. those with unconventional typing styles). The current design would require these users to make a mistake for each such word, which should be improved upon.
 
@@ -369,10 +372,30 @@ Following the design critique, several key insights emerged, helping refine the 
 
 4. Adaptability & Form Factor – The design was praised for its intuitive interface, but considerations for adaptability to rectangular smartwatch screens were suggested to ensure broader applicability. Some reviewers wondered how this system could be translated into a rectangular smartwatch, with ideas like integrating presses of different amounts of time and haptic feedback to improve text-entry, which is often an overlooked part of technology.
 
-
+=== The Final Design
 // Does the Initial Design and Low Fidelity Prototypes section contain a description of the "final" group design? Does the description contain justification for changes based on the design critiques? Does the section contain quality sketches and storyboards for the final design? Do the sketches and storyboards depict the personas?
 
+Building upon the Dynamic Key Hitbox and Quick Correct Swipe Type designs, our final design prioritizes suggested responses while allowing the user to enter any custom message. The core of this design addresses the two prominent challenges identified in our contextual interviews: the need for faster interaction for quick replies and more accurate manual text entry when custom messages are required.
+
+The interface initially presents users with suggested responses when viewing a notification for a message. These suggestions are contextually generated based on message content and past responses, addressing the needs of users who often send quick standardized responses when they are busy. Only users who require more customized text entry need to scroll down to access the Dynamic Key Hitbox keyboard.
+
+When a user selects a suggested response, the system shows a confirmation popup. The chosen suggestion expands to fill the center of the screen, with prominent "Send," "Edit," and "Cancel" options displayed beneath it. The "Edit" button allows the user to edit the suggestion using the keyboard, while "Cancel" returns them to the previous menu, allowing them to choose a different suggestion. This directly addresses the concern raised by participants who desired confirmation steps before sending messages. For users who are tend to message in conditions where accidental taps are possible, this prevents miscommunications without significantly increasing interaction time.
+
+If the user chooses to edit a suggestion or create a custom message, they access the Dynamic Key Hitbox keyboard. It silently changes the sizes of a key's hitbox, preventing errors by adapting to likely letter combinations. This adaptive approach is particularly valuable for both our persona: Emily, whose long nails and on-the-move lifestyle make precise tapping difficult. The keyboard maintains its ability to disable hitbox expansion when typing acronyms or after error correction, accommodating specialized terminology and unconventional abbreviations.
+
+The combination of these features creates a comprehensive solution that addresses both approaches to reducing text entry frustration: it minimizes the need for typing through intelligent suggestions while simultaneously reducing errors when typing is necessary. This dual approach recognizes that different contexts call for different interaction methods: some users may prefer suggestions when quickly responding to customers during busy periods, while still requiring accurate keyboard entry for composing more specific messages where suggestions are not sufficient.
+
+We design the interface to prioritize the fastest interaction method (prioritized suggestions) while maintaining support for precision typing (Dynamic Key Hitbox), our design creates a flexible system that accommodates various user needs, physical limitations, and environmental contexts. The confirmation step provides the confidence users desire in message accuracy, while the adaptive keyboard ensures that when custom text is required, users can type with minimal errors regardless of environmental conditions or physical constraints.
+
+
+// - Show suggestions first, then the keyboard below (after a scroll, for instance) // Users want suggestions to be quick, and keyboard-typing will be slow, so we would rather take a bit more extra work for keyboard over extra work for suggestions
+//   - If a suggestion is chosen, that word enters the forefront and big options are displayed to send or not send // This allows error prevention as mentioned by users
+// - Keep a standard watch keyboard layout
+// - Implement dynamic hitboxes
+
 == Storyboards
+
+
 
 == Paper Prototype
 // Does the Initial Design and Low Fidelity Prototypes section contain a description and figures depicting the the "final" group design paper prototype? Does the description contain justification for changes based on the design critiques? Does the section contain a brief description of how an investigator could Wizard of Oz the prototype?
@@ -461,34 +484,36 @@ Additionally, our Contextual Inquiry data provided us specific frustrations user
 #appendix[
   #show grid: set block(below: 0.25in)
   = Responsible Research: Human Subjects Research Protections
-  To ensure our study conforms with safe human subjects research, all researchers earned the PEERRS Human Subjects Research Protections certificate.
-
-  #{
-    let certs = (
-      "ea": "Efe Akinci",
-      "rc": "Ryan Chua",
-      "hc": "Hyungchan Cho",
-      "ks": "Kevin Sun",
-      "osj": "Oskar Shiomi Jensen",
-      "ni": "Nivedhitha Purushotham"
-    )
-
-    set figure(placement: none)
-    subpar.grid(
-      columns: (1fr, 1fr),
-      column-gutter: 0.25in,
-      ..certs.pairs().map((p) => {
-        let id = p.at(0)
-        let name = p.at(1)
-        
-        figure(
-          image("assets/peers/PEERRS_" + id + ".png", width: 100%),
-          caption: [PEERRS Certificate of #name]
-        )
-      }),
-      caption: "PEERRS Certifications of All Team Members"
-    )
-  }
+  #hide_if_draft[
+    To ensure our study conforms with safe human subjects research, all researchers earned the PEERRS Human Subjects Research Protections certificate.
+  
+    #{
+      let certs = (
+        "ea": "Efe Akinci",
+        "rc": "Ryan Chua",
+        "hc": "Hyungchan Cho",
+        "ks": "Kevin Sun",
+        "osj": "Oskar Shiomi Jensen",
+        "ni": "Nivedhitha Purushotham"
+      )
+  
+      set figure(placement: none)
+      subpar.grid(
+        columns: (1fr, 1fr),
+        column-gutter: 0.25in,
+        ..certs.pairs().map((p) => {
+          let id = p.at(0)
+          let name = p.at(1)
+          
+          figure(
+            image("assets/peers/PEERRS_" + id + ".png", width: 100%),
+            caption: [PEERRS Certificate of #name]
+          )
+        }),
+        caption: "PEERRS Certifications of All Team Members"
+      )
+    }
+  ]
 
   = Survey and Questionnaire Instruments
   == Initial Survey Design
@@ -603,50 +628,51 @@ Additionally, our Contextual Inquiry data provided us specific frustrations user
   ]
 
   == Individual Sequence Diagrams
-
-  - U01
-  #include "assets/diagrams/ryan_sequence.typ"
-
-  - U02
-  #include "assets/diagrams/efe_sequence.typ"
-
-  - U03
-  #image("assets/diagrams/kevin_sequence.png")
+  #hide_if_draft[
+    - U01
+    #include "assets/diagrams/ryan_sequence.typ"
   
-  - U04
-  #image("assets/diagrams/oskar_sequence_diagram.jpg")
+    - U02
+    #include "assets/diagrams/efe_sequence.typ"
   
-  - U05
-  #include "assets/diagrams/hc_sequence.typ"
-
-  - U06
-  #image("assets/diagrams/nivedhitha_sequence.png")
+    - U03
+    #image("assets/diagrams/kevin_sequence.png")
+    
+    - U04
+    #image("assets/diagrams/oskar_sequence_diagram.jpg")
+    
+    - U05
+    #include "assets/diagrams/hc_sequence.typ"
   
-  == Individual Flow Diagrams
-
-  - U01
-  #include "assets/diagrams/ryan_flow.typ"
-
-  - U02
-  #image("assets/diagrams/Efe Akinci Flow Diagram.png")
+    - U06
+    #image("assets/diagrams/nivedhitha_sequence.png")
+    
+    == Individual Flow Diagrams
   
-  - U03 
-  #image("assets/diagrams/kevin_flow.png")
+    - U01
+    #include "assets/diagrams/ryan_flow.typ"
   
-  - U04 
-  #image("assets/diagrams/oskar_flow_diagram.jpg")
-
-  - U05
-  #include "assets/diagrams/hc_flow.typ"
-
-  - U06
-  #image("assets/diagrams/nivedhitha_flow.png")
+    - U02
+    #image("assets/diagrams/Efe Akinci Flow Diagram.png")
+    
+    - U03 
+    #image("assets/diagrams/kevin_flow.png")
+    
+    - U04 
+    #image("assets/diagrams/oskar_flow_diagram.jpg")
   
-  == Consolidated Sequence Diagram
-  #image("assets/diagrams/SEQUENCE_CONSOLIDATED.png")
+    - U05
+    #include "assets/diagrams/hc_flow.typ"
   
-  == Consolidated Flow Diagrams
-  #image("assets/diagrams/Flow Diagram Consolidated.png")
+    - U06
+    #image("assets/diagrams/nivedhitha_flow.png")
+    
+    == Consolidated Sequence Diagram
+    #image("assets/diagrams/SEQUENCE_CONSOLIDATED.png")
+    
+    == Consolidated Flow Diagrams
+    #image("assets/diagrams/Flow Diagram Consolidated.png")
+  ]
   
   
   == Affinity Diagram
