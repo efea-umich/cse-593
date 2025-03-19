@@ -86,6 +86,16 @@
   }
 }
 
+
+#let sketch(label: none, ..args) = [
+  #set image(fit: "contain")
+  #figure(
+    kind: "sketch",
+    supplement: "Sketch",
+    ..args
+  ) #if label != none {std.label(label)}
+]
+
 #let acmart(
   authors: (),
   title: "Title",
@@ -139,6 +149,11 @@
     block(spacing: 9pt) + text(style: "italic", weight: "regular", heading_number + el.body + ": ")
   }
 
+  show heading.where(level: 4): el => {
+    let heading_number = heading_numbering(..counter(heading).get())
+    block(spacing: 9pt) + text(style: "italic", weight: "regular", heading_number + el.body + ": ")
+  }
+
   set text(size: 10pt, font: "Libertinus Serif", tracking: -0.01pt)
   set par(justify: true, first-line-indent: 10pt, spacing: 5pt, leading: 5pt)
   set bibliography(
@@ -163,7 +178,6 @@
   })
 
   set table.hline(stroke: 0.5pt)
-
 
   show figure: fig => {
     set figure.caption(position: top) if fig.kind == table

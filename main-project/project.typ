@@ -27,7 +27,7 @@
 )
 
 #make_title("Clockworks", authors, "University of Michigan, USA", concepts, keywords)[
-Smartwatches are increasingly common for communication and health tracking, yet small screens deter many users from typing messages on these devices. Our project promises to address this shortfall by gathering detailed insights on when, how, and why people attempt text entry on their watches. A key obstacle lies in the mismatch between tiny touch interfaces and users' language or comfort needs, which exacerbates errors and slows interactions. To investigate, we administered think-aloud sessions, surveys, and Contextual Inquiry interviews. We consolidated findings from these interviews of six participants who revealed frustrations with limited keyboards, uncertain predictive text, and distractions. Our consolidated results pave the way for users to spend less time correcting errors by overcoming small-screen constraints. After establishing user requirements, we designed a paper prototype for future user testing.
+Smartwatches are increasingly common for communication and health tracking, yet small screens deter many users from typing messages on these devices. Our project promises to address this shortfall by gathering detailed insights on when, how, and why people attempt text entry on their watches. A key obstacle lies in the mismatch between tiny touch interfaces and users' language or comfort needs, which exacerbates errors and slows interactions. To investigate, we administered think-aloud sessions, surveys, and Contextual Inquiry interviews. We consolidated findings from these interviews of six participants who revealed frustrations with limited keyboards, uncertain predictive text, and distractions. Our consolidated results pave the way for users to spend less time correcting errors by overcoming small-screen constraints. After establishing user requirements, we created several sketches to generate ideas for our prototype. We finalized a paper prototype that was based on these sketches, and now await user testing.
 ]
 
 = Introduction
@@ -44,9 +44,13 @@ We refined our approach by combining a revised survey with real-time interviews.
 
 By consolidating these data, we uncovered opportunities to create straightforward, testable requirements for future smartwatch text-entry improvements. We identified key themes of awkwardness in text entry, users' reluctance to experiment with new input modes, and an urgent need for simpler designs that better match their on-the-go contexts. In synthesizing results from our thirty-person survey, six contextual inquiries, consolidated diagrams, and the affinity diagram, we reveal how smartwatch text entry can be reimagined around users' desire for quick, low-effort actions.
 
-We have designed several low-fidelity prototypes to find the best way to satisfy our user requirements. #text(fill: red)[TODO: Summarize the designs, critiques, and ultimately what the final design is] 
+We have designed several low-fidelity prototypes to find the best way to satisfy our user requirements. Our designs found novel ways to input text faster, reduce mistakes, and remove the need for direct contact with the smartwatch. These include dynamic hitboxes, a separate edit interface, a quick typo-correction interface, hands-free gesture typing with a camera, LLM integration, and a near full redesign of the traditional smartwatch texting experience.
 
-Our next step is evaluate our final prototype and provide a rough implementation in a high-fidelity prototype...
+Our designs increased typing efficiency by making varied use of suggested words. For instance, the dyanmic hitboxes change the underlying keyboard's tap map to make likely subsequent letters easier to press, and quick correction offers many suggestions to typo so the user doesn't have to retype a word. However, our designs had important considerations to address. Many of our designs relied on swipe type, a feature that's hard to use on smaller smartwatches, or external buttons, which may not exist on all smartwatches. Some designs also only allowed per-word editing instead of per-character, can be excessive for tiny mistakes.
+
+Building upon the most effective elements of these designs, our final prototype combines the contextually generated responses with the Dynamic Key Hitboxes approach. This interface prioritizes suggested responses for quick interaction while allowing for the user to type custom messages with enhanced accuracy.Suggested responses appear first, minimizing typing effort, and a confirmation step prevents accidental selections.When custom input is necessary, the dynamic key hitbox keyboard reduces errors by intelligently adjusting key sizes based on predicted letter sequences.
+
+Our next step is evaluate our final prototype through user testing and provide a rough implementation in a high-fidelity prototype. This evaluation will ensure that the design effectively addresses the core challenges and user requirements of smartwatch text entry while enhancing user experience. 
 
 = Related Work
 
@@ -308,9 +312,10 @@ Emily typically carries her phone with her at all times since the hospital needs
 
 == Sketches
 // Does the Initial Design and Low Fidelity Prototypes section contain brief description of the results from a design critique for each individual design?
+=== Individual Sketches
 We initially created six separate designs to address our user requirements. Each researcher then gave feedback on each design. The full sketches for each design are shown in Appendix D.2. Below we summarize, then address each design's strengths and weaknesses in appendix order.
 
-=== Dynamic Key Hitboxes
+==== Dynamic Key Hitboxes
 The design tackles issues mentioned by users from contextual interviews by dynamically adjusting the "hitbox" of each key based on predictive likelihood. When typing, the hitbox of the more likely next letter expands into the space of less likely letters, allowing users to make successful selections even with imprecise touches. The design maintains the familiar QWERTY layout while adapting behind the scenes to reduce errors. It incorporates features like automatically disabling the expansion system when using caps lock (for acronyms or technical jargon) and reverting to equal-sized hitboxes after deletion to make error correction straightforward.
 
 Feedback on the Dynamic Key Hitbox design was generally positive, with reviewers appreciating the maintenance of the familiar QWERTY layout while providing typing assistance without requiring interaction from the user. Users can continue using their smartwatches without learning a new system, as the expanded hitbox feature works invisibly in the background.
@@ -319,35 +324,35 @@ Reviewers questioned how the system handles competing expanded hitboxes when a u
 
 The placement of the `delete` and `enter`/`send` buttons was noted as problematic as they were positioned too close together despite their importance. One reviewer questioned how the design would be adapted to different watch shapes (particularly circular ones) and how users would access to special characters/emojis. Some reviewers questioned whether users should be able to visualize the expanded hitboxes and how the algorithm resolves overlapping hitboxes when multiple predictions are equally probable.
 
-=== Compose-Edit Dual Modes // Ryan
+==== Compose-Edit Dual Modes // Ryan
 This design addresses efficient input and error correction with a dual-mode design. Compose mode features a nearly full-screen ortholinear swipe-enabled keyboard with a preview window at the top of the screen where users can verify each word typed in real time. Edit mode allows coarse edits with a cursor that moves word-by-word and a delete button. Shared between both modes is a send bar that must be swiped from left to right.
 
 The swipe to send bar was positively received as it prevents the user from accidentally sending a message during composition. Separating writing and editing into two modes also maximized their utility since each mode had a dedicated purpose.
 
 Notably, an external side button is required to toggle between each mode. This large assumption makes this design potentially incompatible with other smartwatches. Many pointed out that there's no way to type numbers or special symbols. Fitting another row would make each key too small, but there should be another way to type other common characters. Being forced to delete only whole words was also a debated topic. While bulk deletions are fast, they are excessive for small typos that only require a single character operation. Finally, it is ambiguous where the cursor is when toggling from Edit to Compose mode. If, for instance, a word in the middle of a message was just deleted, there's no way to tell if the cursor's position was preserved or if it went back to the end of the message.
 
-=== Quick-Correct Swipe Type // Hyungchan
+==== Quick-Correct Swipe Type // Hyungchan
 This prototype design aims to streamline messaging by offering two initial response modes - "Suggestions" and "Keyboard" - and then guiding the user through a step-by-step correction process. Upon tapping "Reply" to an incoming message, users can choose "Suggestions" for quick replies drawn from frequent phrases or "Keyboard" for a standard QWERTY swipe layout. After drafting a message in either mode, the interface automatically highlights potential typos. Tapping each highlighted word reveals suggested corrections, and once every suspect word is addressed, the user sees a final preview before pressing "Send." This ensures short messages can be entered and refined more efficiently than on a small traditional keyboard, giving users control to fix mistakes without reverting to their phones.
 
 The design features that received positive comments are the concept of offering both predictive suggestions and a keyboard option upfront. Commenters felt that quick, canned replies for minimal effort or a more full-featured keyboard with swipe-based input would accommodate different user needs. They also liked the two-step sending process that highlights potential typos before finalizing a message, emphasizing how it reduces the likelihood of sending awkward or erroneous texts. Most found this correction flow intuitive—users can tap on suspect words, see suggested fixes, and make changes without rewriting an entire message. The design effectively addresses frequent complaints about error-prone smartwatch text input and helps streamline minor edits, giving users confidence in sending messages from the watch rather than switching to their phone.
 
 Some critiques pointed out the added step of choosing between "Suggestions" and "Keyboard" every time a new message appears, suggesting a default or remembered preference might reduce friction. Others questioned how users could correct words that are spelled correctly but used incorrectly, since the automated highlighting wouldn't catch those errors. A more flexible path to manual editing-even after the system's automated check—would help. Finally, while commenters appreciated swipe-typing on a compact screen, one still worried about "fat-finger" issues and recommended exploring alternate navigation options, such as side-button toggles, to alleviate cramped tapping for people with larger hands.
 
-=== AR Cursor Type // Kevin
+==== AR Cursor Type // Kevin
 This prototype introduces a novel text-entry method for smartwatches by utilizing a built-in or external camera to track a user's finger movements in mid-air. Instead of relying on small touchscreen buttons, users navigate the keyboard by hovering their finger in the air, selecting characters with a pinch gesture. This approach enhances accuracy by allowing users to adjust sensitivity, providing finer control over text input, and reducing the risk of accidental taps. By expanding the input space beyond the watch face, users gain a more flexible and intuitive way to type, making smartwatch text entry more practical and efficient. Users can also customize sensitivity settings to match their hand stability, ensuring better control while typing. Additionally, this method offers a discreet alternative to voice-to-text, allowing users to enter text silently without disturbing others or requiring a quiet environment. 
 
 This design was regarded positively for how it offered a hands-free alternative to text-entry that enhances accessibility and accuracy. The group liked that the design accommodated users who struggle with traditional touch input, such as those with long nails, dirty hands, or larger fingers. The ability to see a highlighted curser before selection provides clear feedback before users confirm their keyboard entry choice too. 
 
 The critiques this design received were centered on practicality and implementation. One critique was concerned about the comfort and social acceptability of performing mid-air gestures in public. Another questioned whether small variations in finger movement might introduce errors. Finally, the critiques pointed out that environmental factors such as lighting conditions and obstructions like accessories could interfere with the hand motion detection accuracy.
 
-=== LLM-Assist // Oskar
+==== LLM-Assist // Oskar
 This design leverages an LLM to streamline smartwatch text entry by asking clarifying questions based on incoming messages. When a user receives a text, the LLM analyzes it and prompts the user with simple questions to build and refine their response. For example, if asked about availability, the LLM may offer "Yes" or "No" buttons and follow up with a time request if needed. Once enough information is gathered, the LLM generates a suggested reply for approval, allowing the user to accept, edit, or discard it. Over time, the system personalizes responses based on the user’s past language patterns for greater accuracy and convenience.
 
 Having a LLM craft a possibly extensive reply with only a small number of user inputs is something that was positively received. 
 
 Some of the critiques this design faced is how the user would go from the LLM assist mode to a mode that uses the conventual text-entry method seen on smartwatches today. For example, what happens after you click "no" to the LLM proposed response? Do you have an opportunity to retry at the LLM-assist? Another concern had to do with the limitations of the state of the art LLMs, how might we make the responses less verbose and more similar to text messages? And how might the LLM respond to multi-language texts? Although these are concerns, the state of the art LLMs developed by OpenAI and Claude have many features that can not only mimic writing styles but also languages. However, since LLMs are not deterministic, one critique points out what happens when the LLM does not ask the "right" questions, questions that the user thinks would be important to the scope of the message.  
 
-=== All Encompassing Text App // Nivedhitha
+==== All Encompassing Text App // Nivedhitha
 
 This design focuses on enhancing smartwatch usability, addressing common challenges like food stains, long nails, broken screens, and time-sensitive tasks. It prioritizes accessibility, efficiency, and ease of interaction, aiming to improve the overall user experience.
 
@@ -372,11 +377,48 @@ Following the design critique, several key insights emerged, helping refine the 
 
 Building upon the Dynamic Key Hitbox and Quick Correct Swipe Type designs, our final design prioritizes suggested responses while allowing the user to enter any custom message. The core of this design addresses the two prominent challenges identified in our contextual interviews: the need for faster interaction for quick replies and more accurate manual text entry when custom messages are required.
 
-The interface initially presents users with suggested responses when viewing a notification for a message. These suggestions are contextually generated based on message content and past responses, addressing the needs of users who often send quick standardized responses when they are busy. Users who require more customized text entry can scroll down to access the Dynamic Key Hitbox keyboard to type custom messages.
+Most critiques consistently praised designs that offered immediate shortcuts or suggested responses for routine messages, noting how short, standardized phrases could speed up interactions and prevent users from fumbling on a small keyboard for every reply. At the same time, they stressed the importance of retaining a reliable manual typing interface for cases where users need finer control or have to enter more detailed text. As these challenges arose, the design critiques favored solutions that integrate both quick suggestions and an adaptive keyboard in a single flow. Consequently, our final design adopts contextual suggestions at the outset while also including a Dynamic Key Hitbox keyboard to ensure custom input remains accessible and accurate.
 
-When a user selects a suggested response, the system shows a confirmation popup. The chosen suggestion expands to fill the center of the screen, with prominent "Send," "Edit," and "Cancel" options shown below. The "Edit" button allows the user to edit the suggestion using the keyboard, while "Cancel" returns them to the previous menu, allowing them to choose a different suggestion. This directly addresses the concern raised by participants who desired confirmation steps before sending messages. For users who are tend to message in conditions where accidental taps are possible, this prevents miscommunications without significantly increasing interaction time.
+The interface initially presents users with suggested responses when viewing a notification for a message, as shown in @sketch:suggestions. These suggestions are contextually generated based on message content and past responses, addressing the needs of users who often send quick standardized responses when they are busy. Users who require more customized text entry can scroll down to access the Dynamic Key Hitbox keyboard to type custom messages. This is indicated by the keyboard icon with an arrow at the bottom of the screen, also shown in @sketch:suggestions.
 
-If the user chooses to edit a suggestion or create a custom message, they access the Dynamic Key Hitbox keyboard. It silently changes the sizes of a key's hitbox, preventing errors by adapting to likely letter combinations. This adaptive approach is particularly valuable for both our persona: Emily, whose long nails and on-the-move lifestyle make precise tapping difficult. 
+#sketch(
+  image(
+    "assets/sketches/final/sketch4.png", 
+    height: 2in,
+  ),
+  label: "sketch:suggestions",
+  caption: "Suggestions being displayed upon the user opening a received test"
+)
+
+When a user selects a suggested response, the system shows a confirmation popup. The chosen suggestion expands to fill the center of the screen, with prominent "Send," "Edit," and "Cancel" options shown below, as shown in @sketch:suggestions-options. The "Edit" button allows the user to edit the suggestion using the keyboard, while "Cancel" returns them to the previous menu, allowing them to choose a different suggestion. This directly addresses the concern raised by participants who desired confirmation steps before sending messages. For users who are tend to message in conditions where accidental taps are possible, this prevents miscommunications without significantly increasing interaction time.
+
+#sketch(
+  image(
+    "assets/sketches/final/sketch5.png",
+    height: 2in
+  ),
+  caption: "Interface after the user chooses a suggestion",
+  label: "sketch:suggestions-options"
+)
+
+If the user chooses to edit a suggestion or create a custom message, they access the Dynamic Key Hitbox keyboard. It silently changes the sizes of a key's hitbox, preventing errors by adapting to likely letter combinations as show in @sketch:hitbox-expanded-2 and @sketch:hitbox-expanded-1. This adaptive approach is particularly valuable for both our persona: Emily, whose long nails and on-the-move lifestyle make precise tapping difficult.
+
+#sketch(
+  image(
+    "assets/sketches/final/sketch2.png",
+    height: 2in
+  ),
+  label: "sketch:hitbox-expanded-2",
+  caption: [The hitbox for "D" expands into the space of its neighbors, since it is more likely to be typed]
+),
+#sketch(
+  image(
+    "assets/sketches/final/sketch1.png",
+    height: 2in
+  ),
+  label: "sketch:hitbox-expanded-1",
+  caption: [The hitbox doesn't expand into the space for the letter "R," as it is also likely to be typed]
+)
 
 For users who might type abbreviations and unconventional words, the keyboard is able to accommodate these tasks. When typing abbreviations with `CAPS LOCK` turned on, the system automatically reverts hitboxes to their regular sizes as to not prevent the user from typing letters that would be otherwise unlikely to typed together. For other words where common linguistic patterns might not be followed, the system also reverts hitboxes to regular sizes after the user erases a letter after making a typo. This ensures that the system will not hinder the user for the remainder of a word that is linguistically an outlier.
 
@@ -384,15 +426,33 @@ The combination of these features form a design that addresses both approaches t
 
 We designed this interface to prioritize the fastest interaction method (prioritized suggestions) while maintaining support for precision typing (Dynamic Key Hitbox), our design creates a flexible system that accommodates various user needs, physical limitations, and environmental contexts. The confirmation step provides the confidence users desire in message accuracy, while the adaptive keyboard ensures that when custom text is required, users can type with minimal errors regardless of environmental conditions or physical constraints.
 
+
+
 == Storyboards
 #image("assets/storyboards/GROUP_STORYBOARD.jpeg")
 
 == Paper Prototype
 // Does the Initial Design and Low Fidelity Prototypes section contain a description and figures depicting the the "final" group design paper prototype? Does the description contain justification for changes based on the design critiques? Does the section contain a brief description of how an investigator could Wizard of Oz the prototype?
 
-Our paper prototype consists of a hollow smartwatch frame with screens and widgets that are placable behind the screen above a piece of paper. The items between the frame and the background can be changed and replaced by an operator to make the smartwatch "function."
+We crafted a paper prototype that consists of a hollow smartwatch frame with screens and widgets that are placable behind the screen above a piece of paper. The items between the frame and the background can be changed and replaced by an operator to make the smartwatch "function." @fig:notification shows a notification that a user tester will first encounter. Assets were made for all possible interactions within our controlled scenario. @fig:assets in the Appendix shows all the paper components.
 
-Inside the hollow watch frame, we place a paper keyboard that reflects the keyboard that would be found on the actual design. Prior to starting their task the user's finger will be marked with some kind of ink or other coloring. When the user presses a key, their finger placement will be saved onto the paper. An operator will then check which hitbox the press went into and add the corresponding letter to the message.
+// Design change based on critique taken from final design 
+//Most critiques consistently praised designs that offered immediate shortcuts or suggested responses for routine messages, noting how short, standardized phrases could speed up interactions and prevent users from fumbling on a small keyboard for every reply. At the same time, they stressed the importance of retaining a reliable manual typing interface for cases where users need finer control or have to enter more detailed text. As these challenges arose, the design critiques favored solutions that integrate both quick suggestions and an adaptive keyboard in a single flow. Consequently, our final design adopts contextual suggestions at the outset while also including a Dynamic Key Hitbox keyboard to ensure custom input remains accessible and accurate.
+
+#figure(
+  image(width: 45%, "assets/paper-prototype/notification.jpg"),
+  caption: [A notification screen with various ways to reply]
+) <fig:notification>
+
+Within the hollow watch frame, we can place various screens inside with other components placed on top. One screen is the notification screen with various suggested responses for a quick message. This screen was necessary as critiques consistently favored 
+Since our solution is invisible to the user, we need a method to determine with certainty where a user's finger taps the keyboard when they type. Prior to starting their task the user's finger will be marked with some kind of ink or other coloring. When the user presses a key, their finger placement will be saved onto the paper. If the user is typing on the keyboard, the operator can compare each marked location with a set of printed reference hitboxes, as shown in figure @fig:hitboxes.
+
+
+
+#figure(
+  image(width: 50%, "assets/paper-prototype/hitboxes.jpg"),
+  caption: "The operator's set of hitboxes"
+) <fig:hitboxes>
 
 = Usability Evaluation
 
@@ -459,7 +519,7 @@ Due to the small screen users, the survey also indicates that users might want t
 
 Our aggregated findings from Contextual Inquiry deepen the perspective gained from our previous survey by illustrating the granular breakdowns people face when typing on a tiny watch interface. Participants across different ages and backgrounds echoed the view that the watch is best suited for quick glances or short messages, with complex text tasks delegated to a phone. This pattern matches our earlier hypothesis that small screens alone do not explain why text-entry is so marginal; rather, usability gaps — like a lack of quick edit options or a reliable predictive engine — exacerbate the difficulty.
 
-We now see a narrower focus forming around features that support short, context-specific messages in a more controlled manner. The emphasis on confirmations, immediate error correction, and discreet input suggests an urgent need to refine the watch's interplay between automatic suggestions and manual editing. We plan to concentrate on prototyping a streamlined text-entry interface that meets these requirements, potentially reducing the friction that drives participants to switch devices for minor replies.
+We now see a narrower focus forming around features that support short, context-specific messages in a more controlled manner. The emphasis on confirmations, immediate error correction, and discreet input suggests an urgent need to refine the watch's interplay between automatic suggestions and manual editing. Our finalized low-fidelity prototype combines these features into a discreet package that builds on familiar smartwatch interfaces.
 
 = Conclusion and Future Work
 // What is the takeaway of this project? Were there any parts of the project that you did not include in the scope of this project? Here is where you will discuss how the current assignment will inform the rest of your project. For example, in Assignment 1, how will the results of your survey influence the future steps in understanding context of use? Feel free to use your creativity to suggest new research directions, designs---but these suggestions must be supported by the findings of your study
@@ -467,8 +527,9 @@ This study set out to clarify how people enter text on smartwatches and to ident
 
 Through our Contextual Inquiry data, we have discovered that almost all text-entry tasks our participants performed on smartwatches were related to short text messaging. Participants' discomfort with tiny keyboards and the lack of robust predictive or editing features often prompted them to switch devices rather than persevere on the watch. These insights have informed our future focuses and goals towards ensuring users feel that a design allows them to achieve their goal of sending quick text-messages on their smartwatches.
 
-Additionally, our Contextual Inquiry data provided us specific frustrations users experienced when performing text entry tasks. In particular, the interface we design needs to have sufficiently large interactive objects to reduce input error and have predictive features to speed up entry. Our next steps are to explore how predictive typing features can be better integrated into smartwatches. Building on the new Contextual Inquiry data, we will develop low-fidelity prototypes aimed at facilitating short text replies and minimal error rates. We plan to develop and test interactive text-entry designs that may ease the barrier of entry for user-smartwatch interactions. This direction should ultimately help smartwatch owners feel more at ease sending messages from their wrists instead of reaching for a phone whenever they need to reply.
+Additionally, our Contextual Inquiry data provided us specific frustrations users experienced when performing text entry tasks. In particular, the interface we design needs to have sufficiently large interactive objects to reduce input error and have predictive features to speed up entry. Our next steps are to explore how predictive typing features can be better integrated into smartwatches. Building on the new Contextual Inquiry data, we have developed a low-fidelity prototype aimed at facilitating short text replies and minimal error rates. 
 
+Our sketches displayed many approaches to addressing our user requirements. Ultimately, we chose one that balanced speed and error prevention/correction. User testing is required to validate our prototype. In future work, we plan on recruiting more partitipants for user testing sessions to get first-hand feedback on our design.
 
 = Acknowledgements
 #text(fill: red, [Here, you will acknowledge any individuals or organizations that are not part of your group, but that have contributed to your work.])
@@ -688,7 +749,7 @@ Additionally, our Contextual Inquiry data provided us specific frustrations user
       block(sticky: true, content)
     }
     
-    #new_persona[Ryan's Persona]
+    #new_persona[Ryan's Persona (Compose-Edit Dual Modes)]
     _Mitchell Hoffman_
     - Male
     - 20 years old
@@ -696,7 +757,7 @@ Additionally, our Contextual Inquiry data provided us specific frustrations user
       
     Mitchell Hoffman is a student attending the University of Arkansas and works in a materials lab. In his spare time, he goes out for runs across campus. He uses his smartwatch to automatically keep track of his runs and skip through music while he's running. The runs serve as a way to temporarily disconnect from the world, but sometimes the lab needs him for more urgent matters. At the end of the day, he'll put work first most of the time.
     
-    #new_persona[Kevin's Persona]
+    #new_persona[Kevin's Persona (AR Cursor Type)]
     _Benjamin Andrews_
     - Age: 24
     - Occupation: Software Engineer at a Tech Startup
@@ -710,7 +771,7 @@ Additionally, our Contextual Inquiry data provided us specific frustrations user
     
     Benjamin struggles to respond to messages on his smartwatch due to its small keyboard and inaccurate touch-based typing input. He likes to use the voice-to-text feature since that has been sufficiently accurate for him. However sometimes, he cannot use this feature because he is in a situation where he would prefer not to speak aloud. For example, in the crowded subway on the way to work or when he is in a quiet area at work where people are focused. 
   
-    #new_persona[Oskar's Persona]
+    #new_persona[Oskar's Persona (LLM-Assist)]
     
     _Emily Carter_
     - Gender: Female
@@ -725,10 +786,10 @@ Additionally, our Contextual Inquiry data provided us specific frustrations user
     
     Emily typically carries her phone with her at all times since the hospital needs constant communication with her. However, due to her demanding schedule, she finds it more convenient to look at notifications through her smartwatch, especially when she is running between destinations or in the middle of patient care.
   
-    #new_persona[Nivedhitha's Persona]
+    #new_persona[Nivedhitha's Persona (All Encompassing Text App)]
     #image("assets/diagrams/nividp_persona.png")
   
-    #new_persona[Hyungchan's Persona]
+    #new_persona[Hyungchan's Persona (Quick-Correct Swipe Type)]
     _Kyle Thompson_
     1. Gender: male
     2. Occupation: College student (liberal arts)
@@ -745,7 +806,7 @@ Additionally, our Contextual Inquiry data provided us specific frustrations user
       - Rely on a consistent, predictable text-entry interface that provides confidence in short, on-the-go interactions
   
     #block()
-    #new_persona[Efe's Personas]
+    #new_persona[Efe's Personas (Dynamic Key Hitboxes)]
     _Henry Baker_
     
     Henry Baker is a 28 year-old neighborhood bakery owner in Ann Arbor, Michigan. He uses his smartwatch in both professional and personal contexts, since, similarly to many of our participants, he finds it convenient to be able to immediately read and respond to messages, especially when he is working.
@@ -777,7 +838,7 @@ Additionally, our Contextual Inquiry data provided us specific frustrations user
   ]    
   == Individual Sketches
 
-  #block(sticky: true)[*Efe's Sketch*]
+  #block(sticky: true)[*Efe's Sketch (Dynamic Key Hitboxes)*]
   #grid(
     columns: (1fr, 1fr, 1fr),
     column-gutter: 0.25in,
@@ -787,47 +848,48 @@ Additionally, our Contextual Inquiry data provided us specific frustrations user
   )
 
 
-  #block(sticky: true)[*Ryan's Sketch*]
+  #block(sticky: true)[*Ryan's Sketch (Compose-Edit Dual Modes)*]
   #image("assets/sketches/ryan_sketch.JPEG")
 
-  #block(sticky: true)[*Hyungchan's Sketch*]
+  #block(sticky: true)[*Hyungchan's Sketch (Quick-Correct Swipe Type)*]
   #image("assets/sketches/hc_sketch.jpg")
 
-  #block(sticky: true)[*Kevin's Sketch*]
+  #block(sticky: true)[*Kevin's Sketch (AR Cursor Type)*]
   #image("assets/sketches/kevin_hover.jpeg")
   #image("assets/sketches/kevin_pinch.jpeg")
 
-  #block(sticky: true)[*Oskar's Sketch*]
+  #block(sticky: true)[*Oskar's Sketch (LLM-Assist)*]
   #image("assets/sketches/Oskar_Sketch.png")
 
-  #block(sticky: true)[*Nivedhitha's Sketch*]
+  #block(sticky: true)[*Nivedhitha's Sketch (All Encompassing Text App)*]
   #image("assets/sketches/nividp_sketch1.png")
-  #image("assets/sketches/nividp_Sketch0.png")
+  #align(center)[
+    #image(width: 60%, "assets/sketches/nividp_Sketch0.png")
+  ]
   #image("assets/sketches/nividp_sketch2.png")
   #image("assets/sketches/nividp_sketch3.png")
 
   == Individual Storyboards
 
-  #block(sticky: true)[*Efe's Storyboards*]
+  #block(sticky: true)[*Efe's Storyboards (Dynamic Key Hitboxes)*]
   #image("assets/storyboards/ea_storyboard1.png")
   #image("assets/storyboards/ea_storyboard2.png")
   #image("assets/storyboards/ea_storyboard3.png")
-  
 
-  #block(sticky: true)[*Ryan's Storyboard*]
+  #block(sticky: true)[*Ryan's Storyboard (Compose-Edit Dual Modes)*]
   #image("assets/storyboards/ryan_storyboard1.jpg")
   #image("assets/storyboards/ryan_storyboard2.jpg")
 
-  #block(sticky: true)[*Hyungchan's Storyboard*]
+  #block(sticky: true)[*Hyungchan's Storyboard (Quick-Correct Swipe Type)*]
   #image("assets/storyboards/hc_storyboard.jpg")
 
-  #block(sticky: true)[*Kevin's Storyboard*]
+  #block(sticky: true)[*Kevin's Storyboard (AR Cursor Type)*]
   #image("assets/storyboards/kevin_storyboard.jpeg")
 
-  #block(sticky: true)[*Oskar's Storyboard*]
+  #block(sticky: true)[*Oskar's Storyboard (LLM-Assist)*]
   #image("assets/storyboards/Oskar_Storyboard.png")
 
-  #block(sticky: true)[*Nivedhitha's Storyboard*]
+  #block(sticky: true)[*Nivedhitha's Storyboard (All Encompassing Text App)*]
   #image("assets/storyboards/nividp_story1.png")
   #image("assets/storyboards/nividp_story2.png")
   #image("assets/storyboards/nividp_story3.png")
@@ -848,6 +910,13 @@ Additionally, our Contextual Inquiry data provided us specific frustrations user
   Emily typically carries her phone with her at all times since the hospital needs constant communication with her. However, due to her demanding schedule, she finds it more convenient to look at notifications through her smartwatch, especially when she is running between destinations or in the middle of patient care.
   
   == Final Sketches
+
+  #grid(
+    columns: (1fr,) * 3,
+    ..range(1, 6).map(i => {
+      image("assets/sketches/final/sketch" + str(i) + ".png")
+    })
+  )
   
   == Final Storyboards
 
@@ -858,17 +927,17 @@ Additionally, our Contextual Inquiry data provided us specific frustrations user
   #figure(
     image("assets/paper-prototype/assets.jpg"),
     caption: "The paper prototype components"
-  )
+  ) <fig:assets>
   
   #figure(
     image("assets/paper-prototype/suggestion.jpg"),
     caption: "An example of a user sending a selected suggestion"
-  )
+  ) <fig:suggestion>
   
   #figure(
     image(width: 50%, "assets/paper-prototype/typing.jpg"),
-    caption: "An example of a user sending a selected suggestion"
-  )
+    caption: "An example of the typing interface"
+  ) <fig:typing>
   
   = Usability Evaluation
   
