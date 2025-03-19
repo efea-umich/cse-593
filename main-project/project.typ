@@ -272,9 +272,7 @@ We examined insights from our contextual interviews, consolidated sequence, flow
 
 _*Requirement 1:* Users must have an opportunity to correct mistakes before sending a message._ Many participants reported accidentally selecting the wrong quick reply or mistyping a message without a chance to correct it before sending. Given the small screen size, unintended inputs are common, leading to frustration and errors in communication. The user should be able to correct such errors that may occur. This requirement can be evaluated by measuring how frequently users are able to intercept and correct errors before a message is sent, compared to how often unintended messages are sent without correction.
 
-
 _*Requirement 2:* Users must be able to fix text-entry mistakes faster than it would take for them to switch to another device and complete the task on that external device._ Participants frequently expressed that fixing errors on a smartwatch was so cumbersome that they preferred switching to their smartphone or other device instead. If the effort to correct mistakes is lower than switching devices, users will be more likely to complete their tasks on the smartwatch. This is testable by comparing the average time it takes a participant to fix a mistake on their watch versus performing the same action on an external device.
-
 
 _*Requirement 3:* The user should be able to type accurately and with minimal incorrect input recognitions._
 Users expressed frustration with frequent mistakes caused by the smartwatch misinterpreting input, whether from small keyboard buttons, inaccurate swipe detection, or faulty voice-to-text processing. The user should be able to enter their intended text correctly a high percentage of the time without the need for post-facto error correction. 
@@ -852,8 +850,25 @@ Additionally, our Contextual Inquiry data provided us specific frustrations user
   == Final Sketches
   
   == Final Storyboards
+
+  #image("assets/storyboards/GROUP_STORYBOARD.jpeg")
   
   == Final Paper Prototype
+
+  #figure(
+    image("assets/paper-prototype/assets.jpg"),
+    caption: "The paper prototype components"
+  )
+  
+  #figure(
+    image("assets/paper-prototype/suggestion.jpg"),
+    caption: "An example of a user sending a selected suggestion"
+  )
+  
+  #figure(
+    image(width: 50%, "assets/paper-prototype/typing.jpg"),
+    caption: "An example of a user sending a selected suggestion"
+  )
   
   = Usability Evaluation
   
