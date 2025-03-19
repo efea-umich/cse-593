@@ -353,7 +353,6 @@ Having a LLM craft a possibly extensive reply with only a small number of user i
 Some of the critiques this design faced is how the user would go from the LLM assist mode to a mode that uses the conventual text-entry method seen on smartwatches today. For example, what happens after you click "no" to the LLM proposed response? Do you have an opportunity to retry at the LLM-assist? Another concern had to do with the limitations of the state of the art LLMs, how might we make the responses less verbose and more similar to text messages? And how might the LLM respond to multi-language texts? Although these are concerns, the state of the art LLMs developed by OpenAI and Claude have many features that can not only mimic writing styles but also languages. However, since LLMs are not deterministic, one critique points out what happens when the LLM does not ask the "right" questions, questions that the user thinks would be important to the scope of the message.  
 
 ==== All Encompassing Text App // Nivedhitha
-
 This design focuses on enhancing smartwatch usability, addressing common challenges like food stains, long nails, broken screens, and time-sensitive tasks. It prioritizes accessibility, efficiency, and ease of interaction, aiming to improve the overall user experience.
 
 For the text entry system, the user experience was improved with a redesign of the smartwatch keyboard. The traditional T9 layout was modified, embedding only the alphabetic characters (rather than numbers), which helps expand the touch areas for the keys and ensures easier selection with fewer mistouches. This approach maintains the same time threshold required for key presses as existing methods. Additionally, there is quick access to emojis, allowing users to express emotions efficiently. The design includes two modes: one for alphabetic typing and another for numeric-based text entry, offering flexibility in communication without restrictions on symbols. Special symbols are embedded as a single button, which enlarges upon clicking, ensuring that users can easily access them.
@@ -374,12 +373,11 @@ Following the design critique, several key insights emerged, helping refine the 
 
 === The Final Design
 // Does the Initial Design and Low Fidelity Prototypes section contain a description of the "final" group design? Does the description contain justification for changes based on the design critiques? Does the section contain quality sketches and storyboards for the final design? Do the sketches and storyboards depict the personas?
-
 Building upon the Dynamic Key Hitbox and Quick Correct Swipe Type designs, our final design prioritizes suggested responses while allowing the user to enter any custom message. The core of this design addresses the two prominent challenges identified in our contextual interviews: the need for faster interaction for quick replies and more accurate manual text entry when custom messages are required.
 
-Most critiques consistently praised designs that offered immediate shortcuts or suggested responses for routine messages, noting how short, standardized phrases could speed up interactions and prevent users from fumbling on a small keyboard for every reply. At the same time, they stressed the importance of retaining a reliable manual typing interface for cases where users need finer control or have to enter more detailed text. As these challenges arose, the design critiques favored solutions that integrate both quick suggestions and an adaptive keyboard in a single flow. Consequently, our final design adopts contextual suggestions at the outset while also including a Dynamic Key Hitbox keyboard to ensure custom input remains accessible and accurate.
+Most critiques consistently praised designs that offered immediate shortcuts or suggested responses with confirmation dialogs for routine messages. Short, standardized phrases could speed up interactions, confirmations could prevent accidental sends, and the shortcuts could prevent users from fumbling on a small keyboard for every reply. At the same time, they stressed the importance of retaining a reliable manual typing interface for cases where users need finer control or have to enter more detailed text. As these challenges arose, the design critiques favored solutions that integrate both quick suggestions and an adaptive keyboard in a single flow. Consequently, our final design adopts contextual suggestions at the outset while also including a Dynamic Key Hitbox keyboard to ensure custom input remains accessible and accurate.
 
-The interface initially presents users with suggested responses when viewing a notification for a message, as shown in @sketch:suggestions. These suggestions are contextually generated based on message content and past responses, addressing the needs of users who often send quick standardized responses when they are busy. Users who require more customized text entry can scroll down to access the Dynamic Key Hitbox keyboard to type custom messages. This is indicated by the keyboard icon with an arrow at the bottom of the screen, also shown in @sketch:suggestions.
+The interface initially presents users with suggested responses when viewing a notification for a message, as shown in @sketch:suggestions. These suggestions are contextually generated based on message content and past responses, addressing the needs of users who often send quick standardized responses when they are busy. Users who require more customized text entry can scroll down using the screen or watch crown to access the Dynamic Key Hitbox keyboard to type custom messages. This is indicated by the keyboard icon with an arrow at the bottom of the screen, also shown in @sketch:suggestions.
 
 #sketch(
   image(
@@ -390,7 +388,7 @@ The interface initially presents users with suggested responses when viewing a n
   caption: "Suggestions being displayed upon the user opening a received test"
 )
 
-When a user selects a suggested response, the system shows a confirmation popup. The chosen suggestion expands to fill the center of the screen, with prominent "Send," "Edit," and "Cancel" options shown below, as shown in @sketch:suggestions-options. The "Edit" button allows the user to edit the suggestion using the keyboard, while "Cancel" returns them to the previous menu, allowing them to choose a different suggestion. This directly addresses the concern raised by participants who desired confirmation steps before sending messages. For users who are tend to message in conditions where accidental taps are possible, this prevents miscommunications without significantly increasing interaction time.
+When a user selects a suggested response, the system shows a confirmation popup. The chosen suggestion expands to fill the center of the screen, with prominent "Send," "Edit," and "Cancel" options shown below, as shown in @sketch:suggestions-options. The "Edit" button allows the user to edit the suggestion using the keyboard, while "Cancel" returns them to the previous menu, allowing them to choose a different suggestion. This directly addresses both the concern raised by participants who desired confirmation steps before sending messages and the critiques about individual prototypes lacking confirmation or editing options when users need to correct words not recognized as typos or want to revise partially accepted suggestions. For users who are tend to message in conditions where accidental taps are possible, this gives the user the option to "undo" an accidental tap on a suggestion without significantly increasing interaction time.
 
 #sketch(
   image(
@@ -420,7 +418,16 @@ If the user chooses to edit a suggestion or create a custom message, they access
   caption: [The hitbox doesn't expand into the space for the letter "R," as it is also likely to be typed]
 )
 
-For users who might type abbreviations and unconventional words, the keyboard is able to accommodate these tasks. When typing abbreviations with `CAPS LOCK` turned on, the system automatically reverts hitboxes to their regular sizes as to not prevent the user from typing letters that would be otherwise unlikely to typed together. For other words where common linguistic patterns might not be followed, the system also reverts hitboxes to regular sizes after the user erases a letter after making a typo. This ensures that the system will not hinder the user for the remainder of a word that is linguistically an outlier.
+For users who might type abbreviations and unconventional words, the keyboard is able to accommodate these tasks. When typing abbreviations with `CAPS LOCK` turned on, the system automatically reverts hitboxes to their regular sizes as to not prevent the user from typing letters that would be otherwise unlikely to typed together, as shown in @sketch:hitbox-caps-lock. For other words where common linguistic patterns might not be followed, the system also reverts hitboxes to regular sizes after the user erases a letter after making a typo. This ensures that the system will not hinder the user for the remainder of a word that is linguistically an outlier.
+
+#sketch(
+  image(
+    "assets/sketches/final/sketch3.png",
+    height: 2in
+  ),
+  label: "sketch:hitbox-caps-lock",
+  caption: [The hitbox for "L" stays the same, as `CAPS LOCK` is turned on]
+)
 
 The combination of these features form a design that addresses both approaches to reducing text entry frustration: it minimizes the need for typing through intelligent suggestions while simultaneously reducing errors when typing is necessary. This dual approach recognizes that different contexts call for different interaction methods: some users may prefer suggestions when quickly responding to customers during busy periods, while still requiring accurate keyboard entry for composing more specific messages where suggestions are not sufficient.
 
@@ -431,21 +438,34 @@ We designed this interface to prioritize the fastest interaction method (priorit
 == Storyboards
 #image("assets/storyboards/GROUP_STORYBOARD.jpeg")
 
+In the storyboard panels, Emily Carter is portrayed working as a busy nurse who urgently receives and responds to a message on her Apple Watch. She uses quick suggestions at first and then refines her message with an adjustable keyboard so she can discreetly communicate without disturbing her sleeping patient. These scenes reflect Emily's persona by illustrating her hectic schedule, the need for rapid and accurate text interactions in a noise-sensitive environment, and her reliance on smartwatch features that accommodate long nails and minimize interruptions to patient care.
+
 == Paper Prototype
 // Does the Initial Design and Low Fidelity Prototypes section contain a description and figures depicting the the "final" group design paper prototype? Does the description contain justification for changes based on the design critiques? Does the section contain a brief description of how an investigator could Wizard of Oz the prototype?
 
-We crafted a paper prototype that consists of a hollow smartwatch frame with screens and widgets that are placable behind the screen above a piece of paper. The items between the frame and the background can be changed and replaced by an operator to make the smartwatch "function." @fig:notification shows a notification that a user tester will first encounter. Assets were made for all possible interactions within our controlled scenario. @fig:assets in the Appendix shows all the paper components.
+We crafted a paper prototype that consists of a hollow smartwatch frame with screens and widgets that are placable behind the screen above a piece of paper. The items between the frame and the background can be changed and replaced by an operator to make the smartwatch "function." @fig:notification shows a notification that a user tester will first encounter. Assets were made for all possible interactions within our controlled scenario. @fig:assets shows all the paper components.
+
+#figure(
+    image("assets/paper-prototype/assets.jpg"),
+    caption: "The paper prototype components"
+) <fig:assets>
 
 // Design change based on critique taken from final design 
 //Most critiques consistently praised designs that offered immediate shortcuts or suggested responses for routine messages, noting how short, standardized phrases could speed up interactions and prevent users from fumbling on a small keyboard for every reply. At the same time, they stressed the importance of retaining a reliable manual typing interface for cases where users need finer control or have to enter more detailed text. As these challenges arose, the design critiques favored solutions that integrate both quick suggestions and an adaptive keyboard in a single flow. Consequently, our final design adopts contextual suggestions at the outset while also including a Dynamic Key Hitbox keyboard to ensure custom input remains accessible and accurate.
+// This directly addresses both the concern raised by participants who desired confirmation steps before sending messages and the critiques about individual prototypes lacking confirmation or editing options when users need to correct words not recognized as typos or want to revise partially accepted suggestions.
 
 #figure(
   image(width: 45%, "assets/paper-prototype/notification.jpg"),
   caption: [A notification screen with various ways to reply]
 ) <fig:notification>
 
-Within the hollow watch frame, we can place various screens inside with other components placed on top. One screen is the notification screen with various suggested responses for a quick message. This screen was necessary as critiques consistently favored 
-Since our solution is invisible to the user, we need a method to determine with certainty where a user's finger taps the keyboard when they type. Prior to starting their task the user's finger will be marked with some kind of ink or other coloring. When the user presses a key, their finger placement will be saved onto the paper. If the user is typing on the keyboard, the operator can compare each marked location with a set of printed reference hitboxes, as shown in figure @fig:hitboxes.
+Within the hollow watch frame, we can place various screens inside with other components placed on top. One screen is the notification screen with various suggested responses for a quick message. This screen was necessary as critiques consistently favored designs that included immediate shortcuts or suggested responses for short messages. 
+
+The other screens show a keyboard to allow the user to physically tap keys to type. Since our solution is invisible to the user, we need a method to determine with certainty where a user's finger taps the keyboard when they type. Prior to starting their task the user's finger will be marked with ink. When the user presses a key, their finger placement will be marked onto the paper. If the user is typing on the keyboard, the operator can compare each marked location with a set of printed reference hitboxes, as shown in figure @fig:hitboxes to decide what action to take (_e.g._ decide what the next inserted letter should be). By tracking user finger placement with ink markings, we can analyze the feasibility and usefulness of enlarging individual keys' hitboxes to address prior design critiques about the hitbox accuracy. 
+
+This dual-method approach of combining suggested responses with a manual keyboard option was chosen based on feedback from our design critiques, which highlighted the need for both efficiency from shortcut responses and flexibility and control from an accurate keyboard. 
+
+We can use Wizard of Oz testing with this paper prototype to simulate smartwatch interactions without a functional digital system. The smartwatch frame holds interchangeable paper screens that the operator swaps to reflect different interface states, such as receiving a notification or typing a message. To track typing, the user's finger is marked with ink, leaving visible impressions when they tap. The operator compares these marks to predefined key hitboxes as shown in @fig:hitboxes to simulate an adaptive keyboard. The operator can also act as the smartwatch's AI by selecting suggested replies and updating the interface accordingly to the dialogue presented by the user.
 
 
 
@@ -529,7 +549,7 @@ Through our Contextual Inquiry data, we have discovered that almost all text-ent
 
 Additionally, our Contextual Inquiry data provided us specific frustrations users experienced when performing text entry tasks. In particular, the interface we design needs to have sufficiently large interactive objects to reduce input error and have predictive features to speed up entry. Our next steps are to explore how predictive typing features can be better integrated into smartwatches. Building on the new Contextual Inquiry data, we have developed a low-fidelity prototype aimed at facilitating short text replies and minimal error rates. 
 
-Our sketches displayed many approaches to addressing our user requirements. Ultimately, we chose one that balanced speed and error prevention/correction. User testing is required to validate our prototype. In future work, we plan on recruiting more partitipants for user testing sessions to get first-hand feedback on our design.
+Our sketches showcased many approaches at addressing our user requirements. Ultimately, we chose one that balanced speed and error prevention/correction. User testing will be required to validate our prototype. In future work, we plan on recruiting partitipants for user testing sessions to get direct feedback on our design.
 
 = Acknowledgements
 #text(fill: red, [Here, you will acknowledge any individuals or organizations that are not part of your group, but that have contributed to your work.])
@@ -913,6 +933,7 @@ Our sketches displayed many approaches to addressing our user requirements. Ulti
 
   #grid(
     columns: (1fr,) * 3,
+    gutter: 0.5in,
     ..range(1, 6).map(i => {
       image("assets/sketches/final/sketch" + str(i) + ".png")
     })
@@ -924,20 +945,41 @@ Our sketches displayed many approaches to addressing our user requirements. Ulti
   
   == Final Paper Prototype
 
-  #figure(
-    image("assets/paper-prototype/assets.jpg"),
-    caption: "The paper prototype components"
-  ) <fig:assets>
-  
-  #figure(
-    image("assets/paper-prototype/suggestion.jpg"),
-    caption: "An example of a user sending a selected suggestion"
-  ) <fig:suggestion>
-  
-  #figure(
-    image(width: 50%, "assets/paper-prototype/typing.jpg"),
-    caption: "An example of the typing interface"
-  ) <fig:typing>
+  #[
+    #set image(fit: "contain")
+    #grid(columns: (1fr, 1fr),
+    gutter: 0.5in,
+    align: center + horizon,
+      [#figure(
+        image("assets/paper-prototype/assets.jpg"),
+        caption: "The paper prototype components"
+      )],
+      [#figure(
+        image("assets/paper-prototype/suggestion.jpg"),
+        caption: "An example of a user sending a selected suggestion"
+      )],
+      
+      [#figure(
+        image("assets/paper-prototype/typing.jpg"),
+        caption: "An example of the typing interface"
+      )],
+    
+      [#figure(
+        image("assets/paper-prototype/example-typing.jpg"),
+        caption: "An example of a user typing and the operator's reference hitbox"
+      )],
+    
+      [#figure(
+        image("assets/paper-prototype/notification.jpg"),
+        caption: "An example of the interface after tapping a notification"
+      )],
+      
+      [#figure(
+        image("assets/paper-prototype/hitboxes.jpg"),
+        caption: "The operator's set of hitboxes"
+      )]
+    )
+  ]
   
   = Usability Evaluation
   
