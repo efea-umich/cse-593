@@ -27,7 +27,7 @@
 )
 
 #make_title("Clockworks", authors, "University of Michigan, USA", concepts, keywords)[
-Smartwatches are increasingly common for communication and health tracking, yet small screens deter many users from typing messages on these devices. Our project promises to address this shortfall by gathering detailed insights on when, how, and why people attempt text entry on their watches. A key obstacle lies in the mismatch between tiny touch interfaces and users' language or comfort needs, which exacerbates errors and slows interactions. To investigate, we administered think-aloud pilot surveys, refined surveys, and Contextual Inquiry interviews. We consolidated findings from Contextual Inquiry interviews of six participants who revealed frustrations with limited keyboards, uncertain predictive text, and distractions. Our consolidated results pave the way for users to spend less time correcting errors by overcoming small-screen constraints.
+Smartwatches are increasingly common for communication and health tracking, yet small screens deter many users from typing messages on these devices. Our project promises to address this shortfall by gathering detailed insights on when, how, and why people attempt text entry on their watches. A key obstacle lies in the mismatch between tiny touch interfaces and users' language or comfort needs, which exacerbates errors and slows interactions. To investigate, we administered think-aloud sessions, surveys, and Contextual Inquiry interviews. We consolidated findings from these interviews of six participants who revealed frustrations with limited keyboards, uncertain predictive text, and distractions. Our consolidated results pave the way for users to spend less time correcting errors by overcoming small-screen constraints. After establishing user requirements, we designed a paper prototype for future user testing.
 ]
 
 = Introduction
@@ -328,7 +328,7 @@ The swipe to send bar was positively received as it prevents the user from accid
 
 Notably, an external side button is required to toggle between each mode. This large assumption makes this design potentially incompatible with other smartwatches. Many pointed out that there's no way to type numbers or special symbols. Fitting another row would make each key too small, but there should be another way to type other common characters. Being forced to delete only whole words was also a debated topic. While bulk deletions are fast, they are excessive for small typos that only require a single character operation. Finally, it is ambiguous where the cursor is when toggling from Edit to Compose mode. If, for instance, a word in the middle of a message was just deleted, there's no way to tell if the cursor's position was preserved or if it went back to the end of the message.
 
-=== Quick Correct Swipe Type // Hyungchan
+=== Quick-Correct Swipe Type // Hyungchan
 This prototype design aims to streamline messaging by offering two initial response modes - "Suggestions" and "Keyboard" - and then guiding the user through a step-by-step correction process. Upon tapping "Reply" to an incoming message, users can choose "Suggestions" for quick replies drawn from frequent phrases or "Keyboard" for a standard QWERTY swipe layout. After drafting a message in either mode, the interface automatically highlights potential typos. Tapping each highlighted word reveals suggested corrections, and once every suspect word is addressed, the user sees a final preview before pressing "Send." This ensures short messages can be entered and refined more efficiently than on a small traditional keyboard, giving users control to fix mistakes without reverting to their phones.
 
 The design features that received positive comments are the concept of offering both predictive suggestions and a keyboard option upfront. Commenters felt that quick, canned replies for minimal effort or a more full-featured keyboard with swipe-based input would accommodate different user needs. They also liked the two-step sending process that highlights potential typos before finalizing a message, emphasizing how it reduces the likelihood of sending awkward or erroneous texts. Most found this correction flow intuitive—users can tap on suspect words, see suggested fixes, and make changes without rewriting an entire message. The design effectively addresses frequent complaints about error-prone smartwatch text input and helps streamline minor edits, giving users confidence in sending messages from the watch rather than switching to their phone.
@@ -351,16 +351,13 @@ Some of the critiques this design faced is how the user would go from the LLM as
 
 === All Encompassing Text App // Nivedhitha
 
-*The Design:*
 This design focuses on enhancing smartwatch usability, addressing common challenges like food stains, long nails, broken screens, and time-sensitive tasks. It prioritizes accessibility, efficiency, and ease of interaction, aiming to improve the overall user experience.
 
-For the text entry system, I focused on improving the user experience by redesigning the smartwatch keyboard. I modified the traditional T9 layout, embedding only the alphabetic characters (rather than numbers), which helps expand the touch areas for the keys and ensures easier selection with fewer mistouches. This approach maintains the same time threshold required for key presses as existing methods. Additionally, I incorporated quick access to emojis, allowing users to express emotions efficiently. The design includes two modes: one for alpha typing and another for numeric-based text entry, offering flexibility in communication without restrictions on symbols. Special symbols are embedded as a single button, which enlarges upon clicking, ensuring that users can easily access them.
+For the text entry system, the user experience was improved with a redesign of the smartwatch keyboard. The traditional T9 layout was modified, embedding only the alphabetic characters (rather than numbers), which helps expand the touch areas for the keys and ensures easier selection with fewer mistouches. This approach maintains the same time threshold required for key presses as existing methods. Additionally, there is quick access to emojis, allowing users to express emotions efficiently. The design includes two modes: one for alphabetic typing and another for numeric-based text entry, offering flexibility in communication without restrictions on symbols. Special symbols are embedded as a single button, which enlarges upon clicking, ensuring that users can easily access them.
 
-Given the importance of the space bar in text entry, I’ve integrated this function into the side button of the smartwatch, providing a more ergonomic solution for repetitive use. To address the challenge of reading or typing longer messages, I included a left-to-right scroll bar, which can be operated using the side knob for better message verification and readability. Users also have the option to reply using voice control, allowing for quicker responses without the need for text input. To minimize mistouches and ensure intentional actions, I linked a long-press gesture to the send buttons, offering confirmation before sending a message.
+Given the importance of the space bar in text entry, this function is integrated into the side button of the smartwatch, providing a more ergonomic solution for repetitive use. To address the challenge of reading or typing longer messages, the design includes a left-to-right scroll bar, which can be operated using the side knob for better message verification and readability. Users also have the option to reply using voice control, allowing for quicker responses without the need for text input. To minimize mistouches and ensure intentional actions, the send button only works with a long-press, offering confirmation before sending a message.
 
-To improve readability in bright environments, I designed the UI with dark-colored elements on a light background, enhancing contrast and making it easier to view the screen in sunlight. I also chose sans-serif fonts for better legibility, optimizing space while maintaining clear and readable text, ensuring a consistent user experience in various lighting conditions.
-
-*The Design Critique Summary*
+To improve readability in bright environments, the UI has dark-colored elements on a light background, enhancing contrast and making it easier to view the screen in sunlight. Sans-serif fonts were chosen for better legibility, optimizing space while maintaining clear and readable text, ensuring a consistent user experience in various lighting conditions.
 
 Following the design critique, several key insights emerged, helping refine the smartwatch interface.
 
@@ -389,18 +386,15 @@ The combination of these features form a design that addresses both approaches t
 
 We designed this interface to prioritize the fastest interaction method (prioritized suggestions) while maintaining support for precision typing (Dynamic Key Hitbox), our design creates a flexible system that accommodates various user needs, physical limitations, and environmental contexts. The confirmation step provides the confidence users desire in message accuracy, while the adaptive keyboard ensures that when custom text is required, users can type with minimal errors regardless of environmental conditions or physical constraints.
 
-
-// - Show suggestions first, then the keyboard below (after a scroll, for instance) // Users want suggestions to be quick, and keyboard-typing will be slow, so we would rather take a bit more extra work for keyboard over extra work for suggestions
-//   - If a suggestion is chosen, that word enters the forefront and big options are displayed to send or not send // This allows error prevention as mentioned by users
-// - Keep a standard watch keyboard layout
-// - Implement dynamic hitboxes
-
 == Storyboards
-
-
+#image("assets/storyboards/GROUP_STORYBOARD.jpeg")
 
 == Paper Prototype
 // Does the Initial Design and Low Fidelity Prototypes section contain a description and figures depicting the the "final" group design paper prototype? Does the description contain justification for changes based on the design critiques? Does the section contain a brief description of how an investigator could Wizard of Oz the prototype?
+
+Our paper prototype consists of a hollow smartwatch frame with screens and widgets that are placable behind the screen above a piece of paper. The items between the frame and the background can be changed and replaced by an operator to make the smartwatch "function."
+
+Inside the hollow watch frame, we place a paper keyboard that reflects the keyboard that would be found on the actual design. Prior to starting their task the user's finger will be marked with some kind of ink or other coloring. When the user presses a key, their finger placement will be saved onto the paper. An operator will then check which hitbox the press went into and add the corresponding letter to the message.
 
 = Usability Evaluation
 
@@ -841,6 +835,19 @@ Additionally, our Contextual Inquiry data provided us specific frustrations user
   #image("assets/storyboards/nividp_story3.png")
 
   == Final Personas
+  _Emily Carter_
+  - Gender: Female
+  - Age: 22
+  - Occupation: Registered Nurse
+  - Tech Proficiency: Intermediate
+  - Device: Apple Watch Gen 7
+  - Years with smartwatch: 4
+
+  Emily is a nurse at a prominent hospital in New York City. She works 12-13 hour shifts during the day and typically has 4 to 6 patients under at all times. The hospital is a fast paced environment where she does not know when her next break is. She often has to run around the hospital to manage multiple patients and support doctors. 
+  
+  She primarily uses her smartwatch for viewing patient alerts, shift schedules, and responding to quick messages. In noisy hospital settings, voice input is not ideal, so she prefers typing, tapping pre-set responses, or using swipe gestures for efficiency. She often has trouble typing on her watch due to her long nails, which often are an annoyance when trying to tap small keys on her watch. The smartwatch's ability to provide discreet, instant access to information helps her stay focused while minimizing distractions.
+  
+  Emily typically carries her phone with her at all times since the hospital needs constant communication with her. However, due to her demanding schedule, she finds it more convenient to look at notifications through her smartwatch, especially when she is running between destinations or in the middle of patient care.
   
   == Final Sketches
   

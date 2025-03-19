@@ -112,7 +112,7 @@
       if not draft {
         page_header
       } else {
-        text(size: 24pt, fill: red, "DRAFT")
+        text(size: 24pt, fill: red, smallcaps("Draft — Don't Submit"))
       }
     }
   )
