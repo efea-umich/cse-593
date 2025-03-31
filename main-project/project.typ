@@ -28,7 +28,7 @@
 
 #make_title("Clockworks", authors, "University of Michigan, USA", concepts, keywords)[
 // Does abstract properly summarizes whole assignment using the promise, obstacles, solution, and takeaways format in NO more than 150 words.
-Smartwatches are increasingly common for communication and health tracking, yet small screens deter many users from typing messages on these devices. Our project promises to address this shortfall by gathering detailed insights on when, how, and why people attempt text entry on their watches. A key obstacle lies in the mismatch between tiny touch interfaces and users' language or comfort needs, which exacerbates errors and slows interactions. To investigate, we administered think-aloud sessions, surveys, and Contextual Inquiry interviews. We consolidated findings from these interviews of six participants who revealed frustrations with limited keyboards, uncertain predictive text, and distractions. Our consolidated results pave the way for users to spend less time correcting errors by overcoming small-screen constraints. After establishing user requirements, we created several sketches to generate ideas for our prototype. We finalized a paper prototype that offers quick, pre-generated responses and an accurate, enlarged-hitbox keyboard that now awaits user testing.
+Smartwatches are increasingly common for communication and health tracking, yet small screens deter many users from typing messages on these devices. Our project promises to address this shortfall by gathering detailed insights on when, how, and why people attempt text entry on their watches. A key obstacle lies in the mismatch between tiny touch interfaces and users' language or comfort needs, which exacerbates errors and slows interactions. To investigate, we administered think-aloud sessions, surveys, and Contextual Inquiry interviews. These interviews revealed frustrations with limited keyboards, uncertain predictive text, and distractions. Our consolidated results pave the way for users to spend less time correcting errors by overcoming small-screen constraints. After establishing user requirements, we created a paper prototype that offers quick, pre-generated responses and an accurate, enlarged-hitbox keyboard. User testing and expert heuristic evaluation revealed several usability issues that need to be addressed before creating a high-fidelity prototype.
 ]
 
 = Introduction
@@ -279,8 +279,8 @@ _*Requirement 1:* Users must have an opportunity to correct mistakes before send
 
 _*Requirement 2:* Users must be able to fix text-entry mistakes faster than it would take for them to switch to another device and complete the task on that external device._ Participants frequently expressed that fixing errors on a smartwatch was so cumbersome that they preferred switching to their smartphone or other device instead. If the effort to correct mistakes is lower than switching devices, users will be more likely to complete their tasks on the smartwatch. This is testable by comparing the average time it takes a participant to fix a mistake on their watch versus performing the same action on an external device.
 
-_*Requirement 3:* The user should be able to type accurately and with minimal incorrect input recognitions._
-Users expressed frustration with frequent mistakes caused by the smartwatch misinterpreting input, whether from small keyboard buttons, inaccurate swipe detection, or faulty voice-to-text processing. The user should be able to enter their intended text correctly a high percentage of the time without the need for post-facto error correction. 
+_*Requirement 3:* Requirement 3: Users should be able to enter text more accurately on this design than by typing on the existing smartwatch keyboard._
+Users expressed frustration with frequent mistakes caused by the smartwatch misinterpreting input, whether from small keyboard buttons, inaccurate swipe detection, or faulty voice-to-text processing. The user should be able to enter their intended text correctly a high percentage of the time without the need for post-facto error correction compared to current smartwatch text-input designs. 
 This requirement can be tested by tracking the error rate of the user's text-input on different text-entry tasks.
 
 _*Requirement 4:* Users should be able to complete short text-entry tasks on the smartwatch faster and more reliably than on external devices, including any overhead to setting up the external device (_e.g._ taking a phone out of a pocket)._ Participants reported that they prefer to use their smartwatches for short text-entry tasks (_e.g._ replying to casual messages) because they would like to avoid the overhead of setting up some other external device for these tasks. Users tended to resort to their phone or other device if the response required anything more than a few words. As such, a design should fulfill users' desires and optimize for speed and convenience when considering brief interactions. By doing so, this would make the smartwatch a more viable tool for communication. The effectiveness of this requirement can be assessed by timing participants completing a set of short text-entry tasks on a smartwatch versus retrieving and using an external device (such as taking a phone out of a pocket).
@@ -478,6 +478,34 @@ We can use Wizard of Oz testing with this paper prototype to simulate smartwatch
 
 === Method
 // What did the method entail?
+We used Nielsen’s 10 Usability Heuristics as the guide for this heuristic evaluation. This method is appropriate for our paper prototype design as it allows usability experts to identify potential issues quickly without requiring a full implementation.
+
+The heuristic evaluation was conducted by a classmate that acted as the usability expert. Each usability issue identified by the expert evaluator was matched to one or more of Nielsen's heuristics. Evaluators were asked to inspect the interface at least twice: once to get a general understanding of the design, and once to focus on specific interface elements. The Nielsen's Usability Heuristics that the evaluators critiqued our design on are listed below:
+
+1. Visibility of system status 
+2. Match between system and the real world 
+3. User control and freedom 
+4. Consistency and standards 
+5. Error prevention
+6. Recognition rather than recall
+7. Flexibility and efficiency of use 
+8. Aesthetic and minimalist design 
+9. Help users recognize, diagnose, and recover from errors 
+10. Help and documentation
+
+All usability problems identified by the evaluator were documented in a format that includes: 
+
+1. Problem description \
+2. Violated heuristic(s) \
+3. Severity rating (on a 1–4 scale) \
+4. Recommendations for improvement
+
+The severity ratings are scored from 1-4 and a description of their respective weights are as follows: 
+
+1. Cosmetic issue: need not be fixed
+2. Minor issue: needs fixing but low priority
+3. Major issue: needs fixing and high priority
+4. Catastrophic issue: imperative to fix
 
 === Tasks and Procedures
 // What did the task entail?
@@ -486,20 +514,129 @@ We can use Wizard of Oz testing with this paper prototype to simulate smartwatch
 // How long did the task take on average?
 // How did you go about ensuring quality control of tasks?
 
+The setup for the evaluation was conducted using our group-designed protocol. Before beginning, we explained to the evaluator the purpose of the prototype, the general user context, and the key features available for use. We explained to the evaluator that the purpose of the prototype was to allow for faster, more efficient, and more accurate ways for a smartwatch user to enter text, specifically for messages, into their smartwatch. Then, we describe the general context of use for our smartwatch prototype. For our prototype, we designed it for the average user that needs to quickly respond to text messages while unable to use the smartwatch's voice-to-text feature. This user may sometimes need to craft longer or more customized text messages. We also mentioned some specific examples of intended personas such as a worker responding to messages on the subway. Finally, we demonstrated the prototype's key features to the evaluators such as: 
+
+1. The initial quick, suggested responses when receiving a new message
+2. Options to cancel, edit, or send a chosen suggested response
+3. The Dynamic Key Hitbox keyboard that predicts the user's most likely next character and enlarges the hitbox for it
+4. Features that help the user cancel the Dynamic Key Hitbox's character predictions
+
+To help the evaluators understand what to do with our prototype, we asked them to accomplish tasks such as respond to a message using a suggested response, type a customized response that would be more conventional (easily predictable by the Dynamic Key Hitbox feature), and type a customized response that is more unconventional (more prone to incorrect key predictions).
+
+The evaluator reviewed the interface independently, inspecting it for usability problems and documenting each issue. Usability problems were recorded on a table that included the violated heuristic, a description, severity score, and recommendation if the evaluator had one. If the evaluator became stuck on an issue, we helped them with their interaction with the design but noted the problem.
+
+On average, our evaluators took 12 minutes to fully understand and explore our prototype and generate all of the comments for the heuristic evaluation report. 
+
+To ensure the reliability and consistency of our evaluation process, we implemented several quality control measures. First, we provided a standardized briefing, as stated above, to all evaluators to ensure they had the same level of understanding before beginning their assessments. During the evaluation, we encouraged evaluators to reference specific aspects of the prototype in their comments to make sure they were grounded in evidence. However, this was not required of the evaluators to minimize our interference with the evaluation. Finally, after the evaluator finished generating comments on the prototype, we reviewed them together to ensure accuracy and clarify their meaning.
+
+When all the heuristic evaluations were completed, we reviewed the collected heuristic violation reports to identify inconsistencies or missing details, allowing us to refine our findings and ensure a high-quality assessment.
+
 === Participants
-// Please provide demographic information of participants: number of participants, by age, by gender, by disability if relevant for the study, by experience with task, location, any other criteria for recruitment, how they were recruited, were they given any incentives, mode of study conducted (virtual or in-person)
+
+==== Recruitment and Study Mode
+Participants were recruited from the University of Michigan, particularly from the CSE 593 class. They were selected based on their familiarity with usability heuristics and their ability to provide valuable expert feedback on user interface designs. The study was conducted in-person, and no monetary incentives were provided for participation.
+
+==== Consent Administration
 // How was consent for participation sought and administered?
+Prior to participation, all individuals provided informed consent. The consent process included a briefing on the study’s purpose, an explanation of their role in the evaluation, and assurances of confidentiality and voluntary participation. Participants were given the opportunity to ask questions before proceeding with the study.
+
+==== Demographics
+// Please provide demographic information of participants: number of participants, by age, by gender, by disability if relevant for the study, by experience with task, location, any other criteria for recruitment, how they were recruited, were they given any incentives, mode of study conducted (virtual or in-person)
+
 // How did you decide on the number of participants for your study?
+
+The study involved a total of six participants, all of whom were students or professionals with a background in computer science.\
+*Expert 1 (HE-01)*
+- Age: 22
+- Gender: Male
+- Education/Background: Master's student at the University of Michigan
+- Technical Expertise: Experience in computer science and machine learning, limited design experience
+- Smartwatch Ownership: Owns an Apple Watch
+- Usage Level: Has used an Apple Watch for at least one year including texting
+- Familiarity: Comfortable typing and performing various functions on the device
+\
+*Expert 2 (HE-02)*
+- Age: 21
+- Gender: Male
+- Education/Background: Computer Science SUGS student at the University of Michigan
+- Technical Expertise: Familiar with conventional auto-suggestions, limited design experience
+- Smartwatch Ownership: Owns an Apple Watch
+- Usage Level: Does not use it for texting
+- Familiarity: Familiar with how conventional auto-suggestions work
+\
+*Expert 3 (HE-03)*
+- Age: 22
+- Gender: Male
+- Education/Background: Computer Science SUGS student at the University of Michigan
+- Technical Expertise: Highly proficient with technology such as smartphones and computers
+- Smartwatch Ownership: Does not own a smartwatch
+- Usage Level: Has used smartwatches before
+- Familiarity: Knows how smartwatches function
+\
+*Expert 4 (HE-04)*
+- Age: 23
+- Gender: Male
+- Education/Background: Student in CSE 593 at the University of Michigan
+- Technical Expertise: Moderate experience designing iOS apps with applications in accessibility and indoor navigation
+- Smartwatch Ownership: Does not own a smartwatch
+- Usage Level: Evaluated a smartwatch text-entry prototype
+- Familiarity: Experience with heuristic evaluation techniques related to usability
+\
+*Expert 5 (HE-05)*
+- Age: 22
+- Gender: Female
+- Education/Background: Computer Science MSE student at the University of Michigan
+- Technical Expertise: Highly familiar with technology interfaces
+- Smartwatch Ownership: Has owned or consistently worn an Apple Watch for four years
+- Usage Level: Everyday for many uses including texting
+- Familiarity: Well-versed in usability principles and technology interfaces
+\
+*Expert 6 (HE-06)*
+Age: 35
+Gender: Male
+Education/Background: Technical professional at Ford Motors for a decade, pursuing a Master’s in Computer Science
+Technical Expertise: Highly proficient with smartphones and computers
+Smartwatch Ownership: Has never owned a smartwatch
+Usage Level: Understands smartwatch functionality through observations of friends and family
+Familiarity: Enrolled in a human-computer interaction design course with knowledge of heuristic evaluation
+\
+The number of participants was determined on the principles of heuristic evaluation, which suggest that 5-7 evaluators can identify the majority of usability issues. Given the technical expertise and usability knowledge of the participants, this sample size was deemed sufficient to generate meaningful insights into smartwatch text-entry usability and design improvements.
 
 === Results
 // Report the results of heuristic evaluation here.
 // Does the assignment contain notes on all usability issues that the experts found with corresponding usability heuristic and severity score? (Note that you should compile all of the individual reports into one report, you can note if there are duplicate issues.)
+The most prevalent issues discusssed in the heuristic evluation report was a lack of indicators when the dyanamic hitboxes triggered, a lack of a back button in the keyboard screen, and missing common features such as voice input and special symbols/emojis. Our design was also found to be too opaque -- users had no way to know when or how the dynamic hitboxes change, and there was no documentation to learn about it.
+
+Evaluators also gave positive feedback of our design. Many liked the smart suggestions and the ability to edit those suggestions. When the dynamic keyboard works as expected, the experience is seamless and requires very little additional effort.
+
+Many of the issues found can be fixed quickly, such as adding back buttons on all screens and creating documentation. However, we need to evaluate the tradeoff between subtle convenience and explicit user control. Many evaluators noted that there should be some kind of indicator of when a correction takes place, but that on its own may further confuse a user.
+
+The full heuristic evaluation report is available in Appendix E.2.
 
 == Simplified User Testing
 // Does "7.2 Simplified User Testing" section contain a proper summary of the purpose of the experiments, method, tasks and procedures, and participants? Does the method subsection indicate which user requirements the evaluation tested the designs against?
 
 === Method
 // What did the method entail?
+Each member of our team worked with one participant and used a simplified user testing approach on our low-fidelity paper prototype and the think-aloud protocol. This method allowed us to quickly evaluate user interactions without needing a fully implemented, high-fidelity interface. A member of our team acted as the "backend" in a Wizard of Oz setup, simulating system behavior in real-time by manually swapping paper screens and tracking the user's input.
+
+The participants in our user testing studies were instructed to think aloud throughout the session. They were asked to verbalize their thoughts, intentions, and frustrations as they completed each task. We avoided interrupting the participant during the task, only asking them to keep talking if they became quiet. After the testing, we asked follow-up questions to clarify observed behaviors and gather additional reflections.
+
+We took written notes during the session, recording user actions, errors, comments, and signs of confusion. We also documented when the system met or failed user expectations related to our three key requirements.
+
+\
+*NEED TO FIX REQUIREMENTS AND THEIR REFERENCES \ *
+\
+These requirements come from our group's previous assignments and are as follows: 
+
+1. Requirement 1: Users must have the opportunity to correct errors before sending messages.
+2. Requirement 3: Users should be able to enter text more accurately on this design than by typing on the existing smartwatch keyboard.
+3. Requirement 6: Users should feel comfortable using the text-entry method in public.
+
+We decided not to evaluate our prototype against other user requirements because they included times to complete a task and it is hard to quantify interaction time with simplified user testing. Although Requirement 3 requires comparison against an existing smartwatch, we cannot feasibly compare performance of a low-fidelity prototype with an actual product and will instead qualitatively observe how accurate our participants were able to enter text on the prototype. 
+
+To evaluate Requirement 1, we plan to note the times that users were able to intercept and correct errors before sending a message. To evaluate Requirement 3, we plan to observe the amount of correct inputs and incorrect inputs a user made with our prototype. Finally, to evaluate Requirement 6, we plan to ask the participant at the end of the user testing to report their perceived comfort levels with using this design in a public setting. 
+
 
 === Tasks and Procedures
 // What did the task entail?
@@ -508,10 +645,105 @@ We can use Wizard of Oz testing with this paper prototype to simulate smartwatch
 // How long did the task take on average?
 // How did you go about ensuring quality control of tasks?
 
+Before the session began, we obtained informed consent from the participant and explained the purpose of the study. We described the context in which the prototype would be used: an average user that needs to quickly respond to text messages while unable to use the smartwatch's voice-to-text feature. This user may sometimes need to craft longer or more customized text messages.
+
+We gave a brief overview of the prototype's core features but did not go into depth to demonstrate how to use them or the details in their implementation. This was to allow the user to discover how the features work on their own and expose issues without prior knowledge. The core features explained where:
+
+1. Suggested replies shown when a message is received
+2. Confirmation options (Send, Edit, Cancel) after selecting a suggested response
+3. A dynamic keyboard that adapts key hitboxes based on the predicted next character
+
+Then, the participant was asked to complete the following tasks using the paper prototype. The scenario is shown in #ref(<fig:notification>). 
+
+1. Task 1: Your phone is away and you need to respond ASAP. Tell Joyce that chicken is okay.
+2. Task 2: Your phone is away and you need to respond ASAP. You're okay having chicken for dinner but think you need more. Tell Joyce to "get two" chickens.
+3. Task 3: Your phone is away and you need to respond ASAP. Tell Joyce "Ill have salad."
+
+In Task 1, we hope to identify any issues users encounter when discovering and utilizing the suggested responses to reply. In Task 2, we will use Wizard of Oz technique to demonstrate how the keyboard might correctly predict the user's next characters when they respond "get two." In Task 3, we will use Wizard of Oz technique to demonstrate how the keyboard might incorrectly predict the user's next characters when they respond "Ill have salad." These tasks attempt to cover all of the scenarios a user might encounter while using this design in the real world.
+
+During the session, the test facilitator acted as the “system,” updating the interface screens in response to the user’s actions and recording their finger taps (using an inked finger method) to simulate the adaptive hitbox functionality.
+
+After the tasks were completed, we asked follow-up questions such as:
+
+1. “How confident did you feel that your message was accurate?”
+2. “Was there any point where you felt unsure what the system was doing?”
+3. “Would you feel comfortable using this in a public setting?”
+
+On average, Task 1 took 1.5 minutes to complete, Task 2 took 2.5 minutes to fully complete, and Task 3 took 3 minutes to fully complete. 
+
+To ensure the reliability and consistency of our user testing, we implemented several quality control measures. First, each team member followed a standardized testing procedure, ensuring that all participants received the same instructions and task scenarios. This helped minimize variability in how tasks were presented and interpreted. We also maintained consistency in our facilitation by limiting interaction with participants during the task, only reminding them to think aloud if they became silent. This approach ensured that user behavior and feedback remained as natural and unbiased as possible. To further improve accuracy, we cross-checked observations after the session. Team members compared notes to ensure key usability issues were consistently identified across participants. In cases where discrepancies arose, we discussed and clarified findings before finalizing our evaluation. Finally, by using a Wizard of Oz setup, we ensured that system behavior remained predictable and realistic, allowing us to maintain control over the prototype’s responses. This helped us gather meaningful feedback without introducing inconsistencies due to differences in manual prototype operation.
+
 === Participants
 // Please provide demographic information of participants: number of participants, by age, by gender, by disability if relevant for the study, by experience with task, location, any other criteria for recruitment, how they were recruited, were they given any incentives, mode of study conducted (virtual or in-person)
 // How was consent for participation sought and administered?
-// How did you decide on the number of participants for your study?
+// How did you decide on the number of participants for your study
+
+==== Recruitment and Study Mode
+Participants were recruited from the University of Michigan - Ann Arbor, primarily from the Computer Science and Nursing departments. They were selected through friends and family. We looked for people with smartwatch experience, so they were familiar with smartwatch interface design. The study was conducted in person (on-campus), and no monetary incentives were provided.
+\
+==== Consent Administration
+Before participation, all individuals provided informed consent. The consent process included an overview of the study’s purpose, the role of participants, and assurances of confidentiality and voluntary participation. Participants were given the opportunity to ask questions before proceeding.
+\
+
+==== Demographics
+The study involved a total of six participants.\
+\
+*User 1*
+- Age: 22
+- Gender: Male
+- Education/Background: Master's student in Computer Science
+- Technical Expertise: Experience in machine learning and computer science, limited design experience
+- Smartwatch Ownership: Owns an Apple Watch
+- Usage Level: Has used an Apple Watch for over a year, including for texting
+- Familiarity: Comfortable with typing and performing various functions on the smartwatch
+\
+*User 2*
+- Age: 21
+- Gender: Female
+- Education/Background: Nursing student
+- Technical Expertise: Uses technology extensively, including smartphones and computers
+- Smartwatch Ownership: Owns an Apple Watch
+- Usage Level: Uses the smartwatch daily to read notifications at the hospital
+- Familiarity: No formal or informal design experience
+\
+*User 3*
+- Age: 22
+- Gender: Male
+- Education/Background: Computer Science SUGS student
+- Technical Expertise: Highly proficient with technology such as smartphones and computers
+- Smartwatch Ownership: Does not own a smartwatch but has used one before
+- Usage Level: Familiar with how smartwatches work
+- Familiarity: Currently enrolled in a human-computer interaction course with knowledge of heuristic evaluation
+\
+*User 4*
+- Age: 23
+- Gender: Male
+- Education/Background: Student in CSE 593 (Computer Science)
+- Technical Expertise: Moderate experience designing iOS apps with applications in accessibility and indoor navigation
+- Smartwatch Ownership: Does not own a smartwatch
+- Usage Level: Evaluated a smartwatch text-entry prototype
+- Familiarity: Experience with heuristic evaluation techniques related to usability
+\
+*User 5*
+- Age: 22
+- Gender: Female
+- Education/Background: Computer Science MSE student at the University of Michigan
+- Technical Expertise: Highly familiar with technology interfaces
+- Smartwatch Ownership: Has owned or consistently worn an Apple Watch for four years
+- Usage Level: Everyday for many uses including texting
+- Familiarity: Well-versed in usability principles and technology interfaces
+\
+*User 6*
+- Age: 22
+- Gender: Male
+- Education/Background: Machine Learning Engineer with a Computer Science background
+- Technical Expertise: Highly proficient with smartphones, computers, and smartwatches
+- Smartwatch Ownership: Owns a Noise smartwatch
+- Usage Level: More than two years of experience using the device
+- Familiarity: Uses basic to medium smartwatch features frequently due to professional background 
+
+\ 
+We decided on the number of participants based on the project requirements and the need for a well-rounded evaluation of our prototype. Each team member conducted simplified user testing with one participant, resulting in a total of six testing evaluations. We decided that six evaluations was enough to provide a diverse set of perspectives to identify both the strengths and weaknesses of our prototype while still being manageable within our timeframe.
 
 === Results
 // Report the results of simplified user testing here.
@@ -683,7 +915,7 @@ We feel comfortable that our design is aligned with our user requirements. In fu
     - U04-08: While she occasionally uses typing suggestions, they are infrequently relied upon and lack accuracy for her needs.
     - U04-09: She finds erasing mistakes on the smartwatch more cumbersome than on her phone.
     - U04-10: Long nails hinder her ability to type effectively on the small screen.
-    - U04-11: She uses the “react” feature for quick responses but finds it less convenient overall.
+    - U04-11: She uses the "react" feature for quick responses but finds it less convenient overall.
     - U04-12: She believes that improvements in typo prediction and input efficiency would enhance the smartwatch text-entry experience.
     - U05-01: The participant uses the watch mostly for passive tasks like checking notifications, finding it convenient when their phone is stored away.
     - U05-02: The participant speaks Mandarin in daily life, but the watch only supports English input, so he avoids typing anything more than a few words.
@@ -707,7 +939,7 @@ We feel comfortable that our design is aligned with our user requirements. In fu
     - U06-10: The constant interruptions from the smartwatch made her feel overwhelmed, and the lack of quick ways to dismiss or filter notifications left her frustrated. She wished the watch would allow easier management of personal vs. professional notifications.
     - U06-11: Her kids played with her smartwatch while charging, which resulted in a cracked screen.
     - U06-12: The cracked screen made it difficult to see and interact with the smartwatch. She was visibly annoyed, as it had impacted her daily use, and she struggled to find a repair option, which added stress to her routine.
-    - U06-13: She was attempting to reply to her husband saying “yes” to indicate she can pick up the kids, but the cracked screen and sweat made it difficult.
+    - U06-13: She was attempting to reply to her husband saying "yes" to indicate she can pick up the kids, but the cracked screen and sweat made it difficult.
     - U06-14: The cracked and unresponsive screen, combined with sweat on her hands, made it extremely difficult for her to tap the right reply. She felt frustration and a sense of helplessness as she couldn't use the smartwatch to quickly respond, forcing her to grab her phone.
     - U06-15: While outside running errands, she tried to use the smartwatch, but the screen was hard to read under the sun.The difficulty in viewing the smartwatch screen outside, coupled with the sweat on her hands, made her feel frustrated. The limited visibility forced her to check her phone instead, leading to a sense of disappointment about the smartwatch's outdoor usability.
     - U06-16: She set a reminder on the smartwatch for a customer delivery but missed the alert because the watch didn't vibrate strongly enough.
@@ -998,475 +1230,524 @@ We feel comfortable that our design is aligned with our user requirements. In fu
   = Usability Evaluation
   
   == Individual Heuristic Evaluation Notes
-  // Ryan
-  *HE-01's evaluation*
-  #table(columns: 4,
-    table.header[Comment][Heuristic(s)][Severity][Recommendation],
-    [I found it relatively easy to navigate between screens on the watch, but if someone had an issue I did not see a help button, for instance. ], [Help and documentation], [Minor], [Maybe creating a small info button in the corner that could be used for help with the features could solve this issue.],
-    [There is a lot of freedom in navigating the text entry app. However, the only thing that might be slightly an issue for people using the app on a watch could be that they don't usually click suggested words, and have to click down to get to the keyboard each time they use it.], [User control and freedom], [Minor], [Consider, based on testing with more users, whether or not the keyboard should appear first or the suggestions could appear just above the keyboard.],
-    [The design was very well made and the buttons were placed in intuitive locations. I found that the application looked neat upon inspection and there were no real visual flaws in it.], [Aesthetic and minimalist design], [N/A], [N/A],
-    [I did not see the result of what happens when a user types a key they intended and the application automatically corrects their entry to something unintended.], [Help users recognize, diagnose, and recover from errors], [Major], [It would be good to have a system that alerts the user in some way where the autocorrect has been used - e.g. on a mobile phone, sometimes apps will underline text that has been changed briefly so the user knows. In some cases, the backspace undoes the auto-correct.],
-  )
 
   *HE-01 Information*
   - Demographic: Age 22, Male, Master's student at University of Michigan.
   - Background: Has experience in computer science / ML
+  - Relevant experience: Has owned an Apple watch for at least one year. Also comfortable with typing on it and performing relevant functions.
   - Design experience: No relevant design experience, but is taking EECS 593
 
-  // Oskar
-  \ 
-  *HE-02's evaluation*
-  #table(columns: 4,
-    table.header[Comment][Heuristic(s)][Severity][Recommendation],
-    [Users found it unclear how to undo AI-suggested text if it was applied incorrectly.], 
-  [Error prevention\ 
-   Help users recognize, diagnose, and recover from errors], 
-  [Catastrophic], 
-  [Provide a clear Undo button or a temporary visual indication (e.g., highlighted text) showing the applied suggestion, with an option to revert],
-
-  [The keyboard layout slightly differs from typical smartphone keyboards, leading to confusion],
-  [Consistency and standards],
-  [Major],
-  [Adjust the keyboard to resemble standard mobile keyboards],
-
-  [Is there a cursor? If there is one, moving the cursor to edit text is difficult without dedicated navigation buttons],
-  [Flexibility and efficiency of use],
-  [Major],
-  [Include left and right arrow buttons or allow for tap-and-hold cursor movement],
-
-  [On the suggested reply screen, it is unclear whether users should tap the keyboard button or swipe to access additional options],
-  [Error prevention\ 
-   Visibility of system status],
-  [Minor],
-  [Add a brief text prompt or animation indicating the correct action],
-
-  [Users were unsure how to navigate back to the main conversation screen],
-  [User control and freedom\
-   Flexibility and efficiency of use],
-  [Major],
-  [Provide a clearly visible Back button for easier navigation.],
-
-  [Need an option to completely toggle dynamic keyboard on/off],
-  [User control and freedom],
-  [Major],
-  [A switch in settings to toggle this feature],
-
-  [Full message suggestions are displayed in a clear and intuitive manner ],
-  [Consistency and standards\
-   Aesthetic and minimalist design],
-  [N/A],
-  [Suggestions fill up the entire watch face to make it easy to quickly reply. It also doesn't clutter up the screen once you discard suggestions],
-
-  [The interface maintained a clean and simple design, reducing cognitive load],
-  [Aesthetic and minimalist design],
-  [N/A],
-  [Only the needed amount of information is on the screen and stays consistent with Apple watch design]
-  )
-
   *HE-02 Information*
-  - Demographic:  Male, 21\
-  - Background: Computer Science SUGS student at the University of Michigan\
-  - Smartwatch Experience: Owns an Apple watch, does not use smartwatch for texting, familiar with how conventional auto-suggestions work. \
-  - Design experience: Has no design experience outside of a class at the University of Michigan (CSE 593) where they discuss heuristic evaluations.\
+  - Demographic:  Male, 21
+  - Background: Computer Science SUGS student at the University of Michigan
+  - Smartwatch Experience: Owns an Apple watch, does not use smartwatch for texting, familiar with how conventional auto-suggestions work.
+  - Design experience: Has no design experience outside of a class at the University of Michigan (CSE 593) where they discuss heuristic evaluations.
 
-  // Kevin 
-  \ 
-  *HE-03's evaluation*
-  #table(columns: 4,
-  table.header[Comment][Heuristic(s)][Severity][Recommendation],
-  [Only one most probable next-key has an expanded hitbox at one time, which lowers the flexibility in having multiple high-accuracy typing options], 
-  [Error Prevention\ 
-  Flexibility and efficiency of use], 
-  [Minor], 
-  [Consider having more than one likely key with an expanded hitbox to provide more options with high input accuracy],
 
-  [No button to change the keyboard's language],
-  [Consistency and standards
-  Flexibility and efficiency of use],
-  [Major],
-  [Include a visible option for changing keyboard language],
-
-  [No indication when Dynamic Key Hitbox's predictive keys feature is active],
-  [Visibility of system status],
-  [Major],
-  [Add an icon, message, or different coloration of the keyboard to show when the key prediction feature is on or off],
-
-  [No option to manually toggle predictive suggestions on or off other than using the CAPS LOCK key],
-  [User control and freedom \
-  Error prevention],
-  [Catastrophic],
-  [Provide toggle in settings or in the keyboard interface that turns feature on or off],
-
-  [Tapping the screen to move the cursor to different parts of the text is difficult],
-  [Error prevention \
-  Flexibility and Efficiency of Use \
-  Help Users Recognize, Diagnose, and Recover from Errors],
-  [Major],
-  [Provide cursor navigation buttons (such as left and right arrow keys)],
-
-  [No help or documentation for using features],
-  [Help and documentation],
-  [Minor],
-  [Provide brief documentation or tooltips accessible from settings or a help button on the keyboard interface],
-
-  [Few options for user customization (how many likely keys to predict or how big to expand the hitbox)],
-  [Flexibility and efficiency of use],
-  [Minor],
-  [Allow users to customize settings like how many likely keys to predict or how big to expand the hitbox], 
-
-  [Initial phrase suggestions are intuitive and resemble common smart replies (e.g., Gmail)],
-  [Consistency and standards \
-  Recognition rather than recall \
-  Aesthetic and minimalist design],
-  [N/A],
-  [Familiar, fast options reduce user effort and enhance satisfaction.],
+  *HE-03 Information*
+  - Demographic: Male, 22
+  - Background: Computer Science SUGS student at the University of Michigan, extremely comfortable working with technology such as smartphones and computers
+  - Relevant experience with smartwatches: not a smartwatch user but has used smartwatches before and is familiar with how they work
+  - Design experience: is taking a human computer interaction design course with knowledge of heuristic evaluation.
   
-  [Suggested phrases can be edited or cancelled and re-chosen before sending, giving users control],
-  [User control and freedom \
-  Flexibility and efficiency of use],
-  [N/A],
-  [Gives users flexibility to edit their choices before sending messages],
-
-  [Enlarged hit detection areas on predicted characters improve usability without being visually disruptive],
-  [Error prevention \
-  Aesthetic and minimalist design],
-  [N/A],
-  [The expanded hitbox feature improves typing accuracy subtly while not adding new visuals to the interface that would distract the user],
-  
-  [Standard QWERTY keyboard layout supports user familiarity and onboarding],
-  [Match between system and real world \
-  Consistency and standards],
-  [N/A],
-  [Using a familiar keyboard layout reduces learning time for new users.],
-
-  [The swipe-to-access keyboard icon from the suggested responses page signifies a swiping or scrolling action, which indicates how to access the keyboard],
-  [Consistency and standards \
-  Flexibility and efficiency of use],
-  [N/A],
-  [This icon intuitively gives users a hint at how to access the keyboard, which makes it easier for them to find it]
-  )
-
-  *HE-03 Information* \
-  - Demographic: Male, 22 \
-  - Background: Computer Science SUGS student at the University of Michigan, extremely comfortable working with technology such as smartphones and computers \
-  - Relevant experience with smartwatches: not a smartwatch user but has used smartwatches before and is familiar with how they work \
-  - Design experience: is taking a human computer interaction design course with knowledge of heuristic evaluation. \
-  
-  // Nivedhitha 
-  \ 
-  *HE-04's evaluation*
-  #table(columns: 4,
-  table.header[Comment][Heuristic(s)][Severity][Recommendation],
-
-  [The placement of the arrows and keyboard icons next to each other causes confusion, as the arrow appears to be pointing to the keyboard icon rather than being recognized as a separate functionality.], 
-  [Aesthetic and Minimalist Design\ 
-  Consistency and Standards], 
-  [Major], 
-  [Use more distinguishable buttons, or consider incorporating text or real-world icons for clarity.\ 
-  Ensure consistent design elements and consider using clearer icons or text to avoid confusion.],
-
-  [While the keyboard follows the standard QWERTY layout, the concept of dynamic key hitboxes is a good approach but seems time-consuming and increases the chances of errors, which complicates tasks.], 
-  [Flexibility & Efficiency of Use \ Error Prevention], 
-  [Minor], 
-  [Incorporating word suggestions could further enhance speed and accuracy, making the input process more efficient.],
-
-  [There is no feedback provided to indicate whether the message has been sent or not after typing or selecting a suggested response.], 
-  [Visibility of System Status], 
-  [Major], 
-  [A pop-up message saying 'Sent,' a color change, or a return to the message screen could be added to provide clear indication.],
-
-  [The idea of providing the edit option with the combination of suggestive responses is pretty cool and seems easy.], 
-  [Flexibility and Efficiency of Use], 
-  [NA], 
-  [NA],
-
-  [Even though the edit option idea was cool, I don’t see a necessity for a separate button for the 'edit mode'. Kind of complicates the tasks and involves unnecessary steps to perform.], 
-  [Consistency and Standards\ 
-  Aesthetic and Minimalist Design"], 
-  ["Minor"], 
-  ["I would rather recommend using a blinking cursor next to the selected suggestive response allowing the user to understand that it can also be edited."],
-
-  ["Lack of help and documentation causes usability restriction."], 
-  ["10. Help and Documentation"], 
-  ["2 - Minor"], 
-  ["Include help buttons at the home page or where the users can easily navigate and read through."],
-
-  ["Are there no options for special symbols and emojis?"], 
-  ["4. Consistency and Standards\ 
-  3. User Control and Freedom"], 
-  ["2 - Minor"], 
-  ["Emojis and special symbols, often used to express reactions or emotions (e.g., ! or 🙂), can be contained within a specific section of the keyboard that can be expanded when necessary."],
-
-  ["The send button's placement at the top may confuse users, as they expect it at the bottom for easier access, and the menu buttons at the top may lead to errors."], 
-  ["4. Consistency and Standards"], 
-  ["2 - Minor"], 
-  ["Move the send button to the bottom and place the menu/navigation buttons in more familiar locations to improve usability."]
-)
-
-  // Efe's evaluation
-  *Efe's Evaluation*
-  #table(
-    columns: 4,
-    table.header[*Comment*][*Heuristic(s)*][*Severity*][*Recommendation*],
-    
-    // Usability Issues from second set of tables
-    [Scroll Button Mapping: There is not a good way to map the "scroll down for keyboard" button to the watch crown, or to identify what the button indicates. (Component: Reply Screen with Suggestions)], 
-    [Match between system and the real world], 
-    [3], 
-    [Add an animation of a rotating crown next to the icon],
-    
-    [Backspace Button Placement: The backspace button might be accidentally hit when typing because it is adjacent to regular keys. (Component: Keyboard)], 
-    [Error prevention], 
-    [2], 
-    [Separate the backspace button from the keys or make the backspace key larger],
-    
-    [System Status Visibility: The user has no way to know whether the Dynamic Key Hitbox system is enabled. (Component: Keyboard)], 
-    [Visibility of system status], 
-    [2], 
-    [Add indicator at the bottom of the screen similar to a microphone-enabled dot],
-    
-    [Error Notification: The user should be notified if the system repeatedly causes them errors. (Component: Keyboard)], 
-    [Error prevention], 
-    [3], 
-    [Notify the user if the system repeatedly causes them errors and allow them to disable the feature temporarily],
-    
-    [System Deactivation: The user has no way to turn the Dynamic Key Hitbox system off temporarily. (Component: Keyboard)], 
-    [Flexibility and efficiency of use], 
-    [3], 
-    [Allow clicking the indicator icon to turn the system off],
-    
-    [Scrolling Clarity: It is difficult for the user to scroll up when there are suggestions displayed on the screen, and it's not clear that the buttons support scrolling. (Component: Reply Screen with Suggestions)], 
-    [Aesthetic and minimalist design], 
-    [1], 
-    [Make it clear that the buttons are a part of the scrollable text interface using boundary markers],
-    
-    [Accidental Selection: If the user double-taps the bottom suggestion, they may accidentally select and send without seeing the confirmation screen. (Component: Suggestion Confirmation Screen)], 
-    [Error prevention], 
-    [3], 
-    [Add a short timeout after selecting a message where the action buttons cannot be used],
-    
-    [Space Utilization: The text bubbles leave too much unused space towards the ends of the screen. (Component: Reply Screen)], 
-    [Aesthetic and minimalist design], 
-    [1], 
-    [Make the bubbles extend further into the screen],
-  )
+  *HE-04 Information*
+  - Demographic: Male, 30 to 40 Years
+  - Background: HE-04 has worked in a technical role at Ford Motors for a decade and is currently pursuing a Master's in Computer Science at the University of Michigan. He is highly proficient with technology such as smartphones and computers.
+  - Relevant Experience with Smartwatches: While HE-04 has never used a smartwatch himself, he is familiar with their functionality through observing friends and family members who use them.
+  - Design Experience: HE-04 is enrolled in a human-computer interaction design course and has knowledge of heuristic evaluation.
 
 
+  *HE-05 Information*
+  - Demographic: Male, 22 years old
+  - Background: Student in CSE 593 who is working on a cooking application that focuses on summarizing recipes into easily digestible portions with voice interaction capabilities.
+  - Relevant Experience with Smartwatches: familiar but does not own one himself 
+  - Design Experience: Has moderate experience designing and implementing iOS apps with applications in
+    accessible indoor navigation and tabletop model scanning.
+
+
+  *HE-06 Information*
+  - Demographic: Female, 18-26
+  - Background: Computer Science MSE student at the University of Michigan, highly familiar with technology interfaces
+  - Relevant experience with smartwatches: having owned or consistently worn Apple Watch for four years
+  - Design experience: She has exposure to usability principles (such as Nielsen's heuristics) through her coursework, making her well-suited to identify and categorize potential usability problems.
 
   == Consolidated Tables
-  #table(
-  columns: 4,
-  table.header[*Comment*][*Heuristic(s)*][*Severity*][*Recommendation*],
+  #[
+    #set par(justify: false)
+    #let rowname(content) = {
+      table.cell(colspan: 5, stroke: (y: 0.5pt))[#align(center)[_#content _]]
+    }
+    #table(
+    columns: (1fr, 1fr, auto, 1.2fr, 1.5fr),
+    table.header[*Issue*][*Heuristic(s)*][*Severity*][*Recommendation*][*Comments*],
   
-  // Efe
-  [Scroll Button Mapping: There is not a good way to map the "scroll down for keyboard" button to the watch crown, or to identify what the button indicates. (Component: Reply Screen with Suggestions)], 
-  [Match between system and the real world], 
-  [3 - Major (Could significantly impact usability for first-time users)], 
-  [Add an animation of a rotating crown next to the icon],
+    // Ryan’s evaluation
+    rowname[HE-01 Evaluation],
+    [Missing help button], 
+      [Help and documentation], 
+      [2], 
+      [Maybe add a small help/info button.], 
+      [I found it relatively easy to navigate between screens on the watch, but if someone had an issue I did not see a help button, for instance.],
   
-  [Backspace Button Placement: The backspace button might be accidentally hit when typing because it is adjacent to regular keys. (Component: Keyboard)], 
-  [Error prevention], 
-  [2 - Minor (Might cause occasional frustration but doesn't prevent task completion)], 
-  [Separate the backspace button from the keys or make the backspace key larger],
+    [Keyboard navigation issue],
+      [User control and freedom],
+      [2],
+      [Consider testing if the keyboard should appear first or if suggestions could appear above the keyboard.],
+      [There is a lot of freedom in navigating the text entry app. However, users may struggle because they don’t usually click suggested words and must tap down to reveal the keyboard.],
   
-  [System Status Visibility: The user has no way to know whether the Dynamic Key Hitbox system is enabled. (Component: Keyboard)], 
-  [Visibility of system status], 
-  [2 - Minor (Users might be confused but can still use the system)], 
-  [Add indicator at the bottom of the screen similar to a microphone-enabled dot],
+    [Good design layout],
+      [Aesthetic and minimalist design],
+      [P],
+      [N/A],
+      [The design was very well made and the buttons were placed in intuitive locations. The overall look was neat with no visual flaws.],
   
-  [Error Notification: The user should be notified if the system repeatedly causes them errors. (Component: Keyboard)], 
-  [Error prevention], 
-  [3 - Major (Could lead to ongoing frustration and eventual abandonment)], 
-  [Notify the user if the system repeatedly causes them errors and allow them to disable the feature temporarily],
+    [Autocorrect unclear feedback],
+      [Help users recognize, diagnose, and recover from errors],
+      [3],
+      [Alert the user when autocorrect occurs (e.g. underline or backspace undo).],
+      [I did not see any feedback when a key was auto-corrected, so users might not know that an unintended change occurred.],
   
-  [System Deactivation: The user has no way to turn the Dynamic Key Hitbox system off temporarily. (Component: Keyboard)], 
-  [Flexibility and efficiency of use], 
-  [3 - Major (Limits user control in problematic situations)], 
-  [Allow clicking the indicator icon to turn the system off],
+    // Oskar’s evaluation
+    rowname[HE-02 Evaluation],
+    [Undo AI-suggested unclear],
+      [Error prevention; Help users recognize, diagnose, and recover from errors],
+      [4],
+      [Provide a clear Undo button or temporary visual cue with a revert option.],
+      [Users found it unclear how to undo AI-suggested text if applied incorrectly.],
   
-  [Scrolling Clarity: It is difficult for the user to scroll up when there are suggestions displayed on the screen, and it's not clear that the buttons support scrolling. (Component: Reply Screen with Suggestions)], 
-  [Aesthetic and minimalist design], 
-  [1 - Cosmetic (Minor confusion but easily learned)], 
-  [Make it clear that the buttons are a part of the scrollable text interface using boundary markers],
+    [Nonstandard keyboard layout],
+      [Consistency and standards],
+      [3],
+      [Adjust the keyboard to more closely resemble standard mobile layouts.],
+      [The keyboard layout slightly differs from typical smartphone keyboards, leading to confusion.],
   
-  [Accidental Selection: If the user double-taps the bottom suggestion, they may accidentally select and send without seeing the confirmation screen. (Component: Suggestion Confirmation Screen)], 
-  [Error prevention], 
-  [3 - Major (Could result in sending unintended messages)], 
-  [Add a short timeout after selecting a message where the action buttons cannot be used],
+    [Cursor navigation difficulty],
+      [Flexibility and efficiency of use],
+      [3],
+      [Include left/right arrow buttons or enable tap‐and‐hold cursor movement.],
+      [Moving the cursor to edit text is difficult without dedicated navigation buttons.],
   
-  [Space Utilization: The text bubbles leave too much unused space towards the ends of the screen. (Component: Reply Screen)], 
-  [Aesthetic and minimalist design], 
-  [1 - Cosmetic (Aesthetic issue with minimal functional impact)], 
-  [Make the bubbles extend further into the screen],
+    [Unclear reply screen action],
+      [Error prevention; Visibility of system status],
+      [2],
+      [Add a text prompt or animation indicating the correct action.],
+      [On the suggested reply screen, it is unclear whether to tap the keyboard button or swipe for more options.],
   
-  // HE-01's evaluation
-  [I found it relatively easy to navigate between screens on the watch, but if someone had an issue I did not see a help button, for instance.], 
-  [Help and documentation], 
-  [Minor], 
-  [Maybe creating a small info button in the corner that could be used for help with the features could solve this issue.],
+    [No clear back navigation],
+      [User control and freedom; Flexibility and efficiency of use],
+      [3],
+      [Provide a clearly visible Back button.],
+      [Users were unsure how to navigate back to the main conversation screen.],
   
-  [There is a lot of freedom in navigating the text entry app. However, the only thing that might be slightly an issue for people using the app on a watch could be that they don't usually click suggested words, and have to click down to get to the keyboard each time they use it.], 
-  [User control and freedom], 
-  [Minor], 
-  [Consider, based on testing with more users, whether or not the keyboard should appear first or the suggestions could appear just above the keyboard.],
+    [Missing dynamic keyboard toggle],
+      [User control and freedom],
+      [3],
+      [Include a toggle switch in settings to turn the dynamic keyboard on/off.],
+      [There is no option to completely toggle the dynamic keyboard feature.],
   
-  [The design was very well made and the buttons were placed in intuitive locations. I found that the application looked neat upon inspection and there were no real visual flaws in it.], 
-  [Aesthetic and minimalist design], 
-  [N/A], 
-  [N/A],
+    [Effective message suggestions],
+      [Consistency and standards; Aesthetic and minimalist design],
+      [P],
+      [Suggestions cover the screen without clutter.],
+      [Full message suggestions are displayed clearly and intuitively.],
   
-  [I did not see the result of what happens when a user types a key they intended and the application automatically corrects their entry to something unintended.], 
-  [Help users recognize, diagnose, and recover from errors], 
-  [Major], 
-  [It would be good to have a system that alerts the user in some way where the autocorrect has been used - e.g. on a mobile phone, sometimes apps will underline text that has been changed briefly so the user knows. In some cases, the backspace undoes the auto-correct.],
+    [Clean interface design],
+      [Aesthetic and minimalist design],
+      [P],
+      [Screen displays only the needed information.],
+      [The interface maintained a clean and simple design, reducing cognitive load.],
   
-  // HE-02's evaluation
-  [Users found it unclear how to undo AI-suggested text if it was applied incorrectly.], 
-  [Error prevention
-   Help users recognize, diagnose, and recover from errors], 
-  [Catastrophic], 
-  [Provide a clear Undo button or a temporary visual indication (e.g., highlighted text) showing the applied suggestion, with an option to revert],
+    // Kevin’s evaluation
+    rowname[HE-03 Evaluation],
+    [Single key hitbox limitation],
+      [Error Prevention; Flexibility and efficiency of use],
+      [2],
+      [Consider multiple likely keys with expanded hitboxes.],
+      [Only one next-key gets an expanded hitbox at a time, limiting input options.],
   
-  [The keyboard layout slightly differs from typical smartphone keyboards, leading to confusion],
-  [Consistency and standards],
-  [Major],
-  [Adjust the keyboard to resemble standard mobile keyboards],
+    [Missing language switch button],
+      [Consistency and standards; Flexibility and efficiency of use],
+      [3],
+      [Include a visible option for changing keyboard language.],
+      [There is no button to change the keyboard's language.],
   
-  [Is there a cursor? If there is one, moving the cursor to edit text is difficult without dedicated navigation buttons],
-  [Flexibility and efficiency of use],
-  [Major],
-  [Include left and right arrow buttons or allow for tap-and-hold cursor movement],
+    [No predictive feature indicator],
+      [Visibility of system status],
+      [3],
+      [Add an icon or message to indicate when prediction is active.],
+      [There is no indication when the Dynamic Key Hitbox’s predictive feature is active.],
   
-  [On the suggested reply screen, it is unclear whether users should tap the keyboard button or swipe to access additional options],
-  [Error prevention
-   Visibility of system status],
-  [Minor],
-  [Add a brief text prompt or animation indicating the correct action],
+    [Missing predictive toggle],
+      [User control and freedom; Error prevention],
+      [4],
+      [Provide a toggle in settings or the keyboard interface.],
+      [Users can only toggle predictive suggestions using the CAPS LOCK key.],
   
-  [Users were unsure how to navigate back to the main conversation screen],
-  [User control and freedom
-   Flexibility and efficiency of use],
-  [Major],
-  [Provide a clearly visible Back button for easier navigation.],
+    [Difficult cursor repositioning],
+      [Error prevention; Flexibility and efficiency of use; Help users recover from errors],
+      [3],
+      [Provide cursor navigation buttons (e.g. left/right arrows).],
+      [Tapping the screen to reposition the cursor is challenging.],
   
-  [Need an option to completely toggle dynamic keyboard on/off],
-  [User control and freedom],
-  [Major],
-  [A switch in settings to toggle this feature],
+    [Lack of feature documentation],
+      [Help and documentation],
+      [2],
+      [Provide brief documentation or tooltips accessible from settings.],
+      [No help or documentation is provided for using the features.],
   
-  [Full message suggestions are displayed in a clear and intuitive manner],
-  [Consistency and standards
-   Aesthetic and minimalist design],
-  [N/A],
-  [Suggestions fill up the entire watch face to make it easy to quickly reply. It also doesn't clutter up the screen once you discard suggestions],
+    [Limited user customization],
+      [Flexibility and efficiency of use],
+      [2],
+      [Allow users to customize settings like prediction count or hitbox size.],
+      [There are few options for customization regarding key prediction and hitbox size.],
   
-  [The interface maintained a clean and simple design, reducing cognitive load],
-  [Aesthetic and minimalist design],
-  [N/A],
-  [Only the needed amount of information is on the screen and stays consistent with Apple watch design],
+    [Intuitive phrase suggestions],
+      [Consistency and standards; Recognition rather than recall; Aesthetic and minimalist design],
+      [P],
+      [Familiar, fast options reduce user effort.],
+      [Initial phrase suggestions are intuitive and resemble common smart replies.],
   
-  // HE-03's evaluation
-  [Only one most probable next-key has an expanded hitbox at one time, which lowers the flexibility in having multiple high-accuracy typing options], 
-  [Error Prevention
-   Flexibility and efficiency of use], 
-  [Minor], 
-  [Consider having more than one likely key with an expanded hitbox to provide more options with high input accuracy],
+    [Editable suggested phrases],
+      [User control and freedom; Flexibility and efficiency of use],
+      [P],
+      [Allows users to edit or cancel suggestions before sending.],
+      [Suggested phrases can be edited or cancelled, giving users control.],
   
-  [No button to change the keyboard's language],
-  [Consistency and standards
-   Flexibility and efficiency of use],
-  [Major],
-  [Include a visible option for changing keyboard language],
+    [Enhanced hit detection],
+      [Error prevention; Aesthetic and minimalist design],
+      [P],
+      [Improves accuracy without visual distraction.],
+      [Enlarged hit detection areas improve usability subtly.],
   
-  [No indication when Dynamic Key Hitbox's predictive keys feature is active],
-  [Visibility of system status],
-  [Major],
-  [Add an icon, message, or different coloration of the keyboard to show when the key prediction feature is on or off],
+    [Standard keyboard layout],
+      [Match between system and real world; Consistency and standards],
+      [P],
+      [A familiar layout reduces learning time.],
+      [Standard QWERTY layout supports user familiarity and onboarding.],
   
-  [No option to manually toggle predictive suggestions on or off other than using the CAPS LOCK key],
-  [User control and freedom
-   Error prevention],
-  [Catastrophic],
-  [Provide toggle in settings or in the keyboard interface that turns feature on or off],
+    [Ambiguous swipe icon],
+      [Consistency and standards \ Flexibility and efficiency of use],
+      [P],
+      [Icon hints at keyboard access intuitively.],
+      [The swipe-to-access icon indicates how to access the keyboard.],
   
-  [Tapping the screen to move the cursor to different parts of the text is difficult],
-  [Error prevention
-   Flexibility and Efficiency of Use
-   Help Users Recognize, Diagnose, and Recover from Errors],
-  [Major],
-  [Provide cursor navigation buttons (such as left and right arrow keys)],
+    // Nivedhitha’s evaluation
+    rowname[HE-04 Evaluation],
+    [Confusing icon placement],
+      [Aesthetic and Minimalist Design \ Consistency and Standards],
+      [3],
+      [Use more distinguishable buttons or incorporate text/icons.],
+      [Arrows and keyboard icons are placed too close, causing confusion.],
   
-  [No help or documentation for using features],
-  [Help and documentation],
-  [Minor],
-  [Provide brief documentation or tooltips accessible from settings or a help button on the keyboard interface],
+    [Inefficient key hitboxes],
+      [Flexibility and Efficiency of Use],
+      [2],
+      [Incorporate word suggestions to enhance speed and accuracy.],
+      [Dynamic key hitboxes seem time-consuming and error-prone.],
   
-  [Few options for user customization (how many likely keys to predict or how big to expand the hitbox)],
-  [Flexibility and efficiency of use],
-  [Minor],
-  [Allow users to customize settings like how many likely keys to predict or how big to expand the hitbox],
+    [Lack of send confirmation],
+      [Visibility of System Status],
+      [3],
+      [Add a pop-up message, color change, or screen return confirmation.],
+      [No feedback indicates whether a message was sent after typing or selecting a suggestion.],
   
-  // Positive Attributes from HE-03
-  [Initial phrase suggestions are intuitive and resemble common smart replies (e.g., Gmail)],
-  [Consistency and standards
-   Recognition rather than recall
-   Aesthetic and minimalist design],
-  [N/A],
-  [Familiar, fast options reduce user effort and enhance satisfaction.],
+    [Good edit option],
+      [Flexibility and Efficiency of Use],
+      [P],
+      [N/A],
+      [Providing an edit option with suggestive responses is seen as a positive feature.],
   
-  [Suggested phrases can be edited or cancelled and re-chosen before sending, giving users control],
-  [User control and freedom
-   Flexibility and efficiency of use],
-  [N/A],
-  [Gives users flexibility to edit their choices before sending messages],
+    [Redundant edit button],
+      [Consistency and Standards; Aesthetic and Minimalist Design],
+      [2],
+      [Use a blinking cursor next to the selected response instead of a separate button.],
+      [A separate edit mode button seems unnecessary and complicates tasks.],
   
-  [Enlarged hit detection areas on predicted characters improve usability without being visually disruptive],
-  [Error prevention
-   Aesthetic and minimalist design],
-  [N/A],
-  [The expanded hitbox feature improves typing accuracy subtly while not adding new visuals to the interface that would distract the user],
+    [Insufficient help documentation],
+      [Help and Documentation],
+      [2],
+      [Include help buttons in easily accessible locations.],
+      [Lack of help and documentation restricts usability.],
   
-  [Standard QWERTY keyboard layout supports user familiarity and onboarding],
-  [Match between system and real world
-   Consistency and standards],
-  [N/A],
-  [Using a familiar keyboard layout reduces learning time for new users.],
+    [Missing emoji options],
+      [Consistency and Standards; User Control and Freedom],
+      [2],
+      [Provide an expandable section for emojis and special symbols.],
+      [There are no options for special symbols and emojis.],
   
-  [The swipe-to-access keyboard icon from the suggested responses page signifies a swiping or scrolling action, which indicates how to access the keyboard],
-  [Consistency and standards
-   Flexibility and efficiency of use],
-  [N/A],
-  [This icon intuitively gives users a hint at how to access the keyboard, which makes it easier for them to find it]
-)
+    [Misplaced send button],
+      [Consistency and Standards],
+      [2],
+      [Move the send button to the bottom and reposition menu/navigation buttons.],
+      [The send button’s placement at the top may confuse users expecting it at the bottom.],
+  
+    // Efe’s evaluation
+    rowname[HE-05 Evaluation],
+    [Scroll button mapping issue],
+      [Match between system and the real world],
+      [3],
+      [Add an animation of a rotating crown next to the icon.],
+      [There is not a good way to map the "scroll down for keyboard" button to the watch crown.],
+      
+    [Accidental backspace activation],
+      [Error prevention],
+      [2],
+      [Separate the backspace button or enlarge it.],
+      [The backspace button might be accidentally hit because it is adjacent to regular keys.],
+      
+    [Lack of system status indicator],
+      [Visibility of system status],
+      [2],
+      [Add an indicator similar to a microphone-enabled dot.],
+      [Users cannot tell whether the Dynamic Key Hitbox system is enabled.],
+      
+    [Missing error notification],
+      [Error prevention],
+      [3],
+      [Notify the user if errors occur repeatedly and allow a temporary disable.],
+      [Users are not notified if the system repeatedly causes errors.],
+      
+    [No system deactivation option],
+      [Flexibility and efficiency of use],
+      [3],
+      [Allow clicking the indicator icon to turn the system off.],
+      [There is no way to turn off the Dynamic Key Hitbox system temporarily.],
+      
+    [Unclear scroll instructions],
+      [Aesthetic and minimalist design],
+      [1],
+      [Clarify that the buttons are part of the scrollable text interface using boundary markers.],
+      [It is difficult for users to scroll up when suggestions are displayed.],
+      
+    [Accidental selection risk],
+      [Error prevention],
+      [3],
+      [Add a short timeout after selecting a message during which actions are disabled.],
+      [Double-tapping a suggestion may send it accidentally without a confirmation screen.],
+      
+    [Poor space utilization],
+      [Aesthetic and minimalist design],
+      [1],
+      [Make the text bubbles extend further into the screen.],
+      [The text bubbles leave too much unused space at the screen edges.],
+  
+      
+    // Hyungchan's evaluation rows:
+    rowname[HE-06 Evaluation],
+    [Unclear scroll suggestions],
+      [Visibility of system status; Consistency and standards],
+      [3],
+      [Add a scrollbar or "More…" label to signal additional suggestions.],
+      [Unclear whether scrolling reveals more suggestions],
+  
+    [Ambiguous arrow icon],
+      [Match between system and real world; Consistency and standards],
+      [2],
+      [Add a label or distinct icon set to differentiate "Open Keyboard" vs. "See Next Suggestions."],
+      [Arrow icon meaning is ambiguous (does it expand keyboard or show more?)],
+  
+    [Missing voice input],
+      [Flexibility and efficiency of use],
+      [3],
+      [Add a mic icon for quick, hands-free input.],
+      [Voice Input is missing from keyboard option],
+  
+    [Wasted keyboard space],
+      [Aesthetic and minimalist design; Error prevention],
+      [2],
+      [Utilize empty space by enlarging the keyboard or displaying predictive text.],
+      [Wasted space on main keyboard screen],
+  
+    [Inconsistent icon usage],
+      [Consistency and standards],
+      [2],
+      [Align icon styles between suggestions and keyboard views.],
+      [Inconsistent icon usage between suggestions and keyboard views],
+      table.hline()
+    )
+  _Severity Scale: P = Positive, 1 = Cosmetic, 2 = Minor, 3 = Major, 4 = Catastrophic_
+  ]
+
   == Individual Simplified User Study Notes
   To differentiate these users from the Contextual Inquiry, we've assigned new codes.
   
   // Ryan
-  - SU-01: When initially viewing the notification, he wanted to be able to see the keyboard and the suggestions at the same time. He noted that it would annoy him to press the keyboard button every time if we wanted to type something.
-  - SU-01: For Task 1, he wanted to reply with "that's okay", so after seeing "Right, that's okay" he tapped it.
-  - SU-01: When the suggestion confirmation screen appeared, he wanted to edit it with the keyboard but hesitated to press the Edit button since he didn't know exactly what it would do. After a few seconds of deliberating, he tapped it, and was glad to see the keyboard with the preview.
-  - SU-01: To edit the message, he tapped the space between "Right" and "that's" and said he would hold the backspace button. Our group didn't disucss what to do in this specific situation, but I made the choice to manifest that behavior. This calls into question if or how other buttons should react to long presses.
-  - SU-01: During Task 2, he typed the custom message nearly perfectly and didn't notice that one of the letters he barely missed was still corrected to the intended message due to the speed at which he was tapping. He noted that task was "pretty easy."
-  - SU-01: During Task 3, he noted that there wasn't a way to type an apostrophe as the he assumed the "123" key would only show a numeric pad.
-  - SU-01: When the user pressed the "a" key after typing "sal", the ink showed the tap was on the right edge of the "a" key. After a second "s" appeared in the text bar (predicting "salsa"), the participant expressed confusion, pressed backspace, and spent noticably more effort pressing the "a" key again, which then worked as intended.
-  - SU-01: After all tasks were completed, the participant wished there was a visual indicator of when the predictive system took action.
-  - SU-01: The participant agreed that they would be comfortable using a system like this in public
+  - *SU-01:*
+    - When initially viewing the notification, he wanted to be able to see the keyboard and the suggestions at the same time. He noted that it would annoy him to press the keyboard button every time if we wanted to type something.
+    - For Task 1, he wanted to reply with "that's okay", so after seeing "Right, that's okay" he tapped it.
+    - When the suggestion confirmation screen appeared, he wanted to edit it with the keyboard but hesitated to press the Edit button since he didn't know exactly what it would do. After a few seconds of deliberating, he tapped it, and was glad to see the keyboard with the preview.
+    - To edit the message, he tapped the space between "Right" and "that's" and said he would hold the backspace button. Our group didn't disucss what to do in this specific situation, but I made the choice to manifest that behavior. This calls into question if or how other buttons should react to long presses.
+    - During Task 2, he typed the custom message nearly perfectly and didn't notice that one of the letters he barely missed was still corrected to the intended message due to the speed at which he was tapping. He noted that task was "pretty easy."
+    - During Task 3, he noted that there wasn't a way to type an apostrophe as the he assumed the "123" key would only show a numeric pad.
+    - When the user pressed the "a" key after typing "sal", the ink showed the tap was on the right edge of the "a" key. After a second "s" appeared in the text bar (predicting "salsa"), the participant expressed confusion, pressed backspace, and spent noticably more effort pressing the "a" key again, which then worked as intended.
+    - After all tasks were completed, the participant wished there was a visual indicator of when the predictive system took action.
+    - The participant agreed that they would be comfortable using a system like this in public
 
   // Oskar
-  - SU-02: During Task 1, the participant found the suggested replies relevant and convenient.
-  - SU-02: After selecting a reply, they hesitated briefly, unsure if the system had registered their choice, suggesting a need for visual or haptic confirmation.
-  - SU-02: They appreciated the confirmation screen for reducing accidental messages but suggested making the Send button more prominent to streamline the process.
-  - SU-02: The participant expressed confidence in using suggested replies and found the system comfortable for public use.
-  - SU-02: During Task 2, the participant had a smooth experience editing a suggested reply.
-  - SU-02: The Edit button was clear and well-placed, making it easy to understand.
-  - SU-02: They found the keyboard responsive but felt frustrated when they accidentally deleted a word and couldn't quickly undo the action, suggesting a need for an Undo button.
-  - SU-02: A subtle visual cue for hitbox adjustments would reinforce user confidence.
-  - SU-02: Returning to the confirmation screen was intuitive, but clearer feedback on typing accuracy would improve the experience.
-  - SU-02: During Task 3, the participant used the dynamic hitbox keyboard and had mixed experiences.
-  - SU-02: They described the keyboard as "forgiving" when it corrected a missed keypress.
-  - SU-02: They wished for a visual or haptic indicator when the system made corrections to enhance understanding.
-  - SU-02: Disabling the dynamic keyboard using backspace and caps lock was unintuitive due to the lack of visible feedback, leading to frustration.
-  - SU-02: When typing "salad," the system predicted "salsa," causing brief confusion. The participant accepted the extra backspace press but spent noticeable effort ensuring the next keypress was correctly registered.
+  - *SU-02*
+    - During Task 1, the participant found the suggested replies relevant and convenient.
+    - After selecting a reply, they hesitated briefly, unsure if the system had registered their choice, suggesting a need for visual or haptic confirmation.
+    - They appreciated the confirmation screen for reducing accidental messages but suggested making the Send button more prominent to streamline the process.
+    - The participant expressed confidence in using suggested replies and found the system comfortable for public use.
+    - During Task 2, the participant had a smooth experience editing a suggested reply.
+    - The Edit button was clear and well-placed, making it easy to understand.
+    - They found the keyboard responsive but felt frustrated when they accidentally deleted a word and couldn't quickly undo the action, suggesting a need for an Undo button.
+    - A subtle visual cue for hitbox adjustments would reinforce user confidence.
+    - Returning to the confirmation screen was intuitive, but clearer feedback on typing accuracy would improve the experience.
+    - During Task 3, the participant used the dynamic hitbox keyboard and had mixed experiences.
+    - They described the keyboard as "forgiving" when it corrected a missed keypress.
+    - They wished for a visual or haptic indicator when the system made corrections to enhance understanding.
+    - Disabling the dynamic keyboard using backspace and caps lock was unintuitive due to the lack of visible feedback, leading to frustration.
+    - When typing "salad," the system predicted "salsa," causing brief confusion. The participant accepted the extra backspace press but spent noticeable effort ensuring the next keypress was correctly registered.
+
+  // Kevin 
+  *SU-03:* \ 
+  Task 1
+- When first starting the task, the user was shown suggested responses. The user immediately knew that they were presented with quick response options and immediately selected "Right, that's okay!" 
+- On the confirmation screen, the user took a long time to look at all of the options. They were probably trying to figure out the difference between "Cancel" and "Edit".
+- The user wondered whether "Cancel" or "Edit" would take them back to the other suggested responses. This is a usability issue because there is no help to explain what these buttons do
+- The user correctly guessed that "Cancel" would take them back to the suggested responses screen
+- The user selected "Right, that's okay!" again and then clicked "Send" on the confirmation screen without any hesitation. This action proved we met Requirement 1 because the user was able to have a chance to change their response before sending it out. 
+Task 2
+- When first starting the task, the user was shown suggested responses. The user knew they had to navigate to the keyboard but they were unsure on how to get there. It took them a long time to look at the screen. They tried tapping the keyboard icon at the bottom of the screen and was confused when the screen wouldn't change. They ultimately realized that they needed to swipe up on the screen to access the keyboard. The user state that usually the arrow for a swipe-up input would be facing upwards, so they didn't know they were supposed to swipe. This points out a usability issue where our button design is not consistent with other designs. 
+- Once on the keyboard, the user stated that they were not sure if the key prediction feature was turned on since the keyboard looked normal. This is a usability issue where the user cannot see the status of the system. 
+- The user correctly tapped all of the keys in the message "get two"
+- The user noticed that when they typed "o" in "two," they barely missed the key but the "o" still correctly showed up. This helps support that our design met Requirement 3 in that users are more likely to type messages accurately. 
+Task 3
+- When first starting the task, the user was shown suggested responses. The user pressed "Yes" despite knowing that was not the message they needed to send and just wanted to test out the system 
+- On the confirmation page, the user pressed "Edit" to pick a new response. They were surprised that it took them to the keyboard screen. They meant to go back to the suggested responses screen.
+- The user correctly picked the "Back" button on the keyboard screen to re-do the message 
+- Once on the suggested responses screen, the user quickly changed to the keyboard screen by swiping up on the screen. They learned from the previous task.
+- This time, the user correctly typed the "Ill have " portion of the "Ill have salad" message of their task. When they went to type the "s" for "salad," the keyboard "predicted" that "a" was the next character on the backend and expanded the hitbox into neighboring keys, including the "s." The user hit the "s" key but their ink marking was within the hitbox for the "a" key which turned their message into "Ill have a." The user said they were frustrated that they hit the right key but the wrong character showed up on the screen. This event showed that our design violated the usability principle of error prevention by causing errors instead. It also showed how the design can sometimes fail to meet Requirement 3 by increasing the errors from mis-predictions rather than helping the user reduce inaccuracies.
+- After the mishap, the user state that they wanted to turn off the prediction feature but did not know how. This shows our system did not support the help and documentation usability principle. 
+- The user clicked the "delete" key, which turns off the prediction feature on the backend. The user said they will just try to finish the message and hope the key prediction feature does not interfere again. This shows the user did not know the feature was turned off, demonstrating that the system violated the visibility of system status usability principle. 
+- The user successfully clicked on the correct key hitboxes for the remainder of the message and pressed send to finish Task 3. 
+
+// Nivedhitha 
+*SU-04:*
+1. Initial Navigation & Keyboard Discovery
+At the beginning of the task, the user clicked on the message screen as soon as the message appeared. However, they were immediately unsure about where to reply. It took them a few seconds to scan the interface and realize that a keyboard icon was available. Despite noticing the keyboard icon, they assumed that the arrow next to it would expand the keyboard. However, upon clicking the arrow, the system instead revealed suggested responses such as "Yes," "No," and "That’s okay." This was an unexpected interaction for the user, though they appreciated the shortcut for responding without typing.
+2. Selecting & Sending Messages
+Once the user selected "Yes" from the suggested responses, they expected the message to be sent immediately. However, instead of sending the response, the interface presented additional options: "Cancel," "Edit," and "Send." This caused a moment of confusion as the user had to pause and process the new set of choices before proceeding. It took a brief moment for them to realize that they had to manually press "Send" to complete the action. This extra step led to a sense of unnecessary complexity, particularly in an urgent situation where they expected a single tap to send a response.
+
+After pressing "Send," the user was unsure if the message was actually sent because there was no confirmation feedback. They looked for an indication, such as a color change, vibration, or a small notification, but found none. This lack of feedback made them question whether they had successfully completed the action. To explore the system further, they went back and tried selecting other suggested responses. During this process, they verbally expressed a question: "What if I have to initiate a conversation first? Won’t there be any suggestions?" This raised concerns about whether the system only provided assistance when responding but not when composing a new message.
+
+3. Typing Experience with the Dynamic Key Hitbox
+Once the user moved on to typing a message manually, they encountered the dynamic key hitbox feature, which predicted where they should tap based on letter probabilities. Initially, the user found the feature interesting and even exciting as it visually guided their typing. However, as they continued, they noticed that the hitbox sometimes interfered with their natural typing flow, drawing their attention to suggested letters instead of allowing them to type freely.
+Typing on the smartwatch felt slower compared to a smartphone, mainly because there were no word suggestions to speed up the process. The user expressed that on their phone, predictive text helps complete words quickly, reducing the need for individual key presses, but this smartwatch keyboard required them to type every letter manually. Additionally, they found the placement of the "Send" button to be unintuitive, as they instinctively looked for it at the bottom-right corner, where it is commonly placed in most messaging applications. Having to search for the button slightly interrupted the natural flow of completing a message.
+
+4. Expectations & Feature Limitations
+The user had certain expectations based on their prior experiences with messaging interfaces. For example, they expected a red underline to indicate typos, which is a standard feature in most text input systems. When they made a mistake while typing "OK" and missed the letter "O," they were surprised that there was no visual indication of the error. This led them to assume the word was correct, which could cause issues in real-world usage.
+Another unmet expectation was the assumption that something would appear in the blank space between the cancel button and the keyboard. Since they were accustomed to interfaces that dynamically provide suggestions or feedback in such areas, they felt disappointed when nothing appeared.
+Additionally, they found the confirmation screen’s wording to be slightly confusing. The screen displayed "Cancel," "Edit," and "Send", but the user expected a "Back" button instead of "Cancel." This led them to ask whether "Cancel" meant going back or discarding the message entirely. They were also concerned about message retention and wondered if their typed message would remain saved if they navigated away and returned later.
+
+5. Issues with the Hitbox & Prediction Accuracy
+One of the notable issues observed was during Task 3, where the user had to type "I'll have a salad." While attempting to type "I-L-L," they found that the hitbox was suggesting incorrect letters. This misalignment caused frustration, as they had to override the predictions to input their intended text correctly. This made them question whether the hitbox feature was genuinely improving efficiency or adding unnecessary complexity.
+Additionally, they asked whether the hitbox feature could be turned off, as there might be situations where they would prefer typing manually—particularly for uncommon words, abbreviations, or words from other languages. They felt that the constant visual guidance might be distracting for experienced typists who already know the keyboard layout.
+
+*SU-05:*
+1. Summary 
+For Task 1 (responding "yes" to a question about chicken), SU-05 quickly identified and selected the "Yes"
+suggestion from the available options. She then noticed the confirmation screen and, after a brief moment of
+consideration, tapped "Send" to complete the task. Her verbal comments indicated that she understood the
+purpose of this flow but was slightly surprised by the confirmation step.
+In Task 2 (typing "get two" chickens), SU-05 initially attempted to access the keyboard by tapping the keyboard
+icon rather than swiping up. This confusion momentarily interrupted her flow, but once she discovered the correct gesture, she proceeded to type her message. Notably, when typing "two," her tap for the letter "o" fell outside the actual key but within the expanded hitbox area. The system correctly interpreted this as "o," allowing her to complete the message without error despite the imprecise tap. 
+For Task 3 (typing "Ill have salad"), SU-05 approached the keyboard with more confidence, having learned from the previous task. However, when typing "Ill," her tap for the second "l" fell within the expanded hitbox for "k," resulting in "Ik" instead of "Il." She immediately recognized this error, used the backspace key to delete the incorrect letter, and attempted to type "l" again. On this second attempt, with the Dynamic Key Hitbox system having reverted to standard hitboxes after the backspace, she successfully typed "l" in the exact same location. She then completed the rest of the message without further issues.
+
+2. Interpretations of Participant Actions
+SU-05’s interactions with the prototype revealed several important patterns: When approaching the suggested
+responses in Task 1, SU-05 immediately recognized and tapped "Yes" without hesitation, suggesting that the
+suggested responses were prominently displayed and easily recognizable. Her direct approach indicates that the
+interface successfully communicated the primary action available to her.
+The confusion with the keyboard access method in Task 2 - trying to tap the icon rather than swiping - reveals a
+mismatch between the user’s expected interaction pattern and our design’s implementation. This suggests that
+our current visual indicator for keyboard access lacks sufficient affordance to communicate the required gesture.
+In both typing tasks, SU-05’s finger placement was not always precise (falling outside the actual key boundaries),
+yet she was able to successfully type most characters due to the Dynamic Key Hitbox system. This validates our
+approach to expanding hitboxes based on predictive likelihood, as it allowed her to complete tasks successfully
+despite imperfect accuracy.
+SU-05’s reaction to the typing error in Task 3 was particularly informative. When "l" was misinterpreted as "k," she
+immediately recognized the error and instinctively used backspace to correct it. She didn’t express confusion
+about why the error occurred or how to fix it, suggesting that the error correction pathway was intuitive even
+without explanation of the underlying system.
+The fact that SU-05 tapped in the same location for "l" after using backspace, and the system correctly recognized
+it the second time (due to the reversion to standard hitboxes), demonstrates that our design’s approach to
+handling error correction worked as intended without requiring explicit instruction. \ 
+
+3. Interpretations of Participant Think-Aloud Utterances
+SU-05’s verbal comments throughout the session provided valuable context for understanding her experience with
+the prototype. 
+When she stated "I want to reply yes, and so I will click on ‘Yes’" in Task 1, it indicates that the purpose of the
+suggested responses was immediately clear to her. The directness of her statement suggests that no cognitive
+effort was required to understand how to use this feature, demonstrating good alignment with user expectations.
+Her comment about the confirmation screen - "I think that this is correct in that this is what I want to do, so I’ll hit
+send" reveals a conscious evaluation of the message before sending. While she later mentioned that she "would
+have expected to send it right away," her follow-up comment that "having a confirmation to make sure that I did
+choose the correct thing is useful" suggests an appreciation for the error prevention mechanism despite it not
+matching her initial expectations.
+SU-05’s statement about suggestions - "I like the suggestions feature... For times like this, it’s useful" gives us a better
+understanding of when this feature would be most valuable. This suggests that while the feature is appreciated,
+users may prefer to skip it altogether for more complex replies.
+Her comment about the Dynamic Key Hitbox feature - "I didn’t have to worry that much about hitting the key
+correctly" indicates that the system successfully reduced the cognitive load associated with precise typing on a
+small screen.
+SU-05’s remark about the typing error - "I guess I was a little annoyed that even though I had hit within the bounds
+of ‘L’ it registered as a ‘K’" highlights a potential disconnect between user perception and system behavior. Even
+though she benefited from the expanded hitboxes for "o" in Task 2, the same feature created frustration when it
+led to an unexpected result in Task 3. This suggests that the invisibility of the system’s adaptive behavior can be
+both a strength (when it works as expected) and a weakness (when it produces unexpected results).
+Her comment about backspace disabling the function - "Having the backspace disabling the function was helpful
+though" after the design was explained indicates an appreciation for how the system adapted to error correction,
+even though she had no explicit knowledge of this design feature during the session. This suggests that our
+approach to reverting to standard hitboxes after backspace aligns with user expectations for error recovery. \ 
+
+4. Evaluating the Design Against User Requirements
+Our user testing revealed several areas where the current design falls short of fully meeting our established user requirements:
+- Requirement 1: Users must have an opportunity to correct mistakes before sending a message
+  - The confirmation screen after selecting a suggested response successfully addressed this requirement. However, SU-05’s comment that she "would have expected to send it right away" indicates that this additional step was somewhat unexpected. Despite this, she did express that she appreciated the confirmation step in preventing accidental sends, despite the unexpectedness of the additional step. Additionally, this would only be a surprise for a user the first time they use the feature, further indicating that the confirmation step is more beneficial than detrimental to the user experience.
+- Requirement 3: The user should be able to type accurately and with minimal incorrect input recognitions
+  - The Dynamic Key Hitbox feature showed overall positive results against this requirement. In Task 2, it successfully enabled SU-05 to type accurately despite an imprecise tap on the letter "o." Additionally, in the much rarer case that the user types a letter that the system does not anticipate, her performance in Task 3 shows that the system will cause at most one error per such word. We feel that adding a bounded amount of error per rare case is a reasonable trade-off for the benefit of the more common case, and shows that our system fulfills this requirement.
+- Requirement 6: Users should feel comfortable using the text-entry method in public
+  - SU-05’s stated "I liked that it’s a silent experience that did not draw attention to me" when asked about the experience of using the prototype in public. This indicates that the design is successful in meeting this requirement.
+
+*SU-06:*
+1. Using Quick Suggestions
+The participant initially explored the quick reply interface upon receiving a message, noting uncertainty about whether additional suggestions might appear if she scrolled further. Despite this confusion, she recognized and tapped "Right, that's okay!" with relative ease, then successfully sent it.
+
+- Interpretation: Her hesitation about scrolling suggests that the prototype’s visual cues for additional options (e.g., a scrollbar or "More" indicator) are not obvious enough. She demonstrated a willingness to use pre-set messages for speed, which aligns with our goal of making brief replies convenient. However, the lack of clarity on extra suggestions could undermine the efficiency of this feature.
+
+- Usability Issue & User Requirement Check:
+
+  - Requirement 1 was partly validated here, as she had an explicit confirm screen. However, it added extra steps she found unnecessary for a short, confident reply.
+  
+  - Requirement 6 was not challenged in this particular action, and she appeared comfortable using the watch for a quick response.
+
+2. Composing a Custom Reply
+For the second task, she needed to write "Get two." She was unsure about the arrow icon’s function: whether it opened the keyboard or revealed more suggestions. She tried editing a suggested reply first, then decided to type from scratch. Ultimately, she managed to input "Get two" successfully.
+
+- Interpretation: The confusion about the arrow stems from her preconception that arrows typically mean "expand," not necessarily "switch modes." Her brief attempt to edit a suggested phrase indicates uncertainty over whether it would be more efficient to modify an existing sentence or to start fresh. Once she switched to the keyboard, she completed the task without major errors, though her internal debate on the best approach reflects a design ambiguity: there is no explicit guidance on which method (edit vs. new typing) is more optimal.
+
+- Usability Issue & User Requirement Check:
+
+  - Requirement 3: She did successfully type "Get two," indicating that the layout and dynamic hitbox keyboard did not prevent accurate input in this scenario. Still, her confusion about entry modes does not strictly violate accuracy requirements—rather, it implicates efficiency and clarity of system modes.
+
+  - Requirement 6 remained mostly untested here, as she was more focused on UI navigation than any social discomfort.
+
+3. Typing Punctuation and Correcting Errors
+When asked to type "I’ll have salad," she noticed missing punctuation keys, specifically apostrophe, comma, and period. While typing "salad," the watch recognized her tap on the letter "a" as "w," causing a minor error. She used backspace to correct it and then deliberately tapped "a" more carefully, taking noticeably longer to ensure accuracy.
+
+- Interpretation: Her immediate remark that punctuation was lacking reveals a strong expectation that even on a small keyboard, essentials like apostrophes or commas should be readily accessible. She also exhibited caution after experiencing one erroneous tap, which indicates the dynamic hitbox keyboard’s predictions can occasionally break user trust, slowing them down as they confirm each press. The lack of a punctuation interface also underscores that typical text composition habits were not fully accounted for.
+
+- Usability Issue & User Requirement Check:
+
+  - Requirement 1 was met in that she could backspace and correct the input. The design permits immediate correction before sending, so the requirement is technically fulfilled. However, the friction she felt repeatedly having to confirm each letter suggests a potential negative impact on overall user efficiency.
+
+  - Requirement 3 was partially met. While she could eventually type the intended words, the error with "a" vs. "w" highlights that the dynamic hitbox might not always align with the user’s tap location. This mismatch diminishes the intended accuracy advantage.
+
+  - Requirement 6 was not specifically mentioned during this error sequence.
+
+
 
   = User Evaluation
   
