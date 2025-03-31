@@ -169,6 +169,7 @@
   }
 
   show table: set align(center)
+  set table(align: left)
   show table: set block(spacing: 18pt)
 
   set table(stroke: (x, y) => {
