@@ -23,7 +23,7 @@
 #show: acmart.with(
   title: "Clockworks",
   authors: authors,
-  draft: true // hides "unnecessary" content during editing
+  draft: false // hides "unnecessary" content during editing
 )
 
 #make_title("Clockworks", authors, "University of Michigan, USA", concepts, keywords)[
@@ -37,7 +37,7 @@ Smartwatches, such as the Apple Watch and Samsung Galaxy Watch, have grown in po
 
 Despite attempts to address these constraints through swiping, handwriting, or other alternative input methods @shibata2016driftboard @oney2013zoomboard @tapvstrace, research consistently shows that smartwatch owners prefer using their phones for any lengthy or complex text input @schirra2015s @pizza2016smartwatch. This avoidance points to a broader usability issue where the "fat finger" problem @siek2005fat and the awkwardness of typing on such a small interface lead to frustration, discomfort, and low adoption of advanced text-entry features @turner2021typing. In practice, many users confine their watch interactions to passively reading notifications and occasionally sending very short responses or emojis @pandey2021acceptability.
 
-In light of these persistent challenges, our project centers on gathering detailed information about how people use and experience text entry on smartwatches. We build on previous comparative studies of smartwatch input techniques@turner2021typing @chen2014swipeboard @shibata2016driftboard, while focusing on real-world usage contexts. To that end, we conducted a pilot survey with six participants and a revised survey with thirty responses that hinted at widespread dissatisfaction with smartwatch text-entry but did not explore specific causes. We set out to examine those causes through Contextual Inquiry interviews, consolidating data from six participants with varying backgrounds and usage patterns.
+In light of these persistent challenges, our project centers on gathering detailed information about how people use and experience text entry on smartwatches. We build on previous comparative studies of smartwatch input techniques @turner2021typing @chen2014swipeboard @shibata2016driftboard, while focusing on real-world usage contexts. To that end, we conducted a pilot survey with six participants and a revised survey with thirty responses that hinted at widespread dissatisfaction with smartwatch text-entry but did not explore specific causes. We set out to examine those causes through Contextual Inquiry interviews, consolidating data from six participants with varying backgrounds and usage patterns.
 
 Our promise is to identify practical ways of enabling quick, less error-prone text entry on watches. Based on our findings from our survey, the main obstacle arises from the small screens and input constraints that undermine users' comfort and confidence in sending messages. These obstacles constrain smartwatch owners to only the most minimal forms of text-based communication. We hypothesize that smartwatch text-entry can support more tasks if designs address short-message needs and reduce the friction associated with typing on a tiny screen.
 
@@ -47,11 +47,13 @@ By consolidating these data, we uncovered opportunities to create straightforwar
 
 We have designed several low-fidelity prototypes to find the best way to satisfy our user requirements. Our designs found novel ways to input text faster, reduce mistakes, and remove the need for direct contact with the smartwatch. These include dynamic hitboxes, a separate edit interface, a quick typo-correction interface, hands-free gesture typing with a camera, LLM integration, and a near full redesign of the traditional smartwatch texting experience.
 
-Our designs increased typing efficiency by making varied use of suggested words. For instance, the dyanmic hitboxes change the underlying keyboard's tap map to make likely subsequent letters easier to press, and quick correction offers many suggestions to typo so the user doesn't have to retype a word. However, our designs had important considerations to address. Many of our designs relied on swipe type, a feature that's hard to use on smaller smartwatches, or external buttons, which may not exist on all smartwatches. Some designs also only allowed per-word editing instead of per-character, which can be excessive for tiny mistakes.
+Our designs increased typing efficiency by making varied use of suggested words. For instance, the dynamic hitboxes change the underlying keyboard's tap map to make likely subsequent letters easier to press, and quick correction offers many suggestions to typo so the user doesn't have to retype a word. However, our designs had important considerations to address. Many of our designs relied on swipe type, a feature that's hard to use on smaller smartwatches, or external buttons, which may not exist on all smartwatches. Some designs also only allowed per-word editing instead of per-character, which can be excessive for tiny mistakes.
 
-Building upon the most effective elements of these designs, our final prototype combines the contextually generated responses with the Dynamic Key Hitboxes approach. This interface prioritizes suggested responses for quick interaction while allowing for the user to type custom messages with enhanced accuracy. Suggested responses appear first, minimizing typing effort, and a confirmation step prevents accidental selections. When custom input is necessary, the dynamic key hitbox keyboard reduces errors by intelligently adjusting key sizes based on predicted letter sequences.
+Building upon the most effective elements of these designs, we created a final low-fidelity prototype that combines the contextually generated responses with the Dynamic Key Hitboxes approach. This interface prioritizes suggested responses for quick interaction while allowing for the user to type custom messages with enhanced accuracy. Suggested responses appear first, minimizing typing effort, and a confirmation step prevents accidental selections. When custom input is necessary, the dynamic key hitbox keyboard reduces errors by intelligently adjusting key sizes based on predicted letter sequences.
 
-Our next step is evaluate our final prototype through user testing and provide a rough implementation in a high-fidelity prototype. This evaluation will ensure that the design effectively addresses the core challenges and user requirements of smartwatch text entry while enhancing user experience. 
+After finalizing this low-fidelity prototype and refining user requirements, our group conducted simplified user testing sessions with six participants, as well as heuristic evaluations with six usability experts. We used a shared protocol that guided participants through tasks involving suggested replies and the adaptive keyboard, and we recorded the interactions, observed mistakes, and captured participants' comments. We documented every usability issue the experts discovered, linking each problem to a violated heuristic and assigning it a severity score. We also consolidated participants' actions and utterances in the simplified user testing to illustrate the design's strengths and weaknesses.
+
+Based on these findings, we outlined potential solutions for severe usability problems. This process highlighted the need for clear indicators of predictive hitbox activity, additional punctuation and language options, and more intuitive transitions between suggested replies and typed messages. Our future work will consist of creating a functional prototype that integrates these improvements and conducting quantitative evaluations.
 
 = Related Work
 
@@ -271,23 +273,40 @@ The affinity diagram categorized comments into several groups. One group reflect
 = User Requirements and Functional Constraints
 // Provide a comprehensive list of objective, testable requirements that are not implying solutions. Make sure you ground your user requirements in the context of use.
 
-// Drawing on participants' real-world usage and common frustrations with smartwatch text-entry, we identified the following requirements that specify what the user must be able to do:\
+// Does the assignment contain updated requirements? Are those user requirements objective and testable and properly grounded in the context of use? Is each requirement properly explained and justified?
 
 We examined insights from our contextual interviews, consolidated sequence, flow, and affinity diagrams along with our survey data to identify key usability challenges in smartwatch text entry. Based on our findings, we derived the following user requirements, ensuring they are objective, testable, and grounded in real-world usage patterns. 
 
-_*Requirement 1:* Users must have an opportunity to correct mistakes before sending a message._ Many participants reported accidentally selecting the wrong quick reply or mistyping a message without a chance to correct it before sending. Given the small screen size, unintended inputs are common, leading to frustration and errors in communication. The user should be able to correct such errors that may occur. This requirement can be evaluated by measuring how frequently users are able to intercept and correct errors before a message is sent, compared to how often unintended messages are sent without correction.
+// ASSIGNMENT 2 COMMENTS 
+// Note: Had 6 URs. Requirement 2 might be a bit hard to test because the time to switch to another device varies greatly. The same applies to Requirement 4. Maybe it would be a clearer UR to define what this "other external device" for comparison is, thus setting a clearer benchmark.
+// Requirement 3 might be a bit too broad. Since there are so many modalities mentioned in your explanation, it might be a bit difficult to define what is "accurately". Also, you will need to use an error rate value to determine if this UR is met, which should be grounded in previous work.
+// The wording of UR 5 is a bit unclear and might give people the impression that the user should "only" need to use voice, which is not your intention. So might be useful to clarify the wording.
+// For Requirement 6, the observational studies of tech abandonment might be a bit harder to do than the self-report of comfort level.
+#let requirement1 = [_*Requirement 1:* Users must have an opportunity to correct mistakes before sending a message._]
+#let requirement2 = [_*Requirement 2:* Users must be able to fix text-entry mistakes on the smartwatch faster than it would take for them to retrieve a smartphone from a pants pocket and complete the same task._]
+#let requirement3 = [_*Requirement 3:* Users should be able to enter text more accurately on this design than by tapping on an existing smartwatch keyboard._]
+#let requirement4 = [_*Requirement 4:* Users should be able to complete short text-entry tasks on the smartwatch faster than it would take to retrieve a smartphone from a pants pocket and complete the same task._]
+#let requirement5 = [_*Requirement 5:* Users should have an alternative method that requires less direct hand contact with the smartwatch to complete text-entry tasks than by using the traditional smartwatch keyboard._]
+#let requirement6 = [_*Requirement 6:* Users should feel comfortable using the text-entry method in public._]
 
-_*Requirement 2:* Users must be able to fix text-entry mistakes faster than it would take for them to switch to another device and complete the task on that external device._ Participants frequently expressed that fixing errors on a smartwatch was so cumbersome that they preferred switching to their smartphone or other device instead. If the effort to correct mistakes is lower than switching devices, users will be more likely to complete their tasks on the smartwatch. This is testable by comparing the average time it takes a participant to fix a mistake on their watch versus performing the same action on an external device.
+#requirement1
+Many participants reported accidentally selecting the wrong quick reply or mistyping a message without a chance to correct it before sending. Given the small screen size, unintended inputs are common, leading to frustration and errors in communication. The user should be able to correct such errors that may occur. This requirement can be evaluated by measuring how frequently users are able to intercept and correct errors before a message is sent, compared to how often unintended messages are sent without correction.
 
-_*Requirement 3:* Requirement 3: Users should be able to enter text more accurately on this design than by typing on the existing smartwatch keyboard._
+#requirement2
+Participants frequently expressed that fixing errors on a smartwatch was so cumbersome that they preferred switching to their smartphone or other device instead. If the effort to correct mistakes is lower than switching devices, users will be more likely to complete their tasks on the smartwatch. This is testable by comparing the average time it takes a participant to fix a mistake on their watch versus performing the same action on a smartphone starting from retrieving it from their pocket.
+
+#requirement3
 Users expressed frustration with frequent mistakes caused by the smartwatch misinterpreting input, whether from small keyboard buttons, inaccurate swipe detection, or faulty voice-to-text processing. The user should be able to enter their intended text correctly a high percentage of the time without the need for post-facto error correction compared to current smartwatch text-input designs. 
-This requirement can be tested by tracking the error rate of the user's text-input on different text-entry tasks.
+This requirement can be tested by tracking the error rate of the user's text-input on our new text-entry design versus the previous, legacy smartwatch text-input designs.
 
-_*Requirement 4:* Users should be able to complete short text-entry tasks on the smartwatch faster and more reliably than on external devices, including any overhead to setting up the external device (_e.g._ taking a phone out of a pocket)._ Participants reported that they prefer to use their smartwatches for short text-entry tasks (_e.g._ replying to casual messages) because they would like to avoid the overhead of setting up some other external device for these tasks. Users tended to resort to their phone or other device if the response required anything more than a few words. As such, a design should fulfill users' desires and optimize for speed and convenience when considering brief interactions. By doing so, this would make the smartwatch a more viable tool for communication. The effectiveness of this requirement can be assessed by timing participants completing a set of short text-entry tasks on a smartwatch versus retrieving and using an external device (such as taking a phone out of a pocket).
+#requirement4
+Participants reported that they prefer to use their smartwatches for short text-entry tasks (_e.g._ replying to casual messages) because they would like to avoid the overhead of setting up some other external device for these tasks. Users tended to resort to their phone or other device if the response required anything more than a few words. As such, a design should fulfill users' desires and optimize for speed and convenience when considering brief interactions. By doing so, this would make the smartwatch a more viable tool for communication. The effectiveness of this requirement can be assessed by timing participants completing a set of short text-entry tasks on a smartwatch versus retrieving their phone from a pocket and completing the same tasks.
 
-_*Requirement 5:* Users should be able to complete text-entry tasks without direct hand contact with the smartwatch._ Many users expressed frustration with their smartwatch's text-entry capabilities in situations when they were not able to touch the watch with their hands (_e.g._ the user is cooking; the user has long nails). This limitation discourages them from using text-entry features. As such, participants have expressed a desire to perform these tasks without directly touching the smartwatch. This is testable by observing whether users are able to complete text-entry tasks without touching the watch. 
+#requirement5
+Many users expressed frustration with their smartwatch's text-entry capabilities in situations when they were not able to touch the watch with their hands (_e.g._ the user is cooking; the user has long nails). This limitation discourages them from using text-entry features. As such, participants have expressed a desire to perform these tasks with as little direct contact with the smartwatch as possible. This is testable by asking users to complete the same set of tasks with the new design versus the traditional smartwatch keyboard and comparing which design involved fewer direct touches. 
 
-_*Requirement 6:* Users should feel comfortable using the text-entry method in public._ Multiple users expressed that they were unhappy with voice input for text-entry as it made them feel uncomfortable to use in public, despite needing to perform text-entry tasks. Additionally, many other participants expressed that they enjoyed that their smartwatch allowed them to do tasks discretely in public without feeling uncomfortable. As such, we want to fulfill users' desires to have a text-entry method they can comfortably use in public. This requirement can be tested by asking users to use the text-entry method in public and reporting their comfort levels via surveys. Additionally, observational studies could be used to measure how frequently users abandon using the text-entry method in social settings. 
+#requirement6
+Multiple users expressed that they were unhappy with voice input for text-entry as it made them feel uncomfortable to use in public, despite needing to perform text-entry tasks. Additionally, many other participants expressed that they enjoyed that their smartwatch allowed them to do tasks discretely in public without feeling uncomfortable. As such, we want to fulfill users' desires to have a text-entry method they can comfortably use in public. This requirement can be tested by asking users to use the text-entry method in public and reporting their comfort levels via surveys.
 
 = Initial Design and Low Fidelity Prototypes
 
@@ -605,7 +624,7 @@ The number of participants was determined on the principles of heuristic evaluat
 === Results
 // Report the results of heuristic evaluation here.
 // Does the assignment contain notes on all usability issues that the experts found with corresponding usability heuristic and severity score? (Note that you should compile all of the individual reports into one report, you can note if there are duplicate issues.)
-The six evaluators identified usability issues in our prototype, along with corresponding usability heuristics and severity ratings. They all had familiarity with smartwatch technology, though their experience levels varied, and each applied Nielsen's Usability Heuristics to assess the design. 
+The six evaluators identified usability issues in our prototype, along with corresponding usability heuristics and severity ratings. They all had familiarity with smartwatch technology, though their experience levels varied, and each applied Nielsen's Usability Heuristics to assess the design. The full heuristic evaluation report is available in Appendix E.2.
 
 A consistent source of concern was the absence of clear indicators for the dynamic hitbox feature. Several participants could not discern if the system was active or how to revert an incorrect prediction, which compromised their control over typing. This issue commonly related to heuristics regarding system status visibility and user control. Missing or inconsistent navigation functions were another prominent theme: some screens lacked a visible Back button or included ambiguous icons that made switching between suggestions and the main conversation difficult. Participants also noted the absence of standard smartwatch features such as voice input, emojis, and language switching. Evaluators explained that these omissions reduced the prototype's suitability for day-to-day use by failing to address user expectations for common interactions.
 
@@ -619,7 +638,7 @@ Several evaluators praised the consistent QWERTY layout for aligning with user e
 
 Many of the issues found can be fixed quickly, such as adding back buttons on all screens and creating documentation. However, we need to evaluate the tradeoff between subtle convenience and explicit user control. Many evaluators noted that there should be some kind of indicator of when a correction takes place, but that on its own may further confuse a user.
 
-Addressing these items may improve user confidence and reduce the likelihood that individuals will switch to a separate device when they need to type a message on the watch. The full heuristic evaluation report is available in Appendix E.2.
+Addressing these items may improve user confidence and reduce the likelihood that individuals will switch to a separate device when they need to type a message on the watch.
 
 == Simplified User Testing
 // Does "7.2 Simplified User Testing" section contain a proper summary of the purpose of the experiments, method, tasks and procedures, and participants? Does the method subsection indicate which user requirements the evaluation tested the designs against?
@@ -632,14 +651,12 @@ The participants in our user testing studies were instructed to think aloud thro
 
 We took written notes during the session, recording user actions, errors, comments, and signs of confusion. We also documented when the system met or failed user expectations related to our three key requirements.
 
-\
-*NEED TO FIX REQUIREMENTS AND THEIR REFERENCES \ *
-\
 These requirements come from our group's previous assignments and are as follows: 
-
-1. Requirement 1: Users must have the opportunity to correct errors before sending messages.
-2. Requirement 3: Users should be able to enter text more accurately on this design than by typing on the existing smartwatch keyboard.
-3. Requirement 6: Users should feel comfortable using the text-entry method in public.
+#quote(quotes: false, block: true)[
+  #requirement1 \
+  #requirement3 \
+  #requirement6
+]
 
 We decided not to evaluate our prototype against other user requirements because they included times to complete a task and it is hard to quantify interaction time with simplified user testing. Although Requirement 3 requires comparison against an existing smartwatch, we cannot feasibly compare performance of a low-fidelity prototype with an actual product and will instead qualitatively observe how accurate our participants were able to enter text on the prototype. 
 
@@ -655,17 +672,19 @@ To evaluate Requirement 1, we plan to note the times that users were able to int
 
 Before the session began, we obtained informed consent from the participant and explained the purpose of the study. We described the context in which the prototype would be used: an average user that needs to quickly respond to text messages while unable to use the smartwatch's voice-to-text feature. This user may sometimes need to craft longer or more customized text messages.
 
-We gave a brief overview of the prototype's core features but did not go into depth to demonstrate how to use them or the details in their implementation. This was to allow the user to discover how the features work on their own and expose issues without prior knowledge. The core features explained where:
+We gave a brief overview of the prototype's core features but did not go into depth to demonstrate how to use them or the details in their implementation. This was to allow the user to discover how the features work on their own and expose issues without prior knowledge. The core features explained were:
 
 1. Suggested replies shown when a message is received
 2. Confirmation options (Send, Edit, Cancel) after selecting a suggested response
 3. A dynamic keyboard that adapts key hitboxes based on the predicted next character
 
-Then, the participant was asked to complete the following tasks using the paper prototype. The scenario is shown in #ref(<fig:notification>). 
-
-1. Task 1: Your phone is away and you need to respond ASAP. Tell Joyce that chicken is okay.
-2. Task 2: Your phone is away and you need to respond ASAP. You're okay having chicken for dinner but think you need more. Tell Joyce to "get two" chickens.
-3. Task 3: Your phone is away and you need to respond ASAP. Tell Joyce "Ill have salad."
+Then, the participant was asked to complete the following tasks using the paper prototype. The scenario is shown in #ref(<fig:notification>).
+#quote(quotes: false, block: true)[
+  #set enum(numbering: n => [Task #n:])
+  + Your phone is away and you need to respond ASAP. Tell Joyce that chicken is okay. \
+  + Your phone is away and you need to respond ASAP. You're okay having chicken for dinner but think you need more. Tell Joyce to "get two" chickens. \
+  + Your phone is away and you need to respond ASAP. Tell Joyce "Ill have salad."
+]
 
 In Task 1, we hope to identify any issues users encounter when discovering and utilizing the suggested responses to reply. In Task 2, we will use Wizard of Oz technique to demonstrate how the keyboard might correctly predict the user's next characters when they respond "get two." In Task 3, we will use Wizard of Oz technique to demonstrate how the keyboard might incorrectly predict the user's next characters when they respond "Ill have salad." These tasks attempt to cover all of the scenarios a user might encounter while using this design in the real world.
 
@@ -758,7 +777,7 @@ We decided on the number of participants based on the project requirements and t
 // Do the findings collectively summarize individual interpretations in order to present an overall understanding of participant actions, utterances, mistakes, etc.? Are these findings supported by individual interpretations or participant quotes to cite as examples where needed?
 // Does this section include notes on when and how the design fails the meet the user requirements?
 
-The six user tests (SU-01 through SU-06) revealed important insights into how participants interact with our paper prototype. Each participant performed tasks that involved selecting and editing suggested responses, navigating to the keyboard, and typing custom messages.
+The six user tests (SU-01 through SU-06) revealed important insights into how participants interact with our paper prototype. Each participant performed tasks that involved selecting and editing suggested responses, navigating to the keyboard, and typing custom messages. All user testing notes and individual interpretations are available in Appendix E.3 and labeled by their user codes.
 
 First, several participants struggled to locate or distinguish the keyboard interface from the suggested replies. One user (SU-03) tapped the keyboard icon unsuccessfully and then realized that a swipe gesture was needed instead, indicating confusion about visual cues for switching modes. Another user (SU-06) hesitated with the arrow icon, unsure if it would display more suggestions or reveal the keyboard. These early navigation hurdles suggest that the prototype does not consistently convey how different screens or gestures should be accessed. Participants also expressed uncertainty about returning to earlier screens (SU-02, SU-03), questioning whether “Cancel,” “Back,” or “Edit” would revert to suggestions or discard changes entirely.
 
@@ -799,15 +818,17 @@ The simplified user testing shows that participants recognized the potential ben
 // The Discussion should contain the implications of your findings for the future iterations of your design, including potential solutions to the severe usability issues identified.
 The survey results show that text entry is not a priority for smartwatch users. The small screen size is the limiting factor in making text entry viable. Even though users may be comfortable typing on a smartphone, that skill cannot directly translate to a screen many times smaller.
 
-The most frequent requests to improve text entry involved minimizing the number of keystrokes required to type a message. Predictive text and autocorrect could significantly speed up typing speeds by allowing less precise inputs to still be interpreted correctly. Due to the small screen users, the survey also indicates that users might want to see a reduction in the number of interactions required to complete the same tasks on a smartwatch. This highlights an usability challenge: while smartwatches offer convenience and accessibility, their small screen size and limited input methods often lead to cumbersome navigation and excessive touch interactions. 
+The most frequent requests to improve text entry involved minimizing the number of keystrokes required to type a message. Predictive text and autocorrect could significantly speed up typing speeds by allowing less precise inputs to still be interpreted correctly. Due to the small screen users, the survey also indicates that users might want to see a reduction in the number of interactions required to complete the same tasks on a smartwatch. This highlights a usability challenge: while smartwatches offer convenience and accessibility, their small screen size and limited input methods often lead to cumbersome navigation and excessive touch interactions. 
 
 Our aggregated findings from Contextual Inquiry deepen the perspective gained from our previous survey by illustrating the granular breakdowns people face when typing on a tiny watch interface. Participants across different ages and backgrounds echoed the view that the watch is best suited for quick glances or short messages, with complex text tasks delegated to a phone. This pattern matches our earlier hypothesis that small screens alone do not explain why text-entry is so marginal; rather, usability gaps — like a lack of quick edit options or a reliable predictive engine — exacerbate the difficulty.
 
-We now see a narrower focus forming around features that support short, context-specific messages in a more controlled manner. The emphasis on confirmations, immediate error correction, and discreet input suggests an urgent need to refine the watch's interplay between automatic suggestions and manual editing. 
+We found a narrower focus forming around features that support short, context-specific messages in a more controlled manner. The emphasis on confirmations, immediate error correction, and discreet input suggests an urgent need to refine the watch's interplay between automatic suggestions and manual editing. 
 
-Throughout our design process, we experimented with many different methods of error correction to address the above concerns. However, our critiques on each design reinforced the idea that the form-factor of a smartwatch is generally unsuitable to allow for quick and precise corrections for arbitrary errors. As a result, in our final design, we shifted our focus from making errors easily fixable to preventing errors in the first place. This allows us to address our users' concerns regarding errors while creating designs that are feasible and user-friendly.
+Throughout our design process, we experimented with many different methods of error correction to address the above concerns. However, our critiques on each design reinforced the idea that the form-factor of a smartwatch is generally unsuitable to allow for quick and precise corrections for arbitrary errors. As a result, in our final paper-prototype design, we shifted our focus from making errors easily fixable to preventing errors in the first place. This allows us to address our users' concerns regarding errors while creating designs that are feasible and user-friendly.
 
-Additionally, our design critiques suggested that simpler designs that focused around efficiency and accuracy were the most universally liked designs. As a result, we picked two designs that we agreed possessed these qualities, and iterated upon them to derive our final design. The critique process resulted in a final design that we believe will produce a product that addresses user concerns in the most effective way.
+Our design critiques suggested that simpler designs that focused around efficiency and accuracy were the most universally liked designs. As a result, we picked two designs that we agreed possessed these qualities, and iterated upon them to derive our final paper-prototype design. The critique process resulted in a final paper-prototype design that we believe will produce a product that addresses user concerns in the most effective way.
+
+User testing and heuristic evaluation revealed several gaps in our initial prototype, including core features such as back buttons and special character entry. In the next iteration of our prototype, we must include these core features that users expect of any keyboard. We also discovered that many users requested that our design give an indication of its activation to increase transparency. The simplified user testing results showed how our design language, particularly with suggested reply buttons and the need to swipe up to access the keyboard, needs significant improvement. We can utilize motion and animations in our design components in the high fidelity prototype to make these functions clearer.
 
 = Conclusion and Future Work
 // What is the takeaway of this project? Were there any parts of the project that you did not include in the scope of this project? Here is where you will discuss how the current assignment will inform the rest of your project. For example, in Assignment 1, how will the results of your survey influence the future steps in understanding context of use? Feel free to use your creativity to suggest new research directions, designs---but these suggestions must be supported by the findings of your study
@@ -818,9 +839,17 @@ Through our Contextual Inquiry data, we have discovered that almost all text-ent
 
 Additionally, our Contextual Inquiry data provided us with specific frustrations users experienced when performing text entry tasks. In particular, the interface we design needs to have sufficiently large interactive input regions to reduce input error and have predictive features to speed up entry. 
 
-Our sketched designs showcased many approaches at addressing our user requirements. We evaluated many dimensions of the design space, with sketches that spanned multiple strategies from new ways to edit and fix errors, to new ways to interact with the smartwatch, to those that introduced new ways to interpret actions already familiar to the user. The critiques and insights different group members provided led us to narrow our focus to simpler solutions that address user requirements while maintaining consistency with systems the user is familiar with. Additionally, we narrowed our goals to focus on error prevention to address user requirements that had to do with errors, rather than designing a novel way to fix errors. The latter, we found, was prohibitively difficult due to the physical constraints of smartwatches.
+Our findings from surveys and Contextual Inquiries led to a key set of user requirements that shaped our design direction. These requirements highlighted the need for:
+- Error prevention and correction (Requirement 1 and 2)
+- Input accuracy and speed (Requirement 3 and 4)
+- Offerings of alternative input methods with minimal hand contact (Requirement 5)
+- Public usability and comfort (Requirement 6)
 
-We feel comfortable that our design is aligned with our user requirements. In future work, we plan on establishing tasks and goals for our prototype and recruiting participants for user testing sessions to get direct feedback on our design.
+Our sketched designs showcased many approaches at addressing our user requirements. We evaluated many dimensions of the design space, with sketches that spanned multiple strategies from new ways to edit and fix errors, to new ways to interact with the smartwatch, to those that introduced new ways to interpret actions already familiar to the user. These strategies included use of AR technology, LLM integration, swipe typing, and predictive text-entry features. The critiques and insights different group members provided led us to narrow our focus to simpler solutions that address user requirements while maintaining consistency with systems the user is familiar with. Additionally, we narrowed our goals to focus on error prevention to address user requirements that had to do with errors, rather than designing a novel way to fix errors. The latter, we found, was prohibitively difficult due to the physical constraints of smartwatches.
+
+With our finalized design, we created a low fidelity paper prototype to showcase the essential features which include the contextual suggested responses and the dynamic key hitbox keyboard. We then conducted simplified user testing and heuristic evaluation on our paper prototype using the Wizard of Oz technique to identify key usability issues and gather feedback from users in real-world communication scenarios. From both tests, we found several usability issues including the lack of visual status on whether the dynamic key hitbox feature was active and missing controls to turn the dynamic keyboard on and off. Other identified issues included missing keyboard features that are present in traditional keyboards and lack of feature documentation. The consistency and minimal change between the previous smartwatch keyboard layout and our design's keyboard layout allowed for users to use our design without much guidance. Besides the consistent styling of the watch interface, users also found the ability to edit suggested replies to be convenient and useful. 
+
+In future work, we will address these usability issues and design a high-fidelity prototype that incorporates feedback from the heuristic evaluations and simplified user testing. Furthermore, we will conduct user evaluations to validate our user requirements and gather any final feedback on the new high-fidelity prototype. 
 
 = Acknowledgements
 #text(fill: red, [Here, you will acknowledge any individuals or organizations that are not part of your group, but that have contributed to your work.])
@@ -1603,10 +1632,10 @@ We feel comfortable that our design is aligned with our user requirements. In fu
     - When initially viewing the notification, he wanted to be able to see the keyboard and the suggestions at the same time. He noted that it would annoy him to press the keyboard button every time if we wanted to type something.
     - For Task 1, he wanted to reply with "that's okay", so after seeing "Right, that's okay" he tapped it.
     - When the suggestion confirmation screen appeared, he wanted to edit it with the keyboard but hesitated to press the Edit button since he didn't know exactly what it would do. After a few seconds of deliberating, he tapped it, and was glad to see the keyboard with the preview.
-    - To edit the message, he tapped the space between "Right" and "that's" and said he would hold the backspace button. Our group didn't disucss what to do in this specific situation, but I made the choice to manifest that behavior. This calls into question if or how other buttons should react to long presses.
+    - To edit the message, he tapped the space between "Right" and "that's" and said he would hold the backspace button. Our group didn't discuss what to do in this specific situation, but I made the choice to manifest that behavior. This calls into question if or how other buttons should react to long presses.
     - During Task 2, he typed the custom message nearly perfectly and didn't notice that one of the letters he barely missed was still corrected to the intended message due to the speed at which he was tapping. He noted that task was "pretty easy."
     - During Task 3, he noted that there wasn't a way to type an apostrophe as the he assumed the "123" key would only show a numeric pad.
-    - When the user pressed the "a" key after typing "sal", the ink showed the tap was on the right edge of the "a" key. After a second "s" appeared in the text bar (predicting "salsa"), the participant expressed confusion, pressed backspace, and spent noticably more effort pressing the "a" key again, which then worked as intended.
+    - When the user pressed the "a" key after typing "sal", the ink showed the tap was on the right edge of the "a" key. After a second "s" appeared in the text bar (predicting "salsa"), the participant expressed confusion, pressed backspace, and spent noticeably more effort pressing the "a" key again, which then worked as intended.
     - After all tasks were completed, the participant wished there was a visual indicator of when the predictive system took action.
     - The participant agreed that they would be comfortable using a system like this in public
 
