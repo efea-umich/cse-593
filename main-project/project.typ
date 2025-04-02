@@ -603,21 +603,21 @@ The study involved a total of six participants, all of whom were students or pro
 \
 *Expert 5 (HE-05)*
 - Age: 22
-- Gender: Female
+- Gender: Male
 - Education/Background: Computer Science MSE student at the University of Michigan
 - Technical Expertise: Highly familiar with technology interfaces
-- Smartwatch Ownership: Has owned or consistently worn an Apple Watch for four years
-- Usage Level: Everyday for many uses including texting
+- Smartwatch Ownership: Does not regularly use a smartwatch but familiar with smartwatches
+- Usage Level: Does not regularly use a smartwatch
 - Familiarity: Well-versed in usability principles and technology interfaces
 \
 *Expert 6 (HE-06)*
-Age: 35
-Gender: Male
-Education/Background: Technical professional at Ford Motors for a decade, pursuing a Master’s in Computer Science
-Technical Expertise: Highly proficient with smartphones and computers
-Smartwatch Ownership: Has never owned a smartwatch
-Usage Level: Understands smartwatch functionality through observations of friends and family
-Familiarity: Enrolled in a human-computer interaction design course with knowledge of heuristic evaluation
+- Age: 35
+- Gender: Male
+- Education/Background: Technical professional at Ford Motors for a decade, pursuing a Master’s in Computer Science
+- Technical Expertise: Highly proficient with smartphones and computers
+- Smartwatch Ownership: Has never owned a smartwatch
+- Usage Level: Understands smartwatch functionality through observations of friends and family
+- Familiarity: Enrolled in a human-computer interaction design course with knowledge of heuristic evaluation
 \
 The number of participants was determined on the principles of heuristic evaluation, which suggest that 5-7 evaluators can identify the majority of usability issues. Given the technical expertise and usability knowledge of the participants, this sample size was deemed sufficient to generate meaningful insights into smartwatch text-entry usability and design improvements.
 
@@ -754,7 +754,7 @@ The study involved a total of six participants.\
 *User 5*
 - Age: 22
 - Gender: Female
-- Education/Background: Computer Science MSE student at the University of Michigan
+- Education/Background: Master of Finance Student at MIT
 - Technical Expertise: Highly familiar with technology interfaces
 - Smartwatch Ownership: Has owned or consistently worn an Apple Watch for four years
 - Usage Level: Everyday for many uses including texting
@@ -1299,7 +1299,6 @@ In future work, we will address these usability issues and design a high-fidelit
   - Smartwatch Experience: Owns an Apple watch, does not use smartwatch for texting, familiar with how conventional auto-suggestions work.
   - Design experience: Has no design experience outside of a class at the University of Michigan (CSE 593) where they discuss heuristic evaluations.
 
-
   *HE-03 Information*
   - Demographic: Male, 22
   - Background: Computer Science SUGS student at the University of Michigan, extremely comfortable working with technology such as smartphones and computers
@@ -1312,14 +1311,11 @@ In future work, we will address these usability issues and design a high-fidelit
   - Relevant Experience with Smartwatches: While HE-04 has never used a smartwatch himself, he is familiar with their functionality through observing friends and family members who use them.
   - Design Experience: HE-04 is enrolled in a human-computer interaction design course and has knowledge of heuristic evaluation.
 
-
   *HE-05 Information*
   - Demographic: Male, 22 years old
   - Background: Student in CSE 593 who is working on a cooking application that focuses on summarizing recipes into easily digestible portions with voice interaction capabilities.
   - Relevant Experience with Smartwatches: familiar but does not own one himself 
-  - Design Experience: Has moderate experience designing and implementing iOS apps with applications in
-    accessible indoor navigation and tabletop model scanning.
-
+  - Design Experience: Has moderate experience designing and implementing iOS apps with applications in accessible indoor navigation and tabletop model scanning.
 
   *HE-06 Information*
   - Demographic: Female, 18-26
