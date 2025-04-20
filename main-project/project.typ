@@ -23,12 +23,12 @@
 #show: acmart.with(
   title: "Clockworks",
   authors: authors,
-  draft: false // hides "unnecessary" content during editing
+  draft: true // hides "unnecessary" content during editing
 )
 
 #make_title("Clockworks", authors, "University of Michigan, USA", concepts, keywords)[
 // Does abstract properly summarizes whole assignment using the promise, obstacles, solution, and takeaways format in NO more than 150 words.
-Smartwatches are increasingly common for communication and health tracking, yet small screens deter many users from typing messages on these devices. Our project promises to address this shortfall by gathering detailed insights on when, how, and why people attempt text entry on their watches. A key obstacle lies in the mismatch between tiny touch interfaces and users' language or comfort needs, which exacerbates errors and slows interactions. To investigate, we administered think-aloud sessions, surveys, and Contextual Inquiry interviews. These interviews revealed frustrations with limited keyboards, uncertain predictive text, and distractions. Our consolidated results pave the way for users to spend less time correcting errors by overcoming small-screen constraints. After establishing user requirements, we created a paper prototype that offers quick, pre-generated responses and an accurate, enlarged-hitbox keyboard. User testing and expert heuristic evaluation revealed several usability issues that need to be addressed before creating a high-fidelity prototype.
+Smartwatches are increasingly common for communication and health tracking, yet small screens deter many users from typing messages on these devices. Our project promises to address this shortfall by gathering detailed insights on when, how, and why people attempt text entry on their watches. A key obstacle lies in the mismatch between tiny touch interfaces and users' language or comfort needs, which exacerbates errors and slows interactions. To investigate, we administered think-aloud sessions, surveys, and Contextual Inquiry interviews. These interviews revealed frustrations with limited keyboards, uncertain predictive text, and distractions. After establishing user requirements, we created a paper prototype that offers quick, pre-generated responses and an accurate, enlarged-hitbox keyboard. User testing and expert heuristic evaluation revealed several usability issues that were remedied in our high-fidelity prototype. // INSERT RESULTS HERE
 ]
 
 = Introduction
@@ -798,18 +798,338 @@ The simplified user testing shows that participants recognized the potential ben
 
 = Final Design and Functional High-Fidelity Prototype
 
+Following the insights gained from heuristic evaluation and simplified user testing on our low-fidelity paper prototype, we improved upon our paper prototype to create a high-fidelity prototype. We implemented several key changes that addressed the usability issues uncovered. 
+
+// need to have descriptions on changes to the design based on specific feedback 
+// issues to mention: 
+// 1. users struggle to find the keyboard interface -- replaced with an actual button that says "type a response"
+// 2. users were confused about cancel, back, edit 
+// 3. users got frustrated at mistyped characters 
+// 4. lack of visible feedback when a prediction occurs 
+// 5. no punctuation or sumbol options 
+
+
 = User Evaluation
 // Use the knowledge from the lectures and previous evaluations to populate this section and its subsections.
 
+Following completion of the high-fidelity functional prototype, we conducted a quantitative evaluation to objectively measure the performance and user experience of our design. 
+
+The primary purpose of this quantitative evaluation is to assess how effectively our functional smartwatch keyboard prototype meets specific user requirements through measurable performance metrics. This evaluation also aims to validate improvements to our design that arose from earlier qualitative testing. By conducting quantitative user studies, we hope to gather data to guide further refinements and demonstrate the usability and utility of our smartwatch keyboard design in real-world contexts. 
+
+We seek to determine whether the Dynamic Key Hitbox keyboard and suggestion system leads to statistically significant improvements in text entry performance compared to a conventional smartwatch keyboard. We will measure: 
+
++ The error rate with our design compared to a baseline keyboard.
++ The typing speed and overall duration of composing and sending a short messages. This measurement will also be compared against the time it would take a user to retrieve a smartphone from their pants pocket to complete the same task.
++ The relative speed of correcting errors on our design compared to a baseline keyboard. This measurement will also be compared against the time it would take a user to retrieve a smartphone from their pants pocket to complete the same task.
++ The comfort of using our design compared to the baseline keyboard
+\
+The findings will provide quantitative evidence to validate specific user requirements (Requirements 2, 3, 4, and 6) and inform final design iterations.
+
 == Method
+
+We will conduct a quantitative, comparative, controlled user study. This approach allows us to isolate the effect of the input method on user performance and perception while accounting for external variables.
+
+We will employ a within-subjects (repeated measures) study design. Each participant will perform text entry tasks using both our new smartwatch keyboard prototype (the intervention) and a standard QWERTY smartwatch keyboard (the baseline). This design is chosen primarily to control for individual differences in typing skill, dexterity, and prior smartwatch experience, which can significantly impact performance metrics. By having each participant act as their own control, we increase the statistical power to detect differences between the input methods with fewer participants. To mitigate potential learning and fatigue effects inherent in within-subjects designs, the order in which participants use the two input methods will be counterbalanced (e.g., half will use the new keyboard first, while the other half will use the baseline first).
+
+This quantitative evaluation specifically targets:
+
+- Requirement 2: Users must be able to fix text-entry mistakes on the smartwatch faster than it would take for them to retrieve a smartphone from a pants pocket and complete the same task. (Measured via error correction task time).
+- Requirement 3: Users should be able to enter text more accurately on this design than by tapping on an existing smartwatch keyboard. (Measured via error rate).
+- Requirement 4: Users should be able to complete short text-entry tasks on the smartwatch faster than it would take to retrieve a smartphone from a pants pocket and complete the same task. (Measured via task completion time for short phrases).
+- Requirement 6: Users should feel comfortable using the text-entry method in public. (Measured via subjective Likert scale ratings).
+
+For Requirement 2, measured the user's time to complete an error correct task on both keyboards. We will also measure the time it takes them to retrieve their smartphone from their pants pocket to complete the same task. \
+For Requirement 3, measured the number of errors a user commits when completing a task on both keyboards. \
+For Requirement 4, measured the user's time to complete a short text-entry task on both keyboards. We will also measure the time it takes them to retrieve their smartphone from their pants pocket to complete the same task. \ 
+For Requirement 6, after completing all tasks with one of the keyboards, we asked the user how comfortable they would be completing those tasks in a public space. 
+
+
+*Independent Variable:*
+- Variable: Input Method
+- Levels:
+  - Prototype: Our high-fidelity implementation featuring contextual text suggestions and the Dynamic Key Hitbox keyboard.
+  - Baseline Keyboard: The same keyboard in our prototype, but with dynamic hitboxes disabled. The only change that our keyboard makes to the regular watch keyboard is the dynamic hitbox feature. Turning it off for a comparative study allows us to control for all other factors.
+  - Smartphone: The participant's smartphone keyboard.
+
+*Dependent Variables:*
+  // - Text Entry Speed: Measured objectively in seconds to complete the standardized phrase entry tasks.
+  - Text Entry Accuracy: Measured objectively using $"# errors"/(100 "characters")$ ("Accuracy Measure").
+    - An _error_ is defined as *one or more* directly sequential uses of the backspace key. This definition eliminates erroneous "errors" caused by the user deleting correct characters they typed following the incorrect character to fix their mistake.
+    - In our tasks, the user fixes errors they make before continuing. This is because our keyboard uses probabilities based on previously entered text under the assumption that the previous text is correct. As a result, more common measures that compare a potentially inaccurate text against a reference are not appropriate (_e.g._ character error rate).
+  - Task Completion Time: Measured objectively in seconds for each task, representing the time taken from the start of the task to its completion.
+  - Subjective Comfort (Public Use): Measured subjectively using a 5-point Likert scale (1 = Strongly prefer the baseline keyboard, 5 = Strongly prefer the alternate keyboard) asking participants, "Please rate your comfort level with using the alternate keyboard as compared to the standard keyboard in a public setting (e.g., on a bus, in a quiet library)?". This question would be asked participants after completing all tasks with each input method.
+
+*Relevant Questions:*
+- Does the dynamic hitbox keyboard improve the accuracy with which participants were able to type?
+  - $H_0:$ There is no difference in the accuracy measure between the dynamic hitbox keyboard and the regular keyboard
+  - This allows us to evaluate whether we have fulfilled Requirement 3
+- Does the dynamic hitbox keyboard allow the user to complete short text entry tasks faster?
+  - $H_0:$ There is no difference between task completion time for short tasks between the dynamic hitbox keyboard and a baseline measure.
+  - This allows us to evaluate whether our design fulfills Requirement 4 better than current smartwatches *and* to what degree our design fulfills Requirement 4 overall
+- Is there a relation between accuracy and task completion time?
+  - $H_0:$ There is no relationship between accuracy and task completion time
+  - This allows us to evaluate whether our design better fulfills Requirement 1 than a baseline by reducing the error rate, and thus reducing excess task time caused by errors
+- Does the dynamic hitbox keyboard differ from the baseline keyboard in comfort-of-use?
+  - $H_0:$ The dynamic hitbox keyboard does not differ from the baseline keyboard in comfort-of-use
+  - This allows us to evaluate whether our design fulfills requirement 6. In this case, the baseline keyboard already fulfills requirement 6. As such, this test only negatively implicates our design if our smartwatch is significantly less comfortable to use
+
+For comparing the Accuracy Measure and Task Completion Time between the two Input Method levels (within-subjects), we will use Paired t-tests if the difference scores are normally distributed. If the normality assumption is violated, we will use the non-parametric equivalent, the Wilcoxon Signed-Rank test.
+
+For comparing the ordinal Subjective Comfort ratings between the two Input Method levels, we will use the Wilcoxon Signed-Rank test.
+
+Alpha level will be set at $alpha = 0.05$ for all tests.
+
+In terms of the effect size, Cohen's @cohen2013statistical thresholds consider $d=0.2$ small, $0.5$ medium, and $0.8$ large. Although Yatani @yatani2016effect notes these are often used in HCI studies, a more recent meta-analysis Obyobukhova @obukhova2021meta on typing experiments found effect size thresholds of 0.1 (small), 0.36 (medium), and 1.04 (large), with an average of 13.88 participants per study. We expect an effect size of at least around 0.36 (medium-to-large) and aim to recruit 12 participants. This number aligns with common HCI lab practice as in the meta-analysis by Obyobukhova @obukhova2021meta for detecting an effect size around medium while balancing statistical validity with practical recruitment constraints for this project.
+
+The within-subjects design allows for direct comparison of each participant's performance and perception across the two input methods. By measuring text entry speed (Short Task Completion Time), accuracy, and subjective comfort (Likert scale), and analyzing these dependent variables using appropriate statistical tests based on the independent variable (input method), we can directly assess whether our prototype offers significant advantages over the baseline. These quantitative results will provide concrete evidence regarding the fulfillment of User Requirements 2, 3, 4, and 6.
 
 == Apparatus
 
+Our functional prototype is a mobile application that simulates a smartwatch running an implementation of our text-entry design.
+
+Not all members in our group own a smartwatch. As a result, we developed an app that ran on mobile devices but simulated a smartwatch to achieve consistent results when testing.
+
+The app is implemented in React Native, which is a cross-platform mobile application framework. This allows the same application to be used across the different devices our team owns.
+
+=== Study Flow
+
+The initial screen shown is the _conductor screen_ (@app:conductor-screen). This screen allows the conductor of the study to adjust the settings for a given testing session. Here, the conductor can toggle whether the dynamic hitbox should be turned on for a given session.
+
+#figure(
+  image(
+    "assets/final-prototype/assignment5/conductor-screen.png",
+    width: 25%,
+  ),
+  caption: [The Conductor Screen]
+) <app:conductor-screen>
+
+Each session is tracked using a pair of `<user ID, session ID>` (@app:start-session-screen). This allows the conductor to later analyze the data across users and sessions.
+
+#figure(
+  image(
+    "assets/final-prototype/assignment5/start-session-screen.png",
+    width: 25%,
+  ),
+  caption: [The Screen Presented to the Conductor When Starting a Study]
+) <app:start-session-screen>
+
+Once the study has started, the user's area of interaction is limited to an area that is sized similarly to a smartwatch screen. Initially, the user is presented with an example text-message and a series of suggestions (@app:initial-screen).
+
+If a user taps one of the suggestions, they are presented with three options: to confirm sending the suggestion, to edit the suggestion, and to go back (@app:confirmation-screen). If the user taps the _Send_ button, the study session is concluded. If the user taps the _Cancel_ button, they are returned to the previous page. Finally, if the user taps the _Edit_ button, they are brought to the keyboard screen where they can edit the message.
+
+#figure(
+  image(
+    "assets/final-prototype/assignment5/initial-screen.png",
+    width: 25%,
+  ),
+  caption: [The Initial Screen the Study Participant Sees]
+) <app:initial-screen>
+
+#figure(
+  image(
+    "assets/final-prototype/assignment5/confirmation-screen.png",
+    width: 25%,
+  ),
+  caption: [The Confirmation Screen Presented Upon Tapping a Suggestion]
+) <app:confirmation-screen>
+
+If instead, the user taps _Type a Reply_ on the screen presented in @app:initial-screen, they are taken to the keyboard (@app:keyboard-screen). When using the keyboard, the user is able to type the message that the task requires. The keyboard does not feature a _Shift_ key for simplicity, but is otherwise fully functional. The study concludes when the user taps the _Send_ button on the top right.
+
+#figure(
+  image(
+    "assets/final-prototype/assignment5/keyboard-screen.png",
+    width: 25%,
+  ),
+  caption: [The Keyboard Presented to the User]
+) <app:keyboard-screen>
+
+=== Dynamic Hitbox
+
+The dynamic hitbox in the prototype works by predicting what the most likely letter that the user might type next based on what they have previously typed, and adjusting which key is selected by a touch to a certain area on the screen based on that information. We break this process into its parts below.
+
+==== Predicting the Probability of The Next Character
+
+We use unigrams and bigrams based on how many tokens the user has typed, where a token is a single character, to predict the most likely token to appear next. We do this in a relatively simple way. First, we acquired a large corpus of English text @chelba2014billionwordbenchmarkmeasuring and calculated the probability that a certain character appears next conditioned on the previous one and two characters. Once this table was constructed, in our prototype, we conducted a lookup in this dataset for the previous two characters (or one, if there is only one character so far in the word being currently typed), and obtained the probability with which each letter may appear next.
+
+==== Deciding Which Letter Should Be Typed
+
+Once we have obtained the probabilities of each of the following keys that might come text, we then wanted to make better predictions on what key the user might have intended to type based on where they tapped.
+
+First, if the key that the user tapped is a "reasonable" key, determined by whether its probability is above a certain threshold (defined for our trials as $0.05$), we do not intervene. Otherwise, we do the following:
+
+We assign each letter a score $s$ based on:
+- Where the user tapped on the screen
+- Where the key is located on the screen
+- How probable it is that the character of the key would follow the previous two characters
+
+Specifically, let $c_x$ and $c_y$ be the $x$ and $y$ coordinates of a given key on the screen, and let $u_x$ and $u_y$ be the location that a user has tapped.
+
+We first calculate the euclidian distance
+$
+d_"raw" = sqrt((c_x - u_x)^2 + (c_y - u_y)^2)
+$
+
+We then normalize the distance by calculating
+$
+d_n = d_"raw" dot 2/(k_w + k_h)
+$
+
+where $k_w$ and $k_h$ is the width and height of a key. In other words, $d_n$ is in units of approximately one key.
+
+We then calculate a "distance penalty" that penalizes a key for being far from the touch point of the user as:
+
+$
+d_p = exp(-d_n^2 dot sigma)
+$
+
+Where $sigma$ is a parameter that controls how fast the penalty approaches $0$. In our testing apparatus, we take $sigma = 2/5$. We chose this parameter after testing some common phrases while tuning $sigma$ to obtain behavior that we thought was reasonable.
+
+We then let $p_k$ be the probability that the character of the key follows the previous two characters.
+
+We let 
+$
+s = d_p dot log(p_k + 1)
+$
+
+and pick the key with the highest score as the one typed by the keyboard.
+
+==== Logging
+
+For each event, the prototype logs the timestamp, the time of the event, and data associated with the event into a SQLite Database that can be viewed or exported by the conductor. This allows us to record quantitative data with the highest possible accuracy and precision.
+
+The list of events are given below:
+
+#align(center)[
+  #set block(breakable: false)
+  #table(
+    align: left,
+    columns: (auto, auto, 2in),
+    [*Event*], [*Description*], [*Associated Data*],
+    `session_start`, [The conductor has started the session], [
+      - Whether the Dynamic Hitbox feature is enabled
+    ],
+    `session_end`, [The session has ended], [],
+    `key_typed`, [A character has been appended to the message], [
+      - What character has been typed
+      - The contents of the message at the time the key was pressed
+    ],
+    `changed_outcome`, [The dynamic hitbox keyboard typed a different character than what the regular keyboard would have typed], [
+      - What character would have been typed
+      - What character was actually typed
+      - The contents of the message at the time the key was pressed
+    ],
+    `backspace_pressed`, [The user pressed the backspace key], [- The contents of the message at the time the key was pressed],
+    `view_transition`, [The user switched to a different screen], [- The screen the user switched to]
+  )
+]
+
+An example of the outputted logs is shown in (@app:example-db).
+
+#figure(
+  image(
+    "assets/final-prototype/assignment5/example-db.png",
+    height: 3in,
+  ),
+  caption: [An Example Database Exported From the App]
+) <app:example-db>
+
 == Tasks and Procedures
+
+Before the session began, we obtained informed consent from the participant and explained the purpose of the study. We described the context in which the functional prototype would be used: an average user that needs to quickly respond to text messages while unable to use the smartwatch's voice-to-text feature. This user may sometimes need to craft longer or more customized text messages.
+
+We gave a brief overview of the functional prototype's core features but did not go into depth to demonstrate how to use them or the details in their implementation. This approach ensured users could learn the features and execute the tasks independently, without our guidance affecting their task completion times.
+
+The core features from the functional prototype that we explained were:
+
+1. Suggested replies shown when a message is received
+2. Confirmation options (Send, Edit, Cancel) after selecting a suggested response
+3. A dynamic keyboard that adapts key hitboxes based on the predicted next character
+
+Then, the participant was asked to complete the following tasks using the functional prototype.
+
+#quote(quotes: false, block: true)[
+  #set enum(numbering: n => [Task #n:])
+  + Your phone is away and you need to respond on your smartwatch. Tell Joyce:\ _"Yes"_
+  // short responses task 
+  + Your phone is away and you need to respond on your smartwatch. Tell Joyce:\ _"Chicken is okay"_
+  // long response error rate task 
+  + Your phone is away and you need to respond on your smartwatch. 
+    You will respond with two different messages:
+    - 3a: You're okay having chicken for dinner but think you need more. Tell Joyce:\ _"Can you get two chickens instead for dinner tonight since I am hungry"_
+    - 3b: You would like to order takeout instead. Tell Joyce:\ _"I would actually rather get takeout instead of chicken if that works for you"_
+]
+
+For every task, we will ask the user to complete it using the new smartwatch keyboard prototype and the standard smartwatch keyboard. We instruct the user to fix any mistakes they make while they type before continuing the sentence. Afterwards, we also asked the participant to complete the same task on their smartphones, measuring the time from when they begin to reach into their pocket to when they press send on their phones. 
+
+Task 1 evaluates the suggestions feature of the smartwatch. _"Yes"_ is one of the options presented to the participant in the suggestions menu. This task then provides data that measures how different measures behave when the user utilizes the suggestions feature.
+
+For Task 2, our goal is to measure the time needed for users to complete short text-entry tasks, directly addressing Requirement 4. We will start the timer when the user acknowledges they are ready and the smartwatch is on the default "message received" screen. We will end the timer when the user sends their message and use this measurement as the time taken. 
+
+For Task 3, our goal is to measure the character-level error rate of users completing a long-form text-entry task, directly addressing Requirement 3 (text-entry accuracy). We will quantify this using the Accuracy Measure.
+
+For Task 1 and Task 3, we will also ask the user to complete the same task on their smartphone. We will start the timer when the user acknowledges they are ready. The user must reach into their pants pocket to grab their phone and then complete the task. We will end the timer when the message is sent and record this measurement as the time taken to complete the same task on their phone. To mirror the smartwatch scenario, we will simulate a message from “Joyce” on the participant’s phone to replicate the prototype’s text exchange.
+
+Each member of our group will conduct quantitative user testing with 2 users. We will each randomly decide which user conducts the tasks on the new keyboard first and which user conducts the tasks on the standard keyboard first. By switching the order in which participants use the two input methods to complete the tasks, we can mitigate the effects of potential learning and fatigue on our evaluations. 
+
+After all tasks were completed we asked participants the following multiple choice question: \
+*Please rate your comfort level with using the alternate keyboard as compared to the standard keyboard in a public setting (e.g., on a bus or in a quiet library).*
++ I strongly prefer using the alternate keyboard
++ I prefer using the alternate keyboard
++ I have no preference for either keyboard
++ I prefer using the standard keyboard
++ I strongly prefer using the standard keyboard
+
+This question would give us data on whether Requirement 6 was fulfilled. 
+
+To ensure data quality, we followed a standardized study protocol across all participants, including consistent task instructions, timing procedures, and measurement methods. Each evaluator used the same script to introduce the prototype and tasks to reduce bias. We randomized the order of keyboard conditions to mitigate learning effects, and we clearly defined metrics for timing and error rate to ensure consistent data capture. All quantitative data were recorded manually and cross-checked immediately after the session to prevent data entry errors. 
 
 == Participants
 
+We recruited 12 participants aged between 20 and 34 years from a university setting, primarily consisting of undergraduate and graduate students. Participants were recruited via word of mouth through friends and family.
+
+*Inclusion criteria:*
+- Participants must be 18 years or older.
+- Participants must have daily experience using touchscreen smartphones, particularly for texting or messaging applications.
+- Participants must be able to read and write English fluently, as all tasks involved communication based in English.
+- Participants must have normal or corrected-to-normal vision (i.e. glasses or contact lenses).
+- Participants must self-report no issues with fine motor control, ensuring they are capable of interacting with small touch targets such as smartwatch keyboards.
+- Participants must be comfortable wearing and using a smartwatch device for the duration of the study. \
+
+*Exclusion criteria:*
+- Participants with a diagnosed visual impairment not corrected by glasses or contacts (e.g., uncorrected astigmatism or color blindness that could interfere with UI recognition).
+- Participants with any physical condition or injury that could impair wrist movement or hand dexterity (e.g., carpal tunnel, arthritis, recent hand injury).
+- Participants with prior participation in our earlier heuristic evaluation or low-fidelity prototype testing sessions, to avoid learning bias.
+- Participants who cannot commit to the full duration of the study session (\~20–30 minutes) or who show signs of distraction or disengagement during the session.
+
+To ensure balanced insights across users with and without smartwatch experience, we intentionally selected a mix of participants with varying levels of exposure to wearable technology. Before beginning the evaluation, participants were briefed on the purpose of the study and provided informed consent through a digital consent form. No identifying data was collected, and all responses and performance metrics were anonymized for analysis. The inclusion of both novice and experienced smartwatch users allows us to examine how intuitive and effective our prototype is across a realistic range of potential users.
+
+Participants received no compensation for completing the study. 
+
+A full table of participant anonymized demographics, relevant background information, and how they were recruited can be found in the appendix under #ref(<QUT-participants>): Anonymized and De-identified Participants Data.
+
 == Results
+
+We present our statistical test results across the tasks together with interpretive comments related to our user requirements (2, 3, and 4). For Task 1, which involved a trivial "Yes" reply, the phone took a mean of 8.222 seconds while the smartwatch with intervention took 4.380 seconds. A paired t-test yielded t=3.9919 and p=0.0021, indicating that participants completed this extremely simple task faster on the watch, likely because the suggested reply was readily available and the phone had to be retrieved from a pocket. Although we did not specifically hypothesize a watch advantage for Task 1, these data show that, for tasks requiring just a few taps, the convenience of wearing the device on the wrist can surpass phone-based typing.
+
+Task 2 required typing a short 14-character phrase. When comparing the baseline smartwatch keyboard (Mean=18.946s) to the smartwatch with intervention (Mean=18.628s), a paired t-test found t=0.3072 and p=0.7644, so we cannot reject the null hypothesis of “no difference” in completion time. Meanwhile, the phone (Mean=9.152s) significantly outperformed the watch with intervention (Mean=18.628s), as shown by t=−6.5191 and $p<0.01$. Thus, for short tasks requiring moderate text entry, the phone remained substantially faster.
+
+We also examined longer text-entry tasks, labeled Task 3; it has two sub-tasks, Task 3.1 for 68 characters and Task 3.2 for 75 characters. In Task 3.1, the baseline watch averaged 66.169 seconds versus 66.272 seconds with the intervention (t=−0.0270, p=0.9789), and in Task 3.2, the baseline watch averaged 66.447 seconds compared to 62.987 seconds with intervention (t=0.8117, p=0.4342). Neither showed a significant difference, so we cannot reject the null hypothesis for longer phrases on the watch. Phone-based input times were substantially lower for Task 3, reflecting the continued phone advantage for longer messages.
+
+For accuracy, we aggregated Tasks 2, 3.1, and 3.2 and calculated mean errors per 100 characters. With the unassisted watch keyboard, the mean was 14.691 errors per 100 characters (SD=5.187) versus 9.401 (SD=4.879) with intervention. A paired t-test indicated t=1.9778 and p=0.0735, which is above the 0.05 threshold, so we cannot conclude statistical significance. However, the difference is suggestive of a possible improvement at around the 10% significance level. Given this marginal result, we note that a larger sample might clarify whether the dynamic hitbox substantially reduces error rates in everyday tasks.
+
+In terms of requirements, these results mean that users did not fix mistakes faster on the watch than on the phone for moderate or longer tasks (Requirement 2), and we do not see a definitive statistically significant improvement in watch-based accuracy (Requirement 3). For short tasks with moderate text (Task 2), the dynamic hitbox did not meaningfully reduce completion time compared to baseline, and the phone remained faster (Requirement 4). The single exception was an extremely trivial prompt (Task 1), where tapping a single suggested reply on the watch outpaced pulling out the phone and typing. Overall, the watch-based intervention provided only a marginal accuracy improvement, and it did not significantly reduce time on more complex tasks, suggesting that future design iterations may need a stronger predictive approach or alternative input methods to better compete with the phone for text entry.
+
+#figure(
+  image("assets/results/time_taken_boxplot_task1.png", width: 35%),
+)
+#figure(
+  image("assets/results/time_taken_boxplots_tasks2_3.png"),
+)
+#figure(
+  image("assets/results/smartwatch_errors_barchart.png", width: 40%),
+)
+
+
 
 = Discussion
 // You will keep updating this section after each assignment. After each assignment you will add discussion about what the results mean for your research.
@@ -828,7 +1148,7 @@ Throughout our design process, we experimented with many different methods of er
 
 Our design critiques suggested that simpler designs that focused around efficiency and accuracy were the most universally liked designs. As a result, we picked two designs that we agreed possessed these qualities, and iterated upon them to derive our final paper-prototype design. The critique process resulted in a final paper-prototype design that we believe will produce a product that addresses user concerns in the most effective way.
 
-User testing and heuristic evaluation revealed several gaps in our initial prototype, including core features such as back buttons and special character entry. In the next iteration of our prototype, we must include these core features that users expect of any keyboard. We also discovered that many users requested that our design give an indication of its activation to increase transparency. The simplified user testing results showed how our design language, particularly with suggested reply buttons and the need to swipe up to access the keyboard, needs significant improvement. We can utilize motion and animations in our design components in the high fidelity prototype to make these functions clearer.
+User testing and heuristic evaluation revealed several gaps in our initial prototype, including core features such as back buttons and special character entry. In the next iteration of our prototype, we must include these core features that users expect of any keyboard. We also discovered that many users requested that our design give an indication of its activation to increase transparency. The simplified user testing results showed how our design language, particularly with suggested reply buttons and the need to swipe up to access the keyboard, needs significant improvement.
 
 = Conclusion and Future Work
 // What is the takeaway of this project? Were there any parts of the project that you did not include in the scope of this project? Here is where you will discuss how the current assignment will inform the rest of your project. For example, in Assignment 1, how will the results of your survey influence the future steps in understanding context of use? Feel free to use your creativity to suggest new research directions, designs---but these suggestions must be supported by the findings of your study
@@ -1805,7 +2125,72 @@ When asked to type "I’ll have salad," she noticed missing punctuation keys, sp
   = User Evaluation
   
   == Apparatus Screenshots
-  
-  == Anonymized and De-identified Participants Data
+  #figure(
+    stack(
+    dir: ltr,
+    spacing: 1fr,
+    image(width: 30%, "assets/final-prototype/light-mode/home.PNG"),
+    image(width: 30%, "assets/final-prototype/light-mode/logs.PNG"),
+    image(width: 30%, "assets/final-prototype/light-mode/log_example.PNG"),
+    ),
+    caption: "Left: Homepage of functional prototype with options to use the baseline or intervention keyboard (Dynamic Hitboxes toggle), button to start, and button to access data logs. Center: Logs screen that shows data from each testing session. Right: Example tracked data from one testing session."
+  ) <fig:final_prototype_home>
 
+  #figure(
+    stack(
+    dir: ltr,
+    spacing: 1fr,
+    image(width: 30%, "assets/final-prototype/light-mode/start_session.PNG"),
+    image(width: 30%, "assets/final-prototype/light-mode/ready.PNG"),
+    image(width: 30%, "assets/final-prototype/light-mode/suggestions.PNG"),
+    ),
+    caption: "Left: Clicking 'Try Keyboiard Demo' from homescreen allows you to enter User ID and Session Code for the testing session. Center: Confirmation screen that indicates the system is ready for the participant to begin the test. Right: The landing page that users see upon first beginning the test — it shows the received text message and suggested responses."
+  ) <fig:final_prototype_starting>
+  
+  #figure(
+    stack(
+    dir: ltr,
+    spacing: 1fr,
+    image(width: 30%, "assets/final-prototype/light-mode/confirm_suggestion.PNG"),
+    image(width: 30%, "assets/final-prototype/light-mode/typing.PNG"),
+    image(width: 30%, "assets/final-prototype/light-mode/done.PNG"),
+    ),
+    caption: "Left: Confirmation screen after selecting a suggested response. Users can send, edit, or cancel their action. Center: Screen that contains the smartwatch keyboard allowing users to manually input text. Right: Concluding screen that appears once a user completes one test session — the test concludes after a user sends a message and data is collected and stored in logs."
+  ) <fig:final_prototype_ending>
+  == Anonymized and De-identified Participants Data <QUT-participants>
+
+  #[
+    #set par(justify: false)
+    #let rowname(content) = {
+      table.cell(colspan: 7, stroke: (y: 0.5pt))[#align(center)[_#content _]]
+    }
+    #table(
+    columns: (.8fr, .5fr, .75fr, 1fr, 1.2fr, 1fr, .9fr),
+    table.header[*Participant*][*Age*][*Gender*][*Occupation*][*Smartwatch Experience*][*Smartwatch Typing Confidence*][*Recruitment Method*],
+
+    // Kevin's 
+    [UE-01],[23],[Female],[UX designer],[has owned a smartwatch for 1 year],[somewhat confident],[word of mouth],
+    [UE-02],[23],[Male],[graduate student],[has owned a smartwatch for 3 years],[somewhat confident],[word of mouth],
+
+    // Oskar 
+    [UE-03],[22],[Male],[graduate student],[used to own a smartwatch watch four years ago.],[somewhat confident],[word of mouth],
+    [UE-04],[21],[Female],[undergraduate student],[owns a smartwatch, uses it everyday],[confident],[word of mouth],
+
+    // Hyungchan
+    [UE-05],[26],[Male],[graduate student],[2 years experience],[somewhat confident],[word of mouth],
+    [UE-06],[26],[Male],[graduate student],[1 year experience],[neutral],[word of mouth],
+
+    // Ryan 
+    [UE-07],[22],[Male],[student],[has owned smartwatches for 2 years],[confident],[word of mouth],
+    [UE-08],[22],[Male],[student],[Has owned smartwatches for 6 years],[neutral],[word of mouth],
+
+    // Efe 
+    [UE-09],[21],[Male],[undergraduate student],[wears a smartwatch],[does not use the smartwatch keyboard often],[friend],
+    [UE-10],[21],[Male],[graduate student],[wears a smartwatch],[uses the smartwatch keyboard often],[friend],  
+
+    // Nivedhitha
+    [UE-11],[29],[Female],[professor],[has owned smartwatches for 1 year],[confident],[word of mouth],
+    [UE-12],[21],[Male],[working professional (ML engineer)],[has owned smartwatches for 2 years],[neutral],[word of mouth], 
+  )
+  ]
 ]
