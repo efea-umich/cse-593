@@ -1,5 +1,5 @@
 #import "@preview/fletcher:0.5.6" as fletcher: diagram, node, edge
-#import "../acmart.typ": *
+#import "../acmart-small.typ": *
 
 #let authors = (
   "Efe Akinci",
@@ -1054,9 +1054,8 @@ For each event, the prototype logs the timestamp, the time of the event, and dat
 
 The list of events are given below:
 
-#align(center)[
-  #set block(breakable: false)
-  #table(
+#figure(
+  table(
     align: left,
     columns: (auto, auto, 2in),
     [*Event*], [*Description*], [*Associated Data*],
@@ -1074,9 +1073,11 @@ The list of events are given below:
       - The contents of the message at the time the key was pressed
     ],
     `backspace_pressed`, [The user pressed the backspace key], [- The contents of the message at the time the key was pressed],
-    `view_transition`, [The user switched to a different screen], [- The screen the user switched to]
-  )
-]
+    `view_transition`, [The user switched to a different screen], [- The screen the user switched to],
+    table.hline()
+  ),
+  caption: [Logged Events in the High-Fidelity Prototype]
+)
 
 An example of the outputted logs is shown in (@app:example-db).
 
@@ -1164,26 +1165,43 @@ A full table of participant anonymized demographics, relevant background informa
 
 == Results
 
-We present our statistical test results across the tasks together with interpretive comments related to our user requirements (2, 3, and 4). For Task 1, which involved a trivial "Yes" reply, the phone took a mean of 8.222 seconds while the smartwatch with intervention took 4.380 seconds. A paired t-test yielded t=3.9919 and p=0.0021, indicating that participants completed this extremely simple task faster on the watch, likely because the suggested reply was readily available and the phone had to be retrieved from a pocket. Although we did not specifically hypothesize a watch advantage for Task 1, these data show that, for tasks requiring just a few taps, the convenience of wearing the device on the wrist can surpass phone-based typing.
+In this section, we present our statistical test results and connect them to the user requirements identified earlier. For Task 1, which involved a trivial "Yes" reply, the phone took a mean of 8.222 seconds while the smartwatch with intervention took 4.380 seconds (see @fig:time-taken-1). A paired t-test yielded t=3.9919 and p=0.0021, indicating that participants completed this extremely simple task faster on the watch, likely because the suggested reply was readily available and the phone had to be retrieved from a pocket. Although we did not specifically hypothesize a watch advantage for Task 1, these data show that, for tasks requiring just a few taps, the convenience of wearing the device on the wrist can surpass phone-based typing.
 
-Task 2 required typing a short 14-character phrase. When comparing the baseline smartwatch keyboard (Mean=18.946s) to the smartwatch with intervention (Mean=18.628s), a paired t-test found $t=0.3072$ and $p=0.7644$, so we cannot reject the null hypothesis of “no difference” in completion time. Meanwhile, the phone (Mean=9.152s) significantly outperformed the watch with intervention (Mean=18.628s), as shown by $t=−6.5191$ and $p<0.01$. Thus, for short tasks requiring moderate text entry, the phone remained substantially faster.
+Task 2 required typing a short 14-character phrase. As shown in @fig:time-taken-2, a paired t-test comparing the baseline smartwatch keyboard ($mu=18.946$s) to the smartwatch with intervention ($mu=18.628$s) returned $t=0.3072$ and $p=0.7644$, so we cannot reject the null hypothesis of “no difference” in completion time. Meanwhile, the phone ($mu$=9.152s) significantly outperformed the watch with intervention ($mu$=18.628s), as shown by $t=−6.5191$ and $p<0.01$. Thus, for short tasks requiring moderate text entry, the phone remained substantially faster.
 
-We also examined longer text-entry tasks, labeled Task 3; it has two sub-tasks, Task 3a for 68 characters and Task 3b for 75 characters. In Task 3a, the baseline watch averaged 66.169 seconds versus 66.272 seconds with the intervention ($t=−0.0270, p=0.9789$), and in Task 3b, the baseline watch averaged 66.447 seconds compared to 62.987 seconds with intervention ($t=0.8117, p=0.4342$). Neither showed a significant difference, so we cannot reject the null hypothesis for longer phrases on the watch. Phone-based input times were substantially lower for Task 3, reflecting the continued phone advantage for longer messages.
+We also examined longer text-entry tasks, labeled Task 3; it has two sub-tasks, Task 3a for 68 characters and Task 3b for 75 characters. As shown in @fig:time-taken-3, the baseline watch averaged 66.169 seconds versus 66.272 seconds with the intervention  yielding $t=−0.0270$ with $p=0.9789$. This indicates no significant difference in the time taken for lengthy phrases on the watch.
 
-For accuracy, we aggregated Tasks 2, 3a, and 3b and calculated mean errors per 100 characters. With the unassisted watch keyboard, the mean was 14.691 errors per 100 characters (SD=5.187) versus 9.401 (SD=4.879) with intervention. A paired t-test indicated $t=1.9778$ and $p=0.0735$, which is above the 0.05 threshold, so we cannot conclude statistical significance. However, the difference is suggestive of a possible improvement at around the 10% significance level. Given this marginal result, we note that a larger sample might clarify whether the dynamic hitbox substantially reduces error rates in everyday tasks.
+For accuracy, we aggregated Tasks 2, 3a, and 3b and calculated mean errors per 100 characters. With the unassisted watch keyboard, the mean was 14.691 errors per 100 characters ($sigma=5.187$) versus $9.401$ ($sigma=4.879$) with intervention. A paired t-test indicated $t=1.9778$ and $p=0.0735$, which is above the $0.05$ threshold, so we cannot conclude statistical significance. However, the difference is suggestive of a possible improvement at around the $10%$ significance level. Given this marginal result, we note that a larger sample might clarify whether the dynamic hitbox substantially reduces error rates in everyday tasks.
 
-Additionally, to test the hypothesis, $H_0:$ There is no relationship between accuracy and task completion time, we calculated the Pearson correlation between time taken with intervention and mean errors. The result was r=0.5234 with p=0.0808, suggesting a marginal but not statistically significant association at $alpha=0.05$. In other words, lower error rates did not consistently translate into less overall time for Tasks 2 and 3, each involving fewer than 80 characters. This outcome means we cannot reject the null hypothesis that accuracy and completion time are uncorrelated in our current study, so even with fewer mistakes, the dynamic hitbox design does not necessarily reduce total task duration for these short and moderate text lengths.
+Additionally, to test the hypothesis, $H_0:$ _There is no relationship between accuracy and task completion time_, we calculated the Pearson correlation between time taken with intervention and mean errors. The result was $r=0.5234$ with $p=0.0808$, suggesting a marginal but not statistically significant association at $alpha=0.05$. In other words, lower error rates did not consistently translate into less overall time for Tasks 2 and 3, each involving fewer than 80 characters. This outcome means we cannot reject the null hypothesis that accuracy and completion time are uncorrelated in our current study, so even with fewer mistakes, the dynamic hitbox design does not necessarily reduce total task duration for these short and moderate text lengths.
+
+Despite the lack of statistical significance in overall accuracy, we found noteworthy local effects (see @fig:assisted-changes-chart). Our intervention took actions to alter typed input approximately 7.257 times per 100 characters (95% Confidence Interval = [4.972, 9.542]), yet only 0.377 of these actions were erroneous changes (95% Confidence Interval = [0.053, 0.701]). In other words, each individual intervention had a high likelihood of preventing an error rather than causing one. Although this pattern alone did not yield a significant global improvement in accuracy, it shows that each predictive action generally helped the user and occurred at a reasonable frequency.
 
 In terms of requirements, these results mean that users did not fix mistakes faster on the watch than on the phone for moderate or longer tasks (Requirement 2), and we do not see a definitive statistically significant improvement in watch-based accuracy (Requirement 3). For short tasks with moderate text (Task 2), the dynamic hitbox did not meaningfully reduce completion time compared to baseline, and the phone remained faster (Requirement 4). The single exception was an extremely trivial prompt (Task 1), where tapping a single suggested reply on the watch outpaced pulling out the phone and typing. Overall, the watch-based intervention provided only a marginal accuracy improvement, and it did not significantly reduce time on more complex tasks, suggesting that future design iterations may need a stronger predictive approach or alternative input methods to better compete with the phone for text entry.
 
-#figure(
-  image("assets/results/time_taken_boxplot_task1.png", width: 35%),
-)
-#figure(
-  image("assets/results/time_taken_boxplots_tasks2_3.png"),
-)
-#figure(
-  image("assets/results/smartwatch_errors_barchart.png", width: 40%),
+#grid(
+  columns: (1fr, 1fr),
+  gutter: 2em,
+  [#figure(
+    image("assets/results/time_taken_boxplot_task1.png", width: 100%),
+    caption: [Time Taken to Complete Task 1]
+  ) <fig:time-taken-1>],
+  [#figure(
+      image("assets/results/time_taken_boxplot_task2.png", width: 100%),
+      caption: [Time Taken to Complete Task 2]
+  ) <fig:time-taken-2>],
+  [#figure(
+    image("assets/results/time_taken_boxplot_task3.png", width: 100%),
+    caption: [Time Taken to Complete Task 3]
+  ) <fig:time-taken-3>],
+  [#figure(
+    image("assets/results/smartwatch_errors_barchart.png", width: 100%),
+    caption: [Errors Per 100 Characters]
+  ) <fig:errors-barchart>],
+  [#figure(
+    image("assets/results/assisted_changes_barchart.png", width: 100%),
+    caption: [Number of Total and Erroneous Outcome Changes]
+  ) <fig:assisted-changes-chart>],
 )
 
 
@@ -1209,11 +1227,13 @@ User testing and heuristic evaluation revealed several gaps in our initial proto
 
 Based on this feedback, we developed a high-fidelity prototype in the form of a mobile application that simulated a smartwatch interface. The prototype integrated two core features: contextual pre-generated responses and the Dynamic Key Hitbox keyboard. These features functioned in real time, presenting relevant suggested replies and dynamically adjusting key hitboxes based on the user’s character input history. This simulation aimed to closely approximate the experience of interacting with a fully functional smartwatch, allowing us to test usability under realistic conditions.
 
-Quantitative evaluation showed that our current design doesn't fully satisfy our user requirements. While we could make very short tasks faster, our slight accuracy boost did not significantly boost typing speed. Typing speeds on the smartwatch remained relatively consistent regardless of our intervention.
+Quantitative evaluation showed that our current design doesn't fully satisfy our user requirements. While we could make very short tasks faster, our slight accuracy boost did not significantly boost typing speed. Typing speeds on the smartwatch remained relatively consistent regardless of our intervention, likely because correction workflows or typing hesitancy overshadowed incremental accuracy benefits.
 
 These findings highlight the limitations of soft-keyboard interventions on small displays. Even though our design showed promise in reducing error rates, the effect size was not large enough to yield meaningful performance differences in practice. The lack of significant correlation between accuracy and task time further supports this interpretation, indicating that making fewer mistakes did not necessarily make users faster -- perhaps because correction workflows or input hesitancy persisted regardless of raw accuracy improvements.
 
-From a design perspective, these results suggest that future iterations may require more transformative approaches to input -- such as gesture-based prediction, adaptive language models, or multimodal techniques (e.g., voice-to-text integration) -- to meaningfully compete with a phone for text input tasks. Our intervention offers a small step toward greater usability, but the smartwatch remains best suited for micro-interactions rather than sustained text entry. Ultimately, designing for such constrained platforms demands a shift in how we think about input itself—not just refining what already exists, but reimagining interaction models to better align with users’ context, goals, and physical limitations.
+Nevertheless, we did find that the dynamic hitbox keyboard's reduced error rate approached statistical significance at the 10% level, suggesting a possible modest benefit that might become clearer with more participants. Moreover, our correlation analysis between accuracy and completion time was also marginally significant, implying that fewer errors could improve speed under certain conditions, though not conclusively at the 5% level. These early signals of a 10% significance -- together with the clear advantage of simple suggestion-based replies for extremely short tasks -- point to potentially promising directions. With a larger sample, it is conceivable that these modest accuracy gains and correlational trends might become strong enough to yield statistically significant overall improvements.
+
+From a design perspective, these results suggest that future iterations may require more transformative approaches to input -- such as gesture-based prediction, adaptive language models, or multimodal techniques (e.g., voice-to-text integration) -- to meaningfully compete with a phone for text input tasks. Our intervention offers a small step toward greater usability, but the smartwatch remains best suited for micro-interactions rather than sustained text entry. Ultimately, designing for such constrained platforms demands a shift in how we think about input itself—not just refining what already exists, but reimagining interaction models to better align with users' context, goals, and physical limitations.
 
 = Conclusion and Future Work
 // What is the takeaway of this project? Were there any parts of the project that you did not include in the scope of this project? Here is where you will discuss how the current assignment will inform the rest of your project. For example, in Assignment 1, how will the results of your survey influence the future steps in understanding context of use? Feel free to use your creativity to suggest new research directions, designs---but these suggestions must be supported by the findings of your study
